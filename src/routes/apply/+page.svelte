@@ -1,4 +1,4 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+<div class="flex items-center justify-center bg-gray-100 p-4">
   <div class="w-full max-w-2xl bg-white shadow-md rounded-lg">
     <div class="p-6">
       <h1 class="text-2xl font-bold text-center">UB Hacking Application</h1>
@@ -73,7 +73,7 @@
             ></textarea>
           </div>
           <div class="space-y-2">
-            <label class="text-sm font-medium">Dietary Restrictions</label>
+            <p class="text-sm font-medium">Dietary Restrictions</p>
             <div class="grid grid-cols-2 gap-2">
               <div class="flex items-center space-x-2">
                 <input type="checkbox" id="kosher" />
@@ -108,9 +108,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .min-h-screen {
-    min-height: 100vh;
-  }
-</style>

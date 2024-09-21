@@ -1,5 +1,14 @@
 <script lang="ts">
   import { GithubIcon, AppWindowIcon } from "lucide-svelte";
+
+  export let data;
+  let { supabase } = data;
+
+  function loginGithub() {
+    supabase.auth.signInWithOAuth({
+      provider: "github",
+    });
+  }
 </script>
 
 <div class="min-h-screen flex items-center justify-center bg-gray-100">
@@ -11,6 +20,7 @@
       <div class="mt-4 flex gap-4">
         <button
           class="w-full bg-gray-100 border border-gray-300 text-gray-700 py-2 px-4 rounded-md flex items-center justify-center"
+          on:click={loginGithub}
         >
           <GithubIcon class="mr-2 h-4 w-4" />
           GitHub
