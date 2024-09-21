@@ -51,6 +51,9 @@
   ];
   const leftFaq = faq.slice(0, Math.ceil(faq.length / 2));
   const rightFaq = faq.slice(Math.ceil(faq.length / 2));
+  const sponsorIcons = Array(9).fill(
+    "https://i.pinimg.com/originals/57/19/48/571948082e5351149c1772781a4cf4be.jpg"
+  );
 </script>
 
 <svelte:head>
@@ -61,24 +64,7 @@
   />
 </svelte:head>
 
-<section
-  id="navbar"
-  class="flex justify-between w-full py-6 px-10 items-center"
->
-  <div class="flex gap-16">
-    <a href="/">Home</a>
-    <a href="/#faq">FAQ</a>
-    <a href="/#prizes">Prizes</a>
-    <a href="/#sponsors">Sponsors</a>
-    <a href="/organizers">Organizers</a>
-  </div>
-  <div class="flex gap-2">
-    <Button variant="outline">Find a team</Button>
-    <Button variant="default">Apply now</Button>
-  </div>
-</section>
-
-<section id="hero" class="flex justify-between p-8 mb-8">
+<section id="hero" class="flex justify-between py-8 px-24">
   <div id="left-side">
     <div id="eye-grabbers" class="mb-8">
       <h1 class="text-6xl font-semibold">Join UB Hacking</h1>
@@ -111,7 +97,7 @@
   </div>
 </section>
 
-<section id="social-media" class="w-full flex flex-col items-center">
+<section id="social-media" class="w-full flex flex-col items-center py-8">
   <h2 class="text-2xl mb-4">Follow us for updates</h2>
   <div class="flex gap-16 w-fit">
     <a href="https://www.instagram.com/ubhacking/?hl=en">
@@ -129,31 +115,27 @@
   </div>
 </section>
 
-<section id="description-and-faq" class="py-36">
-  <div id="description" class="flex justify-center gap-20 mb-16">
-    <div id="left-side">
-      <h1 class="text-5xl font-semibold mb-4">What is UB Hacking?</h1>
-      <p class="w-[45rem]">
-        UB Hacking is a 48 hour hackathon hosted at the University at Buffalo
-        held on November 9th & 10th. We invite people of all experience levels,
-        backgrounds, and abilities to come and spend your weekend with us. Built
-        cool projects, drink red bull, and enjoy the company of your fellow
-        hackers. Throughout the weekend, you will also have the chance to attend
-        workshops hosted by industry professionals and mingle with recruiters
-        from top local companies. We're here to give you the best weekend of
-        your entire semester.
-      </p>
-    </div>
-    <div id="right-side">
-      <img
-        src="/icon.png"
-        alt="UB Hacking Logo"
-        width={240}
-        class="rounded-xl"
-      />
-    </div>
+<section id="description" class="flex justify-center gap-20 py-36">
+  <div id="left-side">
+    <h1 class="text-5xl font-semibold mb-4">What is UB Hacking?</h1>
+    <p class="w-[45rem]">
+      UB Hacking is a 48 hour hackathon hosted at the University at Buffalo held
+      on November 9th & 10th. We invite people of all experience levels,
+      backgrounds, and abilities to come and spend your weekend with us. Built
+      cool projects, drink red bull, and enjoy the company of your fellow
+      hackers. Throughout the weekend, you will also have the chance to attend
+      workshops hosted by industry professionals and mingle with recruiters from
+      top local companies. We're here to give you the best weekend of your
+      entire semester.
+    </p>
   </div>
+  <div id="right-side">
+    <img src="/icon.png" alt="UB Hacking Logo" width={240} class="rounded-xl" />
+  </div>
+</section>
 
+<section id="faq" class="py-14">
+  <h2 class="text-2xl font-semibold text-center mb-8">Questions & Answers</h2>
   <div id="faq" class="grid grid-cols-2 gap-8 px-28">
     <Accordion.Root id="left">
       {#each leftFaq as { title, content }}
@@ -171,5 +153,16 @@
         </Accordion.Item>
       {/each}
     </Accordion.Root>
+  </div>
+</section>
+
+<section id="sponsors" class="flex flex-col items-center py-14">
+  <h2 class="text-4xl font-semibold text-center mb-2">Sponsors</h2>
+  <h3 class="text-xl">These people give us money</h3>
+
+  <div class="grid grid-cols-3 gap-x-16 gap-y-4 mt-8">
+    {#each sponsorIcons as icon}
+      <img src={icon} alt="Sponsor Logo" class="w-36 h-36 rounded-full" />
+    {/each}
   </div>
 </section>
