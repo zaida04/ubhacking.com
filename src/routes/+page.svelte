@@ -2,6 +2,8 @@
   import { Button } from "$lib/components/button";
   import * as Accordion from "$lib/components/accordion";
   import { InstagramIcon, LinkedinIcon, TwitchIcon } from "lucide-svelte";
+  import ApplyNow from "$lib/shared-buttons/ApplyNow.svelte";
+  import FindATeam from "$lib/shared-buttons/FindATeam.svelte";
 
   const faq = [
     {
@@ -78,10 +80,8 @@
       </p>
 
       <div class="flex gap-4">
-        <Button variant="outline">Find a team</Button>
-        <a href="/apply">
-          <Button variant="default">Apply now</Button>
-        </a>
+        <FindATeam />
+        <ApplyNow />
       </div>
     </div>
   </div>
@@ -171,5 +171,5 @@
 
 <section class="flex justify-between px-16 py-8 mt-8 bg-gray-200">
   <h3 class="text-3xl">Down 2 Hack? Join the fun, no pressure.</h3>
-  <Button>Apply now</Button>
+  <ApplyNow />
 </section>
