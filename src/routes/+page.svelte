@@ -74,12 +74,14 @@
     <div id="info-and-ctas">
       <p class="w-[40rem] mb-4">
         UB Hacking is University at Buffalo's annual 48-hour hackathon. <br
-        />Join us, in a wonderland.
+        />Join us, in a winter wonderland November 9th & 10th.
       </p>
 
       <div class="flex gap-4">
         <Button variant="outline">Find a team</Button>
-        <Button variant="default">Apply now</Button>
+        <a href="/apply">
+          <Button variant="default">Apply now</Button>
+        </a>
       </div>
     </div>
   </div>
