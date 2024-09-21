@@ -2,6 +2,10 @@
   import { onMount } from "svelte";
   import ApplyNow from "$lib/shared-buttons/ApplyNow.svelte";
   import FindATeam from "$lib/shared-buttons/FindATeam.svelte";
+  import { supabaseClientOnly } from "$lib/supabase-client";
+  import { Button } from "$lib/components/button";
+
+  export let isLoggedIn: boolean;
 
   let scrollY: number;
   let innerHeight: number;
@@ -37,16 +41,27 @@
   <div class="flex gap-16">
     <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
     <a href="/#faq" class="hover:text-gray-600 transition-colors">FAQ</a>
-    <a href="/#sponsors" class="hover:text-gray-600 transition-colors"
-      >Sponsors</a
-    >
-    <a href="/organizers" class="hover:text-gray-600 transition-colors"
-      >Our Team</a
-    >
+    <a href="/#sponsors" class="hover:text-gray-600 transition-colors">
+      Sponsors
+    </a>
+    <a href="/organizers" class="hover:text-gray-600 transition-colors">
+      Our Team
+    </a>
   </div>
   <div class="flex gap-2">
     <FindATeam />
-    <ApplyNow />
+    {#if isLoggedIn}
+      <Button
+        on:click={async () => {
+          await supabaseClientOnly.auth.signOut();
+          window.location.reload();
+        }}
+      >
+        Sign Out
+      </Button>
+    {:else}
+      <ApplyNow />
+    {/if}
   </div>
 </section>
 

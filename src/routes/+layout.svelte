@@ -22,7 +22,7 @@
 </script>
 
 <div class="app">
-  <Navbar />
+  <Navbar isLoggedIn={!!session?.user} />
 
   <main>
     <slot />
