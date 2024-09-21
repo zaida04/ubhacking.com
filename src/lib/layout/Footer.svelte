@@ -40,7 +40,9 @@
           >
         </li>
         <li>
-          <a href="#" class="text-gray-600 hover:text-gray-900">Schedule</a>
+          <a href="/schedule" class="text-gray-600 hover:text-gray-900"
+            >Schedule</a
+          >
         </li>
       </ul>
     </div>
@@ -49,17 +51,17 @@
       <h3 class="text-lg font-semibold mb-4">Blah Blah</h3>
       <ul class="space-y-2">
         <li>
-          <a href="#" class="text-gray-600 hover:text-gray-900"
+          <a href="/tos" class="text-gray-600 hover:text-gray-900"
             >Terms of Service</a
           >
         </li>
         <li>
-          <a href="#" class="text-gray-600 hover:text-gray-900"
+          <a href="/privacy" class="text-gray-600 hover:text-gray-900"
             >Privacy Policy</a
           >
         </li>
         <li>
-          <a href="#" class="text-gray-600 hover:text-gray-900"
+          <a href="/code-of-conduct" class="text-gray-600 hover:text-gray-900"
             >Code of Conduct</a
           >
         </li>

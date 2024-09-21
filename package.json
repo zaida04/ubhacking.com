@@ -23,6 +23,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@supabase/ssr": "^0.5.1",
+		"@supabase/supabase-js": "^2.45.4",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.445.0",
 		"svelte-radix": "^1.1.1",

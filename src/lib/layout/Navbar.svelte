@@ -53,6 +53,6 @@
 <style>
   /* Add some padding to the body to prevent content from being hidden under the navbar */
   :global(body) {
-    padding-top: 120px; /* Adjust this value based on your navbar height */
+    padding-top: 90px; /* Adjust this value based on your navbar height */
   }
 </style>

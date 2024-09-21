@@ -19,9 +19,3 @@
     </a>
   </div>
 </div>
-
-<style>
-  .min-h-screen {
-    height: 100vh;
-  }
-</style>
