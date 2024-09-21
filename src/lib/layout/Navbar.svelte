@@ -60,7 +60,7 @@
         Sign Out
       </Button>
     {:else}
-      <ApplyNow />
+      <Button href="/login">Login</Button>
     {/if}
   </div>
 </section>

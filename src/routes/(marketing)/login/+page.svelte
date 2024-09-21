@@ -4,8 +4,8 @@
   export let data;
   let { supabase } = data;
 
-  function loginGithub() {
-    supabase.auth.signInWithOAuth({
+  async function loginGithub() {
+    await supabase.auth.signInWithOAuth({
       provider: "github",
     });
   }
