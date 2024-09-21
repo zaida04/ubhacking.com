@@ -156,7 +156,7 @@
   </div>
 </section>
 
-<section id="sponsors" class="flex flex-col items-center py-14">
+<section id="sponsors" class="flex flex-col items-center py-20">
   <h2 class="text-4xl font-semibold text-center mb-2">Sponsors</h2>
   <h3 class="text-xl">These people give us money</h3>
 
@@ -165,4 +165,9 @@
       <img src={icon} alt="Sponsor Logo" class="w-36 h-36 rounded-full" />
     {/each}
   </div>
+</section>
+
+<section class="flex justify-between px-16 py-8 mt-8 bg-gray-200">
+  <h3 class="text-3xl">Down 2 Hack? Join the fun, no pressure.</h3>
+  <Button>Apply now</Button>
 </section>
