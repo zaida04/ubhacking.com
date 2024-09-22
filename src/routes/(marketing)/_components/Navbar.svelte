@@ -65,10 +65,3 @@
     {/if}
   </div>
 </section>
-
-<style>
-  /* Add some padding to the body to prevent content from being hidden under the navbar */
-  body {
-    padding-top: 90px; /* Adjust this value based on your navbar height */
-  }
-</style>
