@@ -4,6 +4,7 @@
   import FindATeam from "./shared-buttons/FindATeam.svelte";
   // import { supabaseClientOnly } from "$lib/supabase-client";
   import { Button } from "../../../shared-components/button";
+  import Avatar from "./avatar.svelte";
 
   export let isLoggedIn: boolean;
 
@@ -60,6 +61,7 @@
         Sign Out
       </Button> -->
       <Button href="/dashboard">Dashboard</Button>
+      <Avatar />
     {:else}
       <Button href="/login">Login</Button>
     {/if}

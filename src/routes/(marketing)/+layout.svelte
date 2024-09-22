@@ -1,5 +1,4 @@
 <script>
-  import "../../app.css";
   import Footer from "./_components/Footer.svelte";
   import Navbar from "./_components/Navbar.svelte";
   import { invalidate } from "$app/navigation";

@@ -1,4 +1,11 @@
-<header class="pt-4 pb-2 px-4 border-b">
+<script>
+  import Avatar from "../../(marketing)/_components/avatar.svelte";
+  import { Button } from "../../../shared-components/button";
+</script>
+
+<header class="pt-4 pb-2 px-4 border-b flex justify-between">
+  <Button size="sm">Go back to homepage</Button>
+
   <nav class="flex justify-center space-x-4">
     <a
       href="/"
@@ -25,4 +32,6 @@
       Study Mode
     </a>
   </nav>
+
+  <Avatar />
 </header>
