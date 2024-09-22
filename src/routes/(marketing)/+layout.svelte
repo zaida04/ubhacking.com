@@ -1,7 +1,7 @@
 <script>
   import "../../app.css";
-  import Footer from "$lib/layout/Footer.svelte";
-  import Navbar from "$lib/layout/Navbar.svelte";
+  import Footer from "./_components/Footer.svelte";
+  import Navbar from "./_components/Navbar.svelte";
   import { invalidate } from "$app/navigation";
   import { onMount } from "svelte";
 

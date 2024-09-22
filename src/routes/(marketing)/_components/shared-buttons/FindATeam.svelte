@@ -1,5 +1,5 @@
 <script>
-  import { Button } from "$lib/components/button";
+  import { Button } from "../../../../shared-components/button";
 </script>
 
 <a href="/team-finder">

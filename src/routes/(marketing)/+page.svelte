@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Button } from "$lib/components/button";
-  import * as Accordion from "$lib/components/accordion";
+  import { Button } from "../../shared-components/button";
+  import * as Accordion from "../../shared-components/accordion";
   import { InstagramIcon, LinkedinIcon, TwitchIcon } from "lucide-svelte";
-  import ApplyNow from "$lib/shared-buttons/ApplyNow.svelte";
-  import FindATeam from "$lib/shared-buttons/FindATeam.svelte";
+  import ApplyNow from "./_components/shared-buttons/ApplyNow.svelte";
+  import FindATeam from "./_components/shared-buttons/FindATeam.svelte";
 
   const faq = [
     {

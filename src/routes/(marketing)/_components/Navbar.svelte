@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import ApplyNow from "$lib/shared-buttons/ApplyNow.svelte";
-  import FindATeam from "$lib/shared-buttons/FindATeam.svelte";
-  import { supabaseClientOnly } from "$lib/supabase-client";
-  import { Button } from "$lib/components/button";
+  // import ApplyNow from "$lib/shared-buttons/ApplyNow.svelte";
+  import FindATeam from "./shared-buttons/FindATeam.svelte";
+  // import { supabaseClientOnly } from "$lib/supabase-client";
+  import { Button } from "../../../shared-components/button";
 
   export let isLoggedIn: boolean;
 
@@ -51,14 +51,15 @@
   <div class="flex gap-2">
     <FindATeam />
     {#if isLoggedIn}
-      <Button
+      <!-- <Button
         on:click={async () => {
           await supabaseClientOnly.auth.signOut();
           window.location.reload();
         }}
       >
         Sign Out
-      </Button>
+      </Button> -->
+      <Button href="/dashboard">Dashboard</Button>
     {:else}
       <Button href="/login">Login</Button>
     {/if}
@@ -67,7 +68,7 @@
 
 <style>
   /* Add some padding to the body to prevent content from being hidden under the navbar */
-  :global(body) {
+  body {
     padding-top: 90px; /* Adjust this value based on your navbar height */
   }
 </style>
