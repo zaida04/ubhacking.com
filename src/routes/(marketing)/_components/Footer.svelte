@@ -1,11 +1,7 @@
 <script>
-  import {
-    InstagramIcon,
-    LinkedinIcon,
-    TwitchIcon,
-    FacebookIcon,
-    TwitterIcon,
-  } from "lucide-svelte";
+  import InstagramIcon from "lucide-svelte/icons/instagram";
+  import LinkedinIcon from "lucide-svelte/icons/linkedin";
+  import TwitchIcon from "lucide-svelte/icons/twitch";
 </script>
 
 <footer class="bg-gray-100 py-12 px-8">

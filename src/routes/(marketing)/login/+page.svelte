@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { GithubIcon, AppWindowIcon } from "lucide-svelte";
+  import GithubIcon from "lucide-svelte/icons/github";
+  import AppWindowIcon from "lucide-svelte/icons/app-window";
 
   export let data;
   let { supabase } = data;

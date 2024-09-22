@@ -1,5 +1,7 @@
 <script lang="ts">
-  import { GithubIcon, LinkedinIcon, GlobeIcon } from "lucide-svelte";
+  import GithubIcon from "lucide-svelte/icons/github";
+  import LinkedinIcon from "lucide-svelte/icons/linkedin";
+  import GlobeIcon from "lucide-svelte/icons/globe";
 
   const teams = {
     board: [
