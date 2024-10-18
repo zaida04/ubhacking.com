@@ -33,10 +33,11 @@ export const registerUserSchema = z.object({
   shirtSize: z.enum(['XS', 'S', 'M', 'L', 'XL', 'XXL']),
   dietaryRestrictions: z.array(z.enum(['vegetarian', 'vegan', 'halal', 'kosher', 'pescatarian', 'gluten free'])).optional(),
   dietaryRestrictionsOther: z.string().optional(),
+  allergies: z.array(z.enum(['peanuts', 'tree nuts', 'dairy', 'eggs', 'soy', 'gluten', 'shellfish', 'fish'])).optional(),
+  allergiesOther: z.string().optional(),
   specialRequest: z.string().optional(),
   
   // Other
-  resume: z.instanceof(File),
   howYouHeard: z.string(),
   whyAttend: z.string().max(1000),
   codeOfConductUBHacking: z.boolean(),

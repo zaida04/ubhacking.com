@@ -1,330 +1,333 @@
 <script lang="ts">
-	import { Button } from "$lib/components/ui/button";
-	import Input from "$lib/components/ui/input/input.svelte";
-	import Checkbox from "$lib/components/ui/checkbox/checkbox.svelte";
-	import * as Form from "$lib/components/ui/form";
-	import * as Select from "$lib/components/ui/select/index.js";
+  import { superForm } from 'sveltekit-superforms/client';
+  import { Button } from "$lib/components/ui/button";
+  import { Input } from "$lib/components/ui/input";
+  import { Label } from "$lib/components/ui/label";
+  import { Checkbox } from "$lib/components/ui/checkbox";
+  import { RadioGroup, RadioGroupItem } from "$lib/components/ui/radio-group";
+  import { Textarea } from "$lib/components/ui/textarea";
+    import type { PageServerData } from './$types';
 
-	import { zodClient } from "sveltekit-superforms/adapters";
-	import SuperDebug, { superForm, type Infer, type SuperValidated } from "sveltekit-superforms";
-    import { registerUserSchema, type RegisterUserSchema } from "$form/register/schema";
-    import type { PageData } from "./$types";
+  export let data: PageServerData;
+
+  const { form, errors, enhance } = superForm(data.form);
 
 
+  function addAllergy(allergy: any) {
+	if (!$form.allergies) {
+		$form.allergies = [];
+	}
+    $form.allergies.push(allergy);
+  }
+ 
+  function removeAllergy(allergy: any) {
+    $form.allergies = $form.allergies?.filter((a) => a !== allergy);
+  }
 
-    export let data: PageData
-	const validatedForm: SuperValidated<Infer<typeof registerUserSchema>> = data.form
 
-    const form = superForm(validatedForm, {
-        validators: zodClient(registerUserSchema),
-        onError({ result }) {
-            alert(result.error.message);
-        },
-    });
-
-    const { form: formData, enhance } = form;
+  function addRestriction(restriction: any) {
+	if (!$form.dietaryRestrictions) {
+		$form.dietaryRestrictions = [];
+	}
+    $form.dietaryRestrictions.push(restriction);
+  }
+ 
+  function removeRestriction(restriction: any) {
+    $form.dietaryRestrictions = $form.dietaryRestrictions?.filter((a) => a !== restriction);
+  }
 </script>
 
-<div class="container mx-auto p-10 space-y-6">
-    <div class="space-y-0.5">
-        <h2 class="text-2xl font-bold tracking-tight">Register</h2>
-        <p class="text-muted-foreground">
-            Fill out the form below to register for the event.
-        </p>
+<form method="POST" use:enhance>
+  <div class="space-y-12">
+    <!-- Account Section -->
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Account</h2>
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-4">
+          <Label for="email">Email</Label>
+          <Input type="email" id="email" name="email" bind:value={$form.email} />
+          {#if $errors.email}<p class="text-red-500 text-sm mt-1">{$errors.email}</p>{/if}
+        </div>
+        <div class="sm:col-span-3">
+          <Label for="password">Password</Label>
+          <Input type="password" id="password" name="password" bind:value={$form.password} />
+          {#if $errors.password}<p class="text-red-500 text-sm mt-1">{$errors.password}</p>{/if}
+        </div>
+        <div class="sm:col-span-3">
+          <Label for="passwordConfirm">Confirm Password</Label>
+          <Input type="password" id="passwordConfirm" name="passwordConfirm" bind:value={$form.passwordConfirm} />
+          {#if $errors.passwordConfirm}<p class="text-red-500 text-sm mt-1">{$errors.passwordConfirm}</p>{/if}
+        </div>
+      </div>
     </div>
 
-    <form method="POST" use:enhance>
-        <!-- Account Section -->
-        <div class="space-y-4">
-            <h3 class="text-lg font-semibold">Account</h3>
-            <Form.Field {form} name="email">
-                <Form.Control let:attrs>
-                    <Form.Label>Email</Form.Label>
-                    <Input type="email" {...attrs} bind:value={$formData.email} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="password">
-                <Form.Control let:attrs>
-                    <Form.Label>Password</Form.Label>
-                    <Input type="password" {...attrs} bind:value={$formData.password} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="passwordConfirm">
-                <Form.Control let:attrs>
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Input type="password" {...attrs} bind:value={$formData.passwordConfirm} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
+    <!-- Personal Information Section -->
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-3">
+          <Label for="nameFirst">First Name</Label>
+          <Input type="text" id="nameFirst" name="nameFirst" bind:value={$form.nameFirst} />
+          {#if $errors.nameFirst}<p class="text-red-500 text-sm mt-1">{$errors.nameFirst}</p>{/if}
         </div>
-
-        <!-- Personal Section -->
-        <div class="space-y-4 mt-8">
-            <h3 class="text-lg font-semibold">Personal Information</h3>
-            <Form.Field {form} name="nameFirst">
-                <Form.Control let:attrs>
-                    <Form.Label>First Name</Form.Label>
-                    <Input {...attrs} bind:value={$formData.nameFirst} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="nameLast">
-                <Form.Control let:attrs>
-                    <Form.Label>Last Name</Form.Label>
-                    <Input {...attrs} bind:value={$formData.nameLast} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="dob">
-                <Form.Control let:attrs>
-                    <Form.Label>Date of Birth</Form.Label>
-                    <Input type="date" {...attrs} bind:value={$formData.dob} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="phone">
-                <Form.Control let:attrs>
-                    <Form.Label>Phone Number</Form.Label>
-                    <Input type="tel" {...attrs} bind:value={$formData.phone} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="gender">
-                <Form.Control let:attrs>
-                    <Form.Label>Gender</Form.Label>
-                    <Input {...attrs} bind:value={$formData.gender} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="raceEthnicity">
-                <Form.Control let:attrs>
-                    <Form.Label>Race/Ethnicity</Form.Label>
-                    <Input {...attrs} bind:value={$formData.raceEthnicity} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="country">
-                <Form.Control let:attrs>
-                    <Form.Label>Country</Form.Label>
-                    <Input {...attrs} bind:value={$formData.country} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
+        <div class="sm:col-span-3">
+          <Label for="nameLast">Last Name</Label>
+          <Input type="text" id="nameLast" name="nameLast" bind:value={$form.nameLast} />
+          {#if $errors.nameLast}<p class="text-red-500 text-sm mt-1">{$errors.nameLast}</p>{/if}
         </div>
-
-        <!-- Education Section -->
-        <div class="space-y-4 mt-8">
-            <h3 class="text-lg font-semibold">Education</h3>
-            <Form.Field {form} name="schoolName">
-                <Form.Control let:attrs>
-                    <Form.Label>School Name</Form.Label>
-                    <Input {...attrs} bind:value={$formData.schoolName} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="schoolMajor">
-                <Form.Control let:attrs>
-                    <Form.Label>Major</Form.Label>
-                    <Input {...attrs} bind:value={$formData.schoolMajor} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="levelOfStudy">
-                <Form.Control let:attrs>
-                    <Form.Label>Level of Study</Form.Label>
-                    <Select {...attrs} bind:value={$formData.levelOfStudy}>
-                        <option value="middle school">Middle School</option>
-                        <option value="high school">High School</option>
-                        <option value="undergraduation / bachelors">Undergraduation / Bachelors</option>
-                        <option value="graduation / masters">Graduation / Masters</option>
-                        <option value="phd / doctorate">PhD / Doctorate</option>
-                        <option value="post doctorate">Post Doctorate</option>
-                    </Select>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="graduationYear">
-                <Form.Control let:attrs>
-                    <Form.Label>Graduation Year</Form.Label>
-                    <Input type="number" {...attrs} bind:value={$formData.graduationYear} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
+        <div class="sm:col-span-3">
+          <Label for="dob">Date of Birth</Label>
+          <Input type="date" id="dob" name="dob" bind:value={$form.dob} />
+          {#if $errors.dob}<p class="text-red-500 text-sm mt-1">{$errors.dob}</p>{/if}
         </div>
-
-        <!-- Shipping Section -->
-        <div class="space-y-4 mt-8">
-            <h3 class="text-lg font-semibold">Shipping</h3>
-            <Form.Field {form} name="addressInUSA">
-                <Form.Control let:attrs>
-                    <Form.Label>Address in USA</Form.Label>
-                    <Select {...attrs} bind:value={$formData.addressInUSA}>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </Select>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            {#if $formData.addressInUSA === 'yes'}
-                <Form.Field {form} name="address1">
-                    <Form.Control let:attrs>
-                        <Form.Label>Address Line 1</Form.Label>
-                        <Input {...attrs} bind:value={$formData.address1} />
-                    </Form.Control>
-                    <Form.FieldErrors />
-                </Form.Field>
-
-                <Form.Field {form} name="city">
-                    <Form.Control let:attrs>
-                        <Form.Label>City</Form.Label>
-                        <Input {...attrs} bind:value={$formData.city} />
-                    </Form.Control>
-                    <Form.FieldErrors />
-                </Form.Field>
-
-                <Form.Field {form} name="state">
-                    <Form.Control let:attrs>
-                        <Form.Label>State</Form.Label>
-                        <Input {...attrs} bind:value={$formData.state} />
-                    </Form.Control>
-                    <Form.FieldErrors />
-                </Form.Field>
-
-                <Form.Field {form} name="zipCode">
-                    <Form.Control let:attrs>
-                        <Form.Label>Zip Code</Form.Label>
-                        <Input {...attrs} bind:value={$formData.zipCode} />
-                    </Form.Control>
-                    <Form.FieldErrors />
-                </Form.Field>
-            {/if}
+        <div class="sm:col-span-3">
+          <Label for="phone">Phone</Label>
+          <Input type="tel" id="phone" name="phone" bind:value={$form.phone} />
+          {#if $errors.phone}<p class="text-red-500 text-sm mt-1">{$errors.phone}</p>{/if}
         </div>
-
-        <!-- Logistics Section -->
-        <div class="space-y-4 mt-8">
-            <h3 class="text-lg font-semibold">Logistics</h3>
-            <Form.Field {form} name="isAttendingInPerson">
-                <Form.Control let:attrs>
-                    <Checkbox {...attrs} bind:checked={$formData.isAttendingInPerson}>
-                        Attending in person
-                    </Checkbox>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="shirtSize">
-                <Form.Control let:attrs>
-                    <Form.Label>Shirt Size</Form.Label>
-                    <Select {...attrs} bind:value={$formData.shirtSize}>
-                        <option value="XS">XS</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
-                    </Select>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <!-- Dietary restrictions would need a custom multi-select component -->
-            <Form.Field {form} name="dietaryRestrictionsOther">
-                <Form.Control let:attrs>
-                    <Form.Label>Other Dietary Restrictions</Form.Label>
-                    <Input {...attrs} bind:value={$formData.dietaryRestrictionsOther} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="specialRequest">
-                <Form.Control let:attrs>
-                    <Form.Label>Special Requests</Form.Label>
-                    <Input {...attrs} bind:value={$formData.specialRequest} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
+        <div class="sm:col-span-3">
+          <Label for="gender">Gender</Label>
+          <Input type="text" id="gender" name="gender" bind:value={$form.gender} />
+          {#if $errors.gender}<p class="text-red-500 text-sm mt-1">{$errors.gender}</p>{/if}
         </div>
-
-        <!-- Other Section -->
-        <div class="space-y-4 mt-8">
-            <h3 class="text-lg font-semibold">Other Information</h3>
-            <Form.Field {form} name="resume">
-                <Form.Control let:attrs>
-                    <Form.Label>Resume</Form.Label>
-                    <Input type="file" {...attrs} bind:files={$formData.resume} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="howYouHeard">
-                <Form.Control let:attrs>
-                    <Form.Label>How did you hear about us?</Form.Label>
-                    <Input {...attrs} bind:value={$formData.howYouHeard} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="whyAttend">
-                <Form.Control let:attrs>
-                    <Form.Label>Why do you want to attend?</Form.Label>
-                    <Input {...attrs} bind:value={$formData.whyAttend} />
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="codeOfConductUBHacking">
-                <Form.Control let:attrs>
-                    <Checkbox {...attrs} bind:checked={$formData.codeOfConductUBHacking}>
-                        I agree to the UB Hacking Code of Conduct
-                    </Checkbox>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="codeOfConduct">
-                <Form.Control let:attrs>
-                    <Checkbox {...attrs} bind:checked={$formData.codeOfConduct}>
-                        I agree to the MLH Code of Conduct
-                    </Checkbox>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="dataSharing">
-                <Form.Control let:attrs>
-                    <Checkbox {...attrs} bind:checked={$formData.dataSharing}>
-                        I agree to the data sharing policy
-                    </Checkbox>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
-
-            <Form.Field {form} name="communication">
-                <Form.Control let:attrs>
-                    <Checkbox {...attrs} bind:checked={$formData.communication}>
-                        I agree to receive communication
-                    </Checkbox>
-                </Form.Control>
-                <Form.FieldErrors />
-            </Form.Field>
+        <div class="sm:col-span-3">
+          <Label for="raceEthnicity">Race/Ethnicity</Label>
+          <Input type="text" id="raceEthnicity" name="raceEthnicity" bind:value={$form.raceEthnicity} />
+          {#if $errors.raceEthnicity}<p class="text-red-500 text-sm mt-1">{$errors.raceEthnicity}</p>{/if}
         </div>
+        <div class="sm:col-span-3">
+          <Label for="country">Country</Label>
+          <Input type="text" id="country" name="country" bind:value={$form.country} />
+          {#if $errors.country}<p class="text-red-500 text-sm mt-1">{$errors.country}</p>{/if}
+        </div>
+      </div>
+    </div>
 
-        <Button type="submit" class="mt-6">Register</Button>
-    </form>
+    <!-- Education Section -->
+<div class="border-b border-gray-900/10 pb-12">
+  <h2 class="text-base font-semibold leading-7 text-gray-900">Education</h2>
+  <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+    <div class="sm:col-span-3">
+      <Label for="schoolName">School Name</Label>
+      <Input type="text" id="schoolName" name="schoolName" bind:value={$form.schoolName} />
+      {#if $errors.schoolName}<p class="text-red-500 text-sm mt-1">{$errors.schoolName}</p>{/if}
+    </div>
+    <div class="sm:col-span-3">
+      <Label for="schoolMajor">Major</Label>
+      <Input type="text" id="schoolMajor" name="schoolMajor" bind:value={$form.schoolMajor} />
+      {#if $errors.schoolMajor}<p class="text-red-500 text-sm mt-1">{$errors.schoolMajor}</p>{/if}
+    </div>
+    <div class="sm:col-span-6">
+      <Label>Level of Study</Label>
+      <RadioGroup bind:value={$form.levelOfStudy}>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <div class="flex items-center space-x-2">
+            <RadioGroupItem value="middle school" id="levelOfStudy-middle-school" />
+            <Label for="levelOfStudy-middle-school">Middle School</Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <RadioGroupItem value="high school" id="levelOfStudy-high-school" />
+            <Label for="levelOfStudy-high-school">High School</Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <RadioGroupItem value="undergraduation / bachelors" id="levelOfStudy-undergrad" />
+            <Label for="levelOfStudy-undergrad">Undergraduation / Bachelors</Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <RadioGroupItem value="graduation / masters" id="levelOfStudy-masters" />
+            <Label for="levelOfStudy-masters">Graduation / Masters</Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <RadioGroupItem value="phd / doctorate" id="levelOfStudy-phd" />
+            <Label for="levelOfStudy-phd">PhD / Doctorate</Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <RadioGroupItem value="post doctorate" id="levelOfStudy-post-doc" />
+            <Label for="levelOfStudy-post-doc">Post Doctorate</Label>
+          </div>
+        </div>
+      </RadioGroup>
+      {#if $errors.levelOfStudy}<p class="text-red-500 text-sm mt-1">{$errors.levelOfStudy}</p>{/if}
+    </div>
+    <div class="sm:col-span-3">
+      <Label for="graduationYear">Graduation Year</Label>
+      <Input type="number" id="graduationYear" name="graduationYear" bind:value={$form.graduationYear} />
+      {#if $errors.graduationYear}<p class="text-red-500 text-sm mt-1">{$errors.graduationYear}</p>{/if}
+    </div>
+  </div>
 </div>
 
-<SuperDebug data={$formData} />
+    <!-- Shipping Section -->
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Shipping</h2>
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-3">
+          <Label>Address in USA?</Label>
+          <RadioGroup bind:value={$form.addressInUSA}>
+            <div class="flex items-center space-x-2">
+              <RadioGroupItem value="yes" id="addressInUSA-yes" />
+              <Label for="addressInUSA-yes">Yes</Label>
+            </div>
+            <div class="flex items-center space-x-2">
+              <RadioGroupItem value="no" id="addressInUSA-no" />
+              <Label for="addressInUSA-no">No</Label>
+            </div>
+          </RadioGroup>
+          {#if $errors.addressInUSA}<p class="text-red-500 text-sm mt-1">{$errors.addressInUSA}</p>{/if}
+        </div>
+        {#if $form.addressInUSA === 'yes'}
+          <div class="sm:col-span-6">
+            <Label for="address1">Address</Label>
+            <Input type="text" id="address1" name="address1" bind:value={$form.address1} />
+            {#if $errors.address1}<p class="text-red-500 text-sm mt-1">{$errors.address1}</p>{/if}
+          </div>
+          <div class="sm:col-span-2">
+            <Label for="city">City</Label>
+            <Input type="text" id="city" name="city" bind:value={$form.city} />
+            {#if $errors.city}<p class="text-red-500 text-sm mt-1">{$errors.city}</p>{/if}
+          </div>
+          <div class="sm:col-span-2">
+            <Label for="state">State</Label>
+            <Input type="text" id="state" name="state" bind:value={$form.state} />
+            {#if $errors.state}<p class="text-red-500 text-sm mt-1">{$errors.state}</p>{/if}
+          </div>
+          <div class="sm:col-span-2">
+            <Label for="zipCode">ZIP Code</Label>
+            <Input type="text" id="zipCode" name="zipCode" bind:value={$form.zipCode} />
+            {#if $errors.zipCode}<p class="text-red-500 text-sm mt-1">{$errors.zipCode}</p>{/if}
+          </div>
+        {/if}
+      </div>
+    </div>
+
+    <!-- Logistics Section -->
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Logistics</h2>
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-3">
+          <Label>Attending In Person?</Label>
+          <Checkbox name="isAttendingInPerson" bind:checked={$form.isAttendingInPerson} />
+          {#if $errors.isAttendingInPerson}<p class="text-red-500 text-sm mt-1">{$errors.isAttendingInPerson}</p>{/if}
+        </div>
+        <div class="sm:col-span-3">
+      <Label>Shirt Size</Label>
+      <RadioGroup bind:value={$form.shirtSize}>
+        <div class="grid grid-cols-3 gap-2">
+          {#each ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as size}
+            <div class="flex items-center space-x-2">
+              <RadioGroupItem value={size} id={`shirt-size-${size}`} />
+              <Label for={`shirt-size-${size}`}>{size}</Label>
+            </div>
+          {/each}
+        </div>
+      </RadioGroup>
+      {#if $errors.shirtSize}<p class="text-red-500 text-sm mt-1">{$errors.shirtSize}</p>{/if}
+    </div>
+        <div class="sm:col-span-6">
+          <Label>Dietary Restrictions</Label>
+          {#each ['vegetarian', 'vegan', 'halal', 'kosher', 'pescatarian', 'gluten free'] as restriction}
+            <div class="flex items-center space-x-2">
+              <Checkbox 
+			  name="dietaryRestrictions" 
+			  value={restriction} 
+			  onCheckedChange={(v) => {
+                if (v) {
+                  addRestriction(restriction);
+                } else {
+                  removeRestriction(restriction);
+                }
+              }}
+			  />
+              <Label for={`dietary-${restriction}`}>{restriction}</Label>
+            </div>
+          {/each}
+          {#if $errors.dietaryRestrictions}<p class="text-red-500 text-sm mt-1">{$errors.dietaryRestrictions}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <Label for="dietaryRestrictionsOther">Other Dietary Restrictions</Label>
+          <Input type="text" id="dietaryRestrictionsOther" name="dietaryRestrictionsOther" bind:value={$form.dietaryRestrictionsOther} />
+          {#if $errors.dietaryRestrictionsOther}<p class="text-red-500 text-sm mt-1">{$errors.dietaryRestrictionsOther}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <Label>Allergies</Label>
+          {#each ['peanuts', 'tree nuts', 'dairy', 'eggs', 'soy', 'gluten', 'shellfish', 'fish'] as allergy}
+            <div class="flex items-center space-x-2">
+              <Checkbox 
+			  name="allergies" 
+			  value={allergy} 
+			  onCheckedChange={(v) => {
+                if (v) {
+                  addAllergy(allergy);
+                } else {
+                  removeAllergy(allergy);
+                }
+			  }}
+			  />
+              <Label for={`allergy-${allergy}`}>{allergy}</Label>
+            </div>
+          {/each}
+          {#if $errors.allergies}<p class="text-red-500 text-sm mt-1">{$errors.allergies}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <Label for="allergiesOther">Other Allergies</Label>
+          <Input type="text" id="allergiesOther" name="allergiesOther" bind:value={$form.allergiesOther} />
+		  {#if $errors.allergiesOther}<p class="text-red-500 text-sm mt-1">{$errors.allergiesOther}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <Label for="specialRequest">Special Request</Label>
+          <Textarea id="specialRequest" name="specialRequest" bind:value={$form.specialRequest} />
+          {#if $errors.specialRequest}<p class="text-red-500 text-sm mt-1">{$errors.specialRequest}</p>{/if}
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Section -->
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Other Information</h2>
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-6">
+          <Label for="howYouHeard">How did you hear about us?</Label>
+          <Input type="text" id="howYouHeard" name="howYouHeard" bind:value={$form.howYouHeard} />
+          {#if $errors.howYouHeard}<p class="text-red-500 text-sm mt-1">{$errors.howYouHeard}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <Label for="whyAttend">Why do you want to attend?</Label>
+          <Textarea id="whyAttend" name="whyAttend" bind:value={$form.whyAttend} />
+          {#if $errors.whyAttend}<p class="text-red-500 text-sm mt-1">{$errors.whyAttend}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <div class="flex items-center space-x-2">
+            <Checkbox id="codeOfConductUBHacking" name="codeOfConductUBHacking" bind:checked={$form.codeOfConductUBHacking} />
+            <Label for="codeOfConductUBHacking">I agree to the UB Hacking Code of Conduct</Label>
+          </div>
+          {#if $errors.codeOfConductUBHacking}<p class="text-red-500 text-sm mt-1">{$errors.codeOfConductUBHacking}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <div class="flex items-center space-x-2">
+            <Checkbox id="codeOfConduct" name="codeOfConduct" bind:checked={$form.codeOfConduct} />
+            <Label for="codeOfConduct">I agree to the MLH Code of Conduct</Label>
+          </div>
+          {#if $errors.codeOfConduct}<p class="text-red-500 text-sm mt-1">{$errors.codeOfConduct}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <div class="flex items-center space-x-2">
+            <Checkbox id="dataSharing" name="dataSharing" bind:checked={$form.dataSharing} />
+            <Label for="dataSharing">I agree to the MLH Data Sharing Provision</Label>
+          </div>
+          {#if $errors.dataSharing}<p class="text-red-500 text-sm mt-1">{$errors.dataSharing}</p>{/if}
+        </div>
+        <div class="sm:col-span-6">
+          <div class="flex items-center space-x-2">
+            <Checkbox id="communication" name="communication" bind:checked={$form.communication} />
+            <Label for="communication">I would like to receive communication from MLH</Label>
+          </div>
+          {#if $errors.communication}<p class="text-red-500 text-sm mt-1">{$errors.communication}</p>{/if}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 flex items-center justify-end gap-x-6">
+    <Button type="submit" variant="default">Register</Button>
+  </div>
+</form>
