@@ -1,7 +1,7 @@
 import { registerUserSchema } from "$form/register/schema";
 import { zod } from "sveltekit-superforms/adapters";
 import type { PageServerLoad } from "./$types";
-import { fail, superValidate } from "sveltekit-superforms";
+import { fail, message, superValidate } from "sveltekit-superforms";
 import type { Actions } from "@sveltejs/kit";
 import { supabase } from "$lib/supabase";
 
@@ -61,7 +61,7 @@ export const actions: Actions = {
                 ]);
 
             if (error) throw error;
-            return { form };
+            return message(form, "Your registration has been submitted.");
         } catch (e) {
             console.error(e);
             return fail(500, { form, error: "An error occurred while submitting the form." });
