@@ -8,12 +8,12 @@ export const registerUserSchema = z.object({
   dob: z.string(), // Changed to accept date format from input
   phone: z.string(), // Changed to accept various phone formats
   gender: z.string().min(2),
-  raceEthnicity: z.string().min(2),
-  country: z.string().min(2),
+  raceEthnicity: z.string().min(2).optional(),
+  country: z.string().min(2).optional(),
 
   // Education
   schoolName: z.string().min(2),
-  schoolMajor: z.string().min(2),
+  schoolMajor: z.string().min(2).optional(),
   levelOfStudy: z.string(),
   graduationYear: z.string(),
 
@@ -33,7 +33,7 @@ export const registerUserSchema = z.object({
   specialRequest: z.string().optional(),
 
   // Other
-  howYouHeard: z.string(),
+  howYouHeard: z.string().max(200),
   whyAttend: z.string().max(1000),
   codeOfConductUBHacking: z.boolean(),
   codeOfConduct: z.boolean(),

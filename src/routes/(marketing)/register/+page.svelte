@@ -10,7 +10,10 @@
   import Required from "$lib/components/ui/label/required.svelte";
 
   export let data: PageServerData;
-  const { form, errors, enhance } = superForm(data.form);
+  const { form, errors, enhance } = superForm(data.form, {
+    invalidateAll: false,
+    resetForm: false,
+  });
 
   // // For testing purposes:
   // const sampleUserData = {
@@ -141,7 +144,6 @@
               </Required>
               <Input
                 id="contactEmail"
-                type="email"
                 name="contactEmail"
                 placeholder="jane.doe@buffalo.edu"
                 required
@@ -497,11 +499,15 @@
             <Checkbox
               id="codeOfConductUBHacking"
               name="codeOfConductUBHacking"
-              bind:checked={$form.codeOfConductUBHacking}
+              required
+              onCheckedChange={(e) =>
+                ($form.codeOfConductUBHacking =
+                  e === "indeterminate" ? false : e)}
+              checked={$form.codeOfConductUBHacking}
             />
-            <Label for="codeOfConductUBHacking" class="text-sm font-medium"
-              >I agree to the UB Hacking Code of Conduct</Label
-            >
+            <Label for="codeOfConductUBHacking" class="text-sm font-medium">
+              I agree to the UB Hacking Code of Conduct
+            </Label>
           </div>
         </div>
 
