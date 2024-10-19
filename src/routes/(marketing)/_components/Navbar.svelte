@@ -1,8 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  // import ApplyNow from "$lib/shared-buttons/ApplyNow.svelte";
   import FindATeam from "./shared-buttons/FindATeam.svelte";
-  // import { supabaseClientOnly } from "$lib/supabase-client";
   import { Button } from "../../../shared-components/button";
   import Avatar from "./avatar.svelte";
 
@@ -35,35 +33,52 @@
 <section
   id="navbar"
   class="flex justify-between w-full py-6 px-10 items-center fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-  style="background-color: rgba(255, 255, 255, {opacity}); 
+  style="background: linear-gradient(90deg, #709378, #4E7169, #A7C9AE);
+         background-size: 400% 400%;
+         animation: gradientAnimation 15s ease infinite;
          backdrop-filter: blur({opacity * 5}px);
          box-shadow: 0 2px 4px rgba(0, 0, 0, {shadowOpacity});"
 >
   <div class="flex gap-16">
-    <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-    <a href="/#faq" class="hover:text-gray-600 transition-colors">FAQ</a>
-    <a href="/#sponsors" class="hover:text-gray-600 transition-colors">
-      Sponsors
+    <a href="/" class="hover:text-gray-600 text-white transition-colors"
+      ><p>Home</p></a
+    >
+    <a href="/#faq" class="hover:text-gray-600 text-white transition-colors"
+      ><p>FAQ</p></a
+    >
+    <a
+      href="/#sponsors"
+      class="hover:text-gray-600 text-white transition-colors"
+    >
+      <p>Sponsors</p>
     </a>
-    <a href="/organizers" class="hover:text-gray-600 transition-colors">
-      Our Team
+    <a
+      href="/organizers"
+      class="hover:text-gray-600 text-white transition-colors"
+    >
+      <p>Our Team</p>
     </a>
   </div>
   <div class="flex gap-4 items-center">
     <FindATeam />
     {#if isLoggedIn}
-      <!-- <Button
-        on:click={async () => {
-          await supabaseClientOnly.auth.signOut();
-          window.location.reload();
-        }}
-      >
-        Sign Out
-      </Button> -->
-      <!-- <Button href="/dashboard">Dashboard</Button> -->
       <Avatar />
     {:else}
       <Button href="/login">Login</Button>
     {/if}
   </div>
 </section>
+
+<style>
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>

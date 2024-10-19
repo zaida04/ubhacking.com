@@ -13,9 +13,7 @@
         width={80}
         class="rounded-xl mb-4"
       />
-      <p class="text-sm text-gray-600 w-[15rem]">
-        UB Hacking is a registered club at the University at Buffalo.
-      </p>
+      <p class="text-sm text-gray-600 w-[15rem]">UB Hacking</p>
     </div>
 
     <div>

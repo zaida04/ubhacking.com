@@ -5,8 +5,8 @@
   import { Checkbox } from "$lib/components/ui/checkbox";
   import * as Form from "$lib/components/ui/form";
   import type { PageServerData } from "./$types";
-  import MenuInput from "./MenuInput.svelte";
-  import FormSection from "./FormSection.svelte";
+  import MenuInput from "../_components/MenuInput.svelte";
+  import FormSection from "../_components/FormSection.svelte";
 
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form, {
@@ -14,13 +14,10 @@
     resetForm: false,
   });
 
-  $: graduationYearOptions = Array.from(
-    { length: 10 },
-    (_, i) => {
-      const year = new Date().getFullYear() + i;
-      return { value: year, label: year.toString() };
-    }
-  );
+  $: graduationYearOptions = Array.from({ length: 10 }, (_, i) => {
+    const year = new Date().getFullYear() + i;
+    return { value: year, label: year.toString() };
+  });
 
   console.log($errors);
 
@@ -44,8 +41,10 @@
   ];
 </script>
 
-<div class="bg-yellow-50 p-4" id="bg">
-  <div class="max-w-2xl bg-white shadow-2xl p-8 -outline-offset-8 outline-double outline-black outline-4">
+<div class="bg-yellow-50 p-4 flex justify-center" id="bg">
+  <div
+    class="w-full md:w-[50rem] bg-white shadow-2xl p-8 -outline-offset-8 outline-double outline-black outline-4"
+  >
     <h1 class="text-2xl text-center font-serif">UB Hacking Application</h1>
 
     <p class="text-center text-lg text-gray-600 italic font-serif mb-6">
@@ -173,9 +172,9 @@
             name="levelOfStudy"
             label="Level of Study"
             required={true}
-            options={levelOfStudy.map(option => ({
+            options={levelOfStudy.map((option) => ({
               value: option.value,
-              label: option.label
+              label: option.label,
             }))}
             bind:value={$form.levelOfStudy}
             error={$errors.levelOfStudy}
@@ -258,9 +257,9 @@
             name="shirtSize"
             label="Shirt Size"
             required={true}
-            options={shirtSizeOptions.map(option => ({
+            options={shirtSizeOptions.map((option) => ({
               value: option.value,
-              label: option.label
+              label: option.label,
             }))}
             bind:value={$form.shirtSize}
             error={$errors.shirtSize}
@@ -283,9 +282,9 @@
             id="dietaryRestrictions"
             name="dietaryRestrictions"
             label="Dietary Restrictions"
-            options={dietaryRestrictionsOptions.map(option => ({
+            options={dietaryRestrictionsOptions.map((option) => ({
               value: option.value,
-              label: option.label
+              label: option.label,
             }))}
             bind:value={$form.dietaryRestrictions}
             error={$errors.dietaryRestrictions}
@@ -363,30 +362,87 @@
   </div>
 </div>
 
-
 <style>
-#bg {
-background-color: hsl(34, 53%, 82%);
-background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
-  hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
-  hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
-  hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
-  hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
-  hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 120px, hsla(197, 62%, 11%, 0.5) 120px, hsla(197, 62%, 11%, 0.5) 140px
-  ),
-repeating-linear-gradient(135deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
-  hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
-  hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
-  hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
-  hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
-  hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px
-);
-}
+  #bg {
+    background-color: hsl(34, 53%, 82%);
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent 5px,
+        hsla(197, 62%, 11%, 0.5) 5px,
+        hsla(197, 62%, 11%, 0.5) 10px,
+        hsla(5, 53%, 63%, 0) 10px,
+        hsla(5, 53%, 63%, 0) 35px,
+        hsla(5, 53%, 63%, 0.5) 35px,
+        hsla(5, 53%, 63%, 0.5) 40px,
+        hsla(197, 62%, 11%, 0.5) 40px,
+        hsla(197, 62%, 11%, 0.5) 50px,
+        hsla(197, 62%, 11%, 0) 50px,
+        hsla(197, 62%, 11%, 0) 60px,
+        hsla(5, 53%, 63%, 0.5) 60px,
+        hsla(5, 53%, 63%, 0.5) 70px,
+        hsla(35, 91%, 65%, 0.5) 70px,
+        hsla(35, 91%, 65%, 0.5) 80px,
+        hsla(35, 91%, 65%, 0) 80px,
+        hsla(35, 91%, 65%, 0) 90px,
+        hsla(5, 53%, 63%, 0.5) 90px,
+        hsla(5, 53%, 63%, 0.5) 110px,
+        hsla(5, 53%, 63%, 0) 110px,
+        hsla(5, 53%, 63%, 0) 120px,
+        hsla(197, 62%, 11%, 0.5) 120px,
+        hsla(197, 62%, 11%, 0.5) 140px
+      ),
+      repeating-linear-gradient(
+        135deg,
+        transparent 5px,
+        hsla(197, 62%, 11%, 0.5) 5px,
+        hsla(197, 62%, 11%, 0.5) 10px,
+        hsla(5, 53%, 63%, 0) 10px,
+        hsla(5, 53%, 63%, 0) 35px,
+        hsla(5, 53%, 63%, 0.5) 35px,
+        hsla(5, 53%, 63%, 0.5) 40px,
+        hsla(197, 62%, 11%, 0.5) 40px,
+        hsla(197, 62%, 11%, 0.5) 50px,
+        hsla(197, 62%, 11%, 0) 50px,
+        hsla(197, 62%, 11%, 0) 60px,
+        hsla(5, 53%, 63%, 0.5) 60px,
+        hsla(5, 53%, 63%, 0.5) 70px,
+        hsla(35, 91%, 65%, 0.5) 70px,
+        hsla(35, 91%, 65%, 0.5) 80px,
+        hsla(35, 91%, 65%, 0) 80px,
+        hsla(35, 91%, 65%, 0) 90px,
+        hsla(5, 53%, 63%, 0.5) 90px,
+        hsla(5, 53%, 63%, 0.5) 110px,
+        hsla(5, 53%, 63%, 0) 110px,
+        hsla(5, 53%, 63%, 0) 140px,
+        hsla(197, 62%, 11%, 0.5) 140px,
+        hsla(197, 62%, 11%, 0.5) 160px
+      );
+  }
 
-#menu {
-    background: linear-gradient(45deg, rgba(221, 204, 170, 0.05) 12%, transparent 0, transparent 88%, rgba(221, 204, 170, 0.05) 0),
-    linear-gradient(135deg, transparent 37%, rgba(170, 136, 85, 0.05) 0, rgba(170, 136, 85, 0.05) 63%, transparent 0),
-    linear-gradient(45deg, transparent 37%, rgba(221, 204, 170, 0.05) 0, rgba(221, 204, 170, 0.05) 63%, transparent 0) rgba(119, 85, 51, 0.05);
+  #menu {
+    background:
+      linear-gradient(
+        45deg,
+        rgba(221, 204, 170, 0.05) 12%,
+        transparent 0,
+        transparent 88%,
+        rgba(221, 204, 170, 0.05) 0
+      ),
+      linear-gradient(
+        135deg,
+        transparent 37%,
+        rgba(170, 136, 85, 0.05) 0,
+        rgba(170, 136, 85, 0.05) 63%,
+        transparent 0
+      ),
+      linear-gradient(
+          45deg,
+          transparent 37%,
+          rgba(221, 204, 170, 0.05) 0,
+          rgba(221, 204, 170, 0.05) 63%,
+          transparent 0
+        )
+        rgba(119, 85, 51, 0.05);
     background-size: 25px 25px;
-}
+  }
 </style>
