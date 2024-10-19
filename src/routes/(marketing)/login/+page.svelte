@@ -18,6 +18,9 @@
           on:click={async () => {
             await supabase.auth.signInWithOAuth({
               provider: "github",
+              options: {
+                redirectTo: `${window.location.origin}/register`,
+              },
             });
           }}
         >
@@ -29,6 +32,9 @@
           on:click={async () => {
             await supabase.auth.signInWithOAuth({
               provider: "linkedin_oidc",
+              options: {
+                redirectTo: `${window.location.origin}/register`,
+              },
             });
           }}
         >
