@@ -89,7 +89,7 @@
       <h1 class="text-2xl font-bold text-center">UB Hacking Application</h1>
 
       {#if data.existingSubmission}
-        <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 mt-4">
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-4">
           <p class="text-yellow-700">
             You have already submitted an application for UB Hacking. If you
             submit this form again, your old responses will be discarded.
