@@ -68,6 +68,20 @@
   }
 }
 
+@font-face {
+  font-family: "SD";
+  src: url("/fonts/heading.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "dreams";
+  src: url("/fonts/para.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -81,7 +95,14 @@
     @apply bg-background text-foreground;
   }
 
+  h1,
+  h2,
+  h3 {
+    font-family: "SD", sans-serif;
+  }
+
   p {
     @apply text-xl;
+    font-family: "dreams", sans-serif;
   }
 }

@@ -70,14 +70,14 @@
 <section id="hero" class="flex justify-between py-8 px-24">
   <div id="left-side">
     <div id="eye-grabbers" class="mb-8">
-      <h1 class="text-6xl font-semibold">Join UB Hacking</h1>
-      <p class="text-3xl">Some cool, typing tagline here.</p>
+      <h1 class="text-8xl font-semibold">Join UB Hacking</h1>
+      <h3 class="text-3xl">November 9th - 10th.</h3>
     </div>
 
     <div id="info-and-ctas">
       <p class="w-[40rem] mb-4">
         UB Hacking is University at Buffalo's annual 48-hour hackathon. <br
-        />Join us, in a winter wonderland November 9th & 10th.
+        />Join us, in a wonderland.
       </p>
 
       <div class="flex gap-4">
