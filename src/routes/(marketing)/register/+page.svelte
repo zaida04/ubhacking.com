@@ -9,6 +9,7 @@
   import type { PageServerData } from "./$types";
   import Required from "$lib/components/ui/label/required.svelte";
 
+  // TODO: if anything goes wrong during form, show a big red box at the top and scroll to top to indicate to user something was wrong.
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form, {
     invalidateAll: false,
