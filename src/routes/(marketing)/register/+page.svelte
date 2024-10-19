@@ -297,7 +297,7 @@
               label="Other Dietary Restrictions"
               type="text"
               name="dietaryRestrictionsOther"
-              placeholder="Other (please specify)"
+              placeholder="(Please Specify)"
               bind:value={$form.dietaryRestrictionsOther}
             />
             <Form.Error error={$errors.dietaryRestrictionsOther} />
@@ -309,7 +309,7 @@
             type="text"
             name="allergiesOther"
             label="Allergies"
-            placeholder="Please specify any allergies"
+            placeholder="(Please Specify)"
             bind:value={$form.allergiesOther}
             error={$errors.allergiesOther}
           />
