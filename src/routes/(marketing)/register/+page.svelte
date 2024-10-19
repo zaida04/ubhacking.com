@@ -5,6 +5,7 @@
   import { Label } from "$lib/components/ui/label";
   import { Checkbox } from "$lib/components/ui/checkbox";
   import * as Select from "$lib/components/ui/select";
+  import * as Form from "$lib/components/ui/form";
   import type { PageServerData } from "./$types";
 
   export let data: PageServerData;
@@ -28,7 +29,7 @@
     schoolName: "University of Buffalo",
     schoolMajor: "Computer Science",
     levelOfStudy: "undergraduate",
-    graduationYear: 2025,
+    graduationYear: "2025",
 
     // Shipping
     address1: "123 Main St",
@@ -39,7 +40,7 @@
     // Logistics
     isAttendingInPerson: true,
     shirtSize: "M" as const,
-    dietaryRestrictions: ["vegetarian", "gluten free"],
+    dietaryRestrictions: "vegetarian",
     dietaryRestrictionsOther: "Lactose intolerant",
     allergies: ["peanuts", "soy"],
     allergiesOther: "Sesame",
@@ -56,30 +57,26 @@
   };
 
   $form = sampleUserData;
+  console.log($errors);
 
-  function addAllergy(allergy: any) {
-    if (!$form.allergies) {
-      $form.allergies = [];
-    }
-    $form.allergies.push(allergy);
-  }
-
-  function removeAllergy(allergy: any) {
-    $form.allergies = $form.allergies?.filter((a: any) => a !== allergy);
-  }
-
-  function addRestriction(restriction: any) {
-    if (!$form.dietaryRestrictions) {
-      $form.dietaryRestrictions = [];
-    }
-    $form.dietaryRestrictions.push(restriction);
-  }
-
-  function removeRestriction(restriction: any) {
-    $form.dietaryRestrictions = $form.dietaryRestrictions?.filter(
-      (a) => a !== restriction
-    );
-  }
+  const shirtSizeOptions = [
+    { value: "XS", label: "XS" },
+    { value: "S", label: "S" },
+    { value: "M", label: "M" },
+    { value: "L", label: "L" },
+    { value: "XL", label: "XL" },
+    { value: "XXL", label: "XXL" },
+  ];
+  const dietaryRestrictionsOptions = [
+    { value: "halal", label: "Halal" },
+    { value: "kosher", label: "Kosher" },
+    { value: "vegetarian", label: "Vegetarian" },
+  ];
+  const levelOfStudy = [
+    { value: "high school", label: "High School" },
+    { value: "undergraduate", label: "Undergraduate" },
+    { value: "masters", label: "Masters" },
+  ];
 </script>
 
 <div class="flex items-center justify-center bg-gray-100 p-4">
@@ -120,9 +117,7 @@
                 required
                 bind:value={$form.nameLast}
               />
-              {#if $errors.nameLast}<p class="text-red-500 text-sm mt-1">
-                  {$errors.nameLast}
-                </p>{/if}
+              <Form.Error error={$errors.nameLast} />
             </div>
             <div class="space-y-2">
               <Label for="contactEmail" class="text-sm font-medium"
@@ -136,16 +131,12 @@
                 required
                 bind:value={$form.contactEmail}
               />
-              {#if $errors.contactEmail}<p class="text-red-500 text-sm mt-1">
-                  {$errors.contactEmail}
-                </p>{/if}
+              <Form.Error error={$errors.contactEmail} />
             </div>
             <div class="space-y-2">
               <Label for="dob" class="text-sm font-medium">Date of Birth</Label>
               <Input id="dob" type="date" name="dob" bind:value={$form.dob} />
-              {#if $errors.dob}<p class="text-red-500 text-sm mt-1">
-                  {$errors.dob}
-                </p>{/if}
+              <Form.Error error={$errors.dob} />
             </div>
             <div class="space-y-2">
               <Label for="phone" class="text-sm font-medium">Phone</Label>
@@ -156,9 +147,7 @@
                 placeholder="+1 (555) 123-4567"
                 bind:value={$form.phone}
               />
-              {#if $errors.phone}<p class="text-red-500 text-sm mt-1">
-                  {$errors.phone}
-                </p>{/if}
+              <Form.Error error={$errors.phone} />
             </div>
             <div class="space-y-2">
               <Label for="gender" class="text-sm font-medium">Gender</Label>
@@ -168,9 +157,7 @@
                 name="gender"
                 bind:value={$form.gender}
               />
-              {#if $errors.gender}<p class="text-red-500 text-sm mt-1">
-                  {$errors.gender}
-                </p>{/if}
+              <Form.Error error={$errors.gender} />
             </div>
             <div class="space-y-2">
               <Label for="raceEthnicity" class="text-sm font-medium"
@@ -182,9 +169,7 @@
                 name="raceEthnicity"
                 bind:value={$form.raceEthnicity}
               />
-              {#if $errors.raceEthnicity}<p class="text-red-500 text-sm mt-1">
-                  {$errors.raceEthnicity}
-                </p>{/if}
+              <Form.Error error={$errors.raceEthnicity} />
             </div>
             <div class="space-y-2">
               <Label for="country" class="text-sm font-medium">Country</Label>
@@ -194,9 +179,7 @@
                 name="country"
                 bind:value={$form.country}
               />
-              {#if $errors.country}<p class="text-red-500 text-sm mt-1">
-                  {$errors.country}
-                </p>{/if}
+              <Form.Error error={$errors.country} />
             </div>
           </div>
         </div>
@@ -215,9 +198,7 @@
                 name="schoolName"
                 bind:value={$form.schoolName}
               />
-              {#if $errors.schoolName}<p class="text-red-500 text-sm mt-1">
-                  {$errors.schoolName}
-                </p>{/if}
+              <Form.Error error={$errors.schoolName} />
             </div>
             <div class="space-y-2">
               <Label for="schoolMajor" class="text-sm font-medium">Major</Label>
@@ -227,40 +208,45 @@
                 name="schoolMajor"
                 bind:value={$form.schoolMajor}
               />
-              {#if $errors.schoolMajor}<p class="text-red-500 text-sm mt-1">
-                  {$errors.schoolMajor}
-                </p>{/if}
+              <Form.Error error={$errors.schoolMajor} />
             </div>
             <div class="space-y-2">
               <Label for="levelOfStudy" class="text-sm font-medium"
                 >Level of Study</Label
               >
               <Select.Root
-                selected={{ value: $form.levelOfStudy }}
+                preventScroll={false}
+                selected={{
+                  value: $form.levelOfStudy,
+                  label: levelOfStudy.find(
+                    (option) => option.value === $form.levelOfStudy
+                  )?.label,
+                }}
                 onSelectedChange={(e) => e && ($form.levelOfStudy = e.value)}
               >
                 <Select.Trigger>
                   <Select.Value placeholder="Select your level of study" />
                 </Select.Trigger>
                 <Select.Content>
-                  <Select.Item value="high school">High School</Select.Item>
-                  <Select.Item value="undergraduate">Undergraduate</Select.Item>
-                  <Select.Item value="masters">Masters</Select.Item>
-                  <Select.Item value="phd">PhD</Select.Item>
-                  <Select.Item value="postdoctoral">Postdoctoral</Select.Item>
+                  {#each levelOfStudy as option}
+                    <Select.Item value={option.value}
+                      >{option.label}</Select.Item
+                    >
+                  {/each}
                 </Select.Content>
               </Select.Root>
-
-              {#if $errors.levelOfStudy}<p class="text-red-500 text-sm mt-1">
-                  {$errors.levelOfStudy}
-                </p>{/if}
+              <Form.Error error={$errors.levelOfStudy} />
             </div>
             <div class="space-y-2">
               <Label for="graduationYear" class="text-sm font-medium"
                 >Graduation Year</Label
               >
               <Select.Root
-                selected={{ value: $form.graduationYear }}
+                preventScroll={false}
+                selected={{
+                  value: $form.graduationYear,
+                  label: $form.graduationYear.toString(),
+                }}
                 onSelectedChange={(e) => e && ($form.graduationYear = e.value)}
               >
                 <Select.Trigger
@@ -274,9 +260,7 @@
                   {/each}
                 </Select.Content>
               </Select.Root>
-              {#if $errors.graduationYear}<p class="text-red-500 text-sm mt-1">
-                  {$errors.graduationYear}
-                </p>{/if}
+              <Form.Error error={$errors.graduationYear} />
             </div>
           </div>
         </div>
@@ -293,9 +277,7 @@
                 name="address1"
                 bind:value={$form.address1}
               />
-              {#if $errors.address1}<p class="text-red-500 text-sm mt-1">
-                  {$errors.address1}
-                </p>{/if}
+              <Form.Error error={$errors.address1} />
             </div>
             <div class="space-y-2">
               <Label for="city" class="text-sm font-medium">City</Label>
@@ -305,9 +287,7 @@
                 name="city"
                 bind:value={$form.city}
               />
-              {#if $errors.city}<p class="text-red-500 text-sm mt-1">
-                  {$errors.city}
-                </p>{/if}
+              <Form.Error error={$errors.city} />
             </div>
             <div class="space-y-2">
               <Label for="state" class="text-sm font-medium">State</Label>
@@ -317,9 +297,7 @@
                 name="state"
                 bind:value={$form.state}
               />
-              {#if $errors.state}<p class="text-red-500 text-sm mt-1">
-                  {$errors.state}
-                </p>{/if}
+              <Form.Error error={$errors.state} />
             </div>
             <div class="space-y-2">
               <Label for="zipCode" class="text-sm font-medium">ZIP Code</Label>
@@ -329,9 +307,7 @@
                 name="zipCode"
                 bind:value={$form.zipCode}
               />
-              {#if $errors.zipCode}<p class="text-red-500 text-sm mt-1">
-                  {$errors.zipCode}
-                </p>{/if}
+              <Form.Error error={$errors.zipCode} />
             </div>
           </div>
         </div>
@@ -350,15 +326,26 @@
           <div class="space-y-2">
             <Label for="shirtSize" class="text-sm font-medium">Shirt Size</Label
             >
-            <Input
-              id="shirtSize"
-              type="text"
-              name="shirtSize"
-              bind:value={$form.shirtSize}
-            />
-            {#if $errors.shirtSize}<p class="text-red-500 text-sm mt-1">
-                {$errors.shirtSize}
-              </p>{/if}
+            <Select.Root
+              selected={{
+                value: $form.shirtSize,
+                label: shirtSizeOptions.find(
+                  (option) => option.value === $form.shirtSize
+                )?.label,
+              }}
+              preventScroll={false}
+              onSelectedChange={(e) => e && ($form.shirtSize = e.value)}
+            >
+              <Select.Trigger class="w-full border border-gray-300 rounded-md">
+                <Select.Value placeholder="Select your shirt size" />
+              </Select.Trigger>
+              <Select.Content>
+                {#each shirtSizeOptions as option}
+                  <Select.Item value={option.value}>{option.label}</Select.Item>
+                {/each}
+              </Select.Content>
+            </Select.Root>
+            <Form.Error error={$errors.shirtSize} />
           </div>
           <div class="space-y-2">
             <Label for="specialRequest" class="text-sm font-medium"
@@ -370,9 +357,7 @@
               name="specialRequest"
               bind:value={$form.specialRequest}
             />
-            {#if $errors.specialRequest}<p class="text-red-500 text-sm mt-1">
-                {$errors.specialRequest}
-              </p>{/if}
+            <Form.Error error={$errors.specialRequest} />
           </div>
 
           <div class="space-y-2">
@@ -380,17 +365,25 @@
               >Dietary Restrictions</Label
             >
             <Select.Root
-              selected={{ value: $form.dietaryRestrictions }}
-              onSelectedChange={(e) =>
-                e && ($form.dietaryRestrictions = e.value)}
+              selected={{
+                value: $form.dietaryRestrictions,
+                label: dietaryRestrictionsOptions.find(
+                  (option) => option.value === $form.dietaryRestrictions
+                )?.label,
+              }}
+              preventScroll={false}
+              onSelectedChange={(e) => {
+                console.log(e);
+                e && ($form.dietaryRestrictions = e.value);
+              }}
             >
               <Select.Trigger class="w-full border border-gray-300 rounded-md">
                 <Select.Value placeholder="Select dietary restriction" />
               </Select.Trigger>
               <Select.Content>
-                <Select.Item value="halal">Halal</Select.Item>
-                <Select.Item value="kosher">Kosher</Select.Item>
-                <Select.Item value="vegetarian">Vegetarian</Select.Item>
+                {#each dietaryRestrictionsOptions as option}
+                  <Select.Item value={option.value}>{option.label}</Select.Item>
+                {/each}
               </Select.Content>
             </Select.Root>
             <div class="space-y-2 mt-2">
@@ -401,11 +394,21 @@
                 placeholder="Other (please specify)"
                 bind:value={$form.dietaryRestrictionsOther}
               />
-              {#if $errors.dietaryRestrictionsOther}<p
-                  class="text-red-500 text-sm mt-1"
-                >
-                  {$errors.dietaryRestrictionsOther}
-                </p>{/if}
+              <Form.Error error={$errors.dietaryRestrictionsOther} />
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <Label for="allergies" class="text-sm font-medium">Allergies</Label>
+            <div class="space-y-2 mt-2">
+              <Input
+                type="text"
+                id="allergiesOther"
+                name="allergiesOther"
+                placeholder="Other (please specify)"
+                bind:value={$form.allergiesOther}
+              />
+              <Form.Error error={$errors.allergiesOther} />
             </div>
           </div>
         </div>
@@ -423,9 +426,7 @@
               name="howYouHeard"
               bind:value={$form.howYouHeard}
             />
-            {#if $errors.howYouHeard}<p class="text-red-500 text-sm mt-1">
-                {$errors.howYouHeard}
-              </p>{/if}
+            <Form.Error error={$errors.howYouHeard} />
           </div>
           <div class="space-y-2">
             <Label for="whyAttend" class="text-sm font-medium"
@@ -437,9 +438,7 @@
               name="whyAttend"
               bind:value={$form.whyAttend}
             />
-            {#if $errors.whyAttend}<p class="text-red-500 text-sm mt-1">
-                {$errors.whyAttend}
-              </p>{/if}
+            <Form.Error error={$errors.whyAttend} />
           </div>
           <div class="flex items-center space-x-2">
             <Checkbox

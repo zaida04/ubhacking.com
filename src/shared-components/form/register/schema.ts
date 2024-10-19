@@ -15,7 +15,7 @@ export const registerUserSchema = z.object({
   schoolName: z.string().min(2),
   schoolMajor: z.string().min(2),
   levelOfStudy: z.string(),
-  graduationYear: z.number().int().positive(),
+  graduationYear: z.string(),
 
   // Shipping
   address1: z.string().optional(),
@@ -26,7 +26,7 @@ export const registerUserSchema = z.object({
   // Logistics
   isAttendingInPerson: z.boolean().optional(),
   shirtSize: z.enum(['XS', 'S', 'M', 'L', 'XL', 'XXL']),
-  dietaryRestrictions: z.array(z.string()).optional(),
+  dietaryRestrictions: z.string().optional(),
   dietaryRestrictionsOther: z.string().optional(),
   allergies: z.array(z.string()).optional(),
   allergiesOther: z.string().optional(),
