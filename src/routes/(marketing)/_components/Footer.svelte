@@ -101,7 +101,7 @@
     <p>
       &copy; {new Date().getFullYear()} UB Hacking. Built with ❤️ by
       <a href="https://nico.engineer/" class="underline">Zaid Arshad</a>
-      & <a href="github.com/p5quared" class="underline">Peter LastName</a>
+      & <a href="github.com/p5quared" class="underline">Peter Vaiciulis</a>
     </p>
   </div>
 </footer>
