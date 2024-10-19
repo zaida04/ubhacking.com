@@ -1,67 +1,27 @@
 <script lang="ts">
   import { superForm } from "sveltekit-superforms/client";
   import { Button } from "$lib/components/ui/button";
-  import { Input } from "$lib/components/ui/input";
   import { Label } from "$lib/components/ui/label";
   import { Checkbox } from "$lib/components/ui/checkbox";
-  import * as Select from "$lib/components/ui/select";
   import * as Form from "$lib/components/ui/form";
   import type { PageServerData } from "./$types";
-  import Required from "$lib/components/ui/label/required.svelte";
+  import MenuInput from "./MenuInput.svelte";
+  import FormSection from "./FormSection.svelte";
 
-  // TODO: if anything goes wrong during form, show a big red box at the top and scroll to top to indicate to user something was wrong.
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form, {
     invalidateAll: false,
     resetForm: false,
   });
 
-  // // For testing purposes:
-  // const sampleUserData = {
-  //   // Account
-  //   contactEmail: "jane.doe@example.com",
+  $: graduationYearOptions = Array.from(
+    { length: 10 },
+    (_, i) => {
+      const year = new Date().getFullYear() + i;
+      return { value: year, label: year.toString() };
+    }
+  );
 
-  //   // Personal
-  //   nameFirst: "Jane",
-  //   nameLast: "Doe",
-  //   dob: "1995-07-15",
-  //   phone: "+1 (555) 123-4567",
-  //   gender: "Female",
-  //   raceEthnicity: "Asian",
-  //   country: "United States",
-
-  //   // Education
-  //   schoolName: "University of Buffalo",
-  //   schoolMajor: "Computer Science",
-  //   levelOfStudy: "undergraduate",
-  //   graduationYear: "2025",
-
-  //   // Shipping
-  //   address1: "123 Main St",
-  //   city: "Buffalo",
-  //   state: "NY",
-  //   zipCode: "14260",
-
-  //   // Logistics
-  //   isAttendingInPerson: true,
-  //   shirtSize: "M" as const,
-  //   dietaryRestrictions: "vegetarian",
-  //   dietaryRestrictionsOther: "Lactose intolerant",
-  //   allergies: ["peanuts", "soy"],
-  //   allergiesOther: "Sesame",
-  //   specialRequest: "I require a quiet space for meditation during breaks.",
-
-  //   // Other
-  //   howYouHeard: "Through a friend",
-  //   whyAttend:
-  //     "I'm passionate about hackathons and want to challenge myself while networking with like-minded individuals. UB Hacking seems like an excellent opportunity to learn new technologies and work on innovative projects.",
-  //   codeOfConductUBHacking: true,
-  //   codeOfConduct: true,
-  //   dataSharing: true,
-  //   communication: true,
-  // };
-
-  // $form = sampleUserData;
   console.log($errors);
 
   const shirtSizeOptions = [
@@ -84,439 +44,349 @@
   ];
 </script>
 
-<div class="flex items-center justify-center bg-gray-100 p-4">
-  <div class="w-full max-w-2xl bg-white shadow-md rounded-lg">
-    <div class="p-6">
-      <h1 class="text-2xl font-bold text-center">UB Hacking Application</h1>
+<div class="bg-yellow-50 p-4" id="bg">
+  <div class="max-w-2xl bg-white shadow-2xl p-8 -outline-offset-8 outline-double outline-black outline-4">
+    <h1 class="text-2xl text-center font-serif">UB Hacking Application</h1>
 
-      {#if data.existingSubmission}
-        <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-4">
-          <p class="text-yellow-700">
-            You have already submitted an application for UB Hacking. If you
-            submit this form again, your old responses will be discarded.
-          </p>
+    <p class="text-center text-lg text-gray-600 italic font-serif mb-6">
+      Please fill out the form below to apply for UB Hacking
+    </p>
+
+    <form class="space-y-6" method="POST" use:enhance>
+      <FormSection title="Personal Information">
+        <div class="space-y-2">
+          <MenuInput
+            id="nameFirst"
+            required
+            label="First Name"
+            type="text"
+            name="nameFirst"
+            bind:value={$form.nameFirst}
+          />
+          <Form.Error error={$errors.nameFirst} />
         </div>
-      {/if}
-
-      <p class="text-center text-gray-600 mb-6">
-        Please fill out the form below to apply for UB Hacking
-      </p>
-
-      <form class="space-y-6" method="POST" use:enhance>
-        <!-- Personal Information Section -->
-        <div class="space-y-4">
-          <h2 class="text-lg font-semibold">Personal Information</h2>
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div class="space-y-2">
-              <Required>
-                <Label for="nameFirst" class="text-sm font-medium">
-                  First Name
-                </Label>
-              </Required>
-              <Input
-                id="nameFirst"
-                type="text"
-                name="nameFirst"
-                required
-                bind:value={$form.nameFirst}
-              />
-              <Form.Error error={$errors.nameFirst} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="nameLast" class="text-sm font-medium">
-                  Last Name
-                </Label>
-              </Required>
-              <Input
-                id="nameLast"
-                type="text"
-                name="nameLast"
-                required
-                bind:value={$form.nameLast}
-              />
-              <Form.Error error={$errors.nameLast} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="contactEmail" class="text-sm font-medium">
-                  Contact Email
-                </Label>
-              </Required>
-              <Input
-                id="contactEmail"
-                name="contactEmail"
-                placeholder="jane.doe@buffalo.edu"
-                required
-                bind:value={$form.contactEmail}
-              />
-              <Form.Error error={$errors.contactEmail} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="dob" class="text-sm font-medium">
-                  Date of Birth
-                </Label>
-              </Required>
-              <Input id="dob" type="date" name="dob" bind:value={$form.dob} />
-              <Form.Error error={$errors.dob} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="phone" class="text-sm font-medium">Phone</Label>
-              </Required>
-              <Input
-                id="phone"
-                type="tel"
-                name="phone"
-                placeholder="+1 (555) 123-4567"
-                bind:value={$form.phone}
-              />
-              <Form.Error error={$errors.phone} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="gender" class="text-sm font-medium">Gender</Label>
-              </Required>
-              <Input
-                id="gender"
-                type="text"
-                name="gender"
-                bind:value={$form.gender}
-              />
-              <Form.Error error={$errors.gender} />
-            </div>
-            <div class="space-y-2">
-              <Label for="raceEthnicity" class="text-sm font-medium">
-                Race/Ethnicity
-              </Label>
-              <Input
-                id="raceEthnicity"
-                type="text"
-                name="raceEthnicity"
-                bind:value={$form.raceEthnicity}
-              />
-              <Form.Error error={$errors.raceEthnicity} />
-            </div>
-            <div class="space-y-2">
-              <Label for="country" class="text-sm font-medium">Country</Label>
-              <Input
-                id="country"
-                type="text"
-                name="country"
-                bind:value={$form.country}
-              />
-              <Form.Error error={$errors.country} />
-            </div>
-          </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="nameLast"
+            required
+            label="Last Name"
+            type="text"
+            name="nameLast"
+            bind:value={$form.nameLast}
+          />
+          <Form.Error error={$errors.nameLast} />
         </div>
-
-        <!-- Education Section -->
-        <div class="space-y-4">
-          <h2 class="text-lg font-semibold">Education</h2>
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div class="space-y-2">
-              <Required>
-                <Label for="schoolName" class="text-sm font-medium">
-                  School Name
-                </Label>
-              </Required>
-
-              <Input
-                id="schoolName"
-                type="text"
-                name="schoolName"
-                bind:value={$form.schoolName}
-              />
-              <Form.Error error={$errors.schoolName} />
-            </div>
-            <div class="space-y-2">
-              <Label for="schoolMajor" class="text-sm font-medium">Major</Label>
-              <Input
-                id="schoolMajor"
-                type="text"
-                name="schoolMajor"
-                bind:value={$form.schoolMajor}
-              />
-              <Form.Error error={$errors.schoolMajor} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="levelOfStudy" class="text-sm font-medium"
-                  >Level of Study</Label
-                >
-              </Required>
-              <Select.Root
-                preventScroll={false}
-                selected={{
-                  value: $form.levelOfStudy,
-                  label: levelOfStudy.find(
-                    (option) => option.value === $form.levelOfStudy
-                  )?.label,
-                }}
-                onSelectedChange={(e) => e && ($form.levelOfStudy = e.value)}
-              >
-                <Select.Trigger>
-                  <Select.Value placeholder="Select your level of study" />
-                </Select.Trigger>
-                <Select.Content>
-                  {#each levelOfStudy as option}
-                    <Select.Item value={option.value}
-                      >{option.label}</Select.Item
-                    >
-                  {/each}
-                </Select.Content>
-              </Select.Root>
-              <Form.Error error={$errors.levelOfStudy} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="graduationYear" class="text-sm font-medium"
-                  >Graduation Year</Label
-                >
-              </Required>
-              <Select.Root
-                preventScroll={false}
-                selected={{
-                  value: $form.graduationYear,
-                  label: $form.graduationYear.toString(),
-                }}
-                onSelectedChange={(e) => e && ($form.graduationYear = e.value)}
-              >
-                <Select.Trigger
-                  class="w-full border border-gray-300 rounded-md"
-                >
-                  <Select.Value placeholder="Select graduation year" />
-                </Select.Trigger>
-                <Select.Content>
-                  {#each Array.from({ length: 10 }, (_, i) => new Date().getFullYear() + i) as year}
-                    <Select.Item value={year}>{year}</Select.Item>
-                  {/each}
-                </Select.Content>
-              </Select.Root>
-              <Form.Error error={$errors.graduationYear} />
-            </div>
-          </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="contactEmail"
+            required
+            label="Contact Email"
+            type="email"
+            name="contactEmail"
+            placeholder="jane.doe@buffalo.edu"
+            bind:value={$form.contactEmail}
+          />
+          <Form.Error error={$errors.contactEmail} />
         </div>
-
-        <!-- Shipping Section -->
-        <div class="space-y-4">
-          <h2 class="text-lg font-semibold">Shipping Information</h2>
-          <div class="space-y-2">
-            <div class="space-y-2 mt-4">
-              <Required>
-                <Label for="address1" class="text-sm font-medium">Address</Label
-                >
-              </Required>
-              <Input
-                id="address1"
-                type="text"
-                name="address1"
-                bind:value={$form.address1}
-              />
-              <Form.Error error={$errors.address1} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="city" class="text-sm font-medium">City</Label>
-              </Required>
-              <Input
-                id="city"
-                type="text"
-                name="city"
-                bind:value={$form.city}
-              />
-              <Form.Error error={$errors.city} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="state" class="text-sm font-medium">State</Label>
-              </Required>
-
-              <Input
-                id="state"
-                type="text"
-                name="state"
-                bind:value={$form.state}
-              />
-              <Form.Error error={$errors.state} />
-            </div>
-            <div class="space-y-2">
-              <Required>
-                <Label for="zipCode" class="text-sm font-medium">
-                  ZIP Code
-                </Label>
-              </Required>
-
-              <Input
-                id="zipCode"
-                type="text"
-                name="zipCode"
-                bind:value={$form.zipCode}
-              />
-              <Form.Error error={$errors.zipCode} />
-            </div>
-          </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="dob"
+            required
+            label="Date of Birth"
+            type="date"
+            name="dob"
+            bind:value={$form.dob}
+          />
+          <Form.Error error={$errors.dob} />
         </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="phone"
+            required
+            label="Phone"
+            type="tel"
+            name="phone"
+            placeholder="+1 (555) 123-4567"
+            bind:value={$form.phone}
+          />
+          <Form.Error error={$errors.phone} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="gender"
+            required
+            label="Gender"
+            type="text"
+            name="gender"
+            bind:value={$form.gender}
+          />
+          <Form.Error error={$errors.gender} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="raceEthnicity"
+            label="Race/Ethnicity"
+            type="text"
+            name="raceEthnicity"
+            bind:value={$form.raceEthnicity}
+          />
+          <Form.Error error={$errors.raceEthnicity} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="country"
+            label="Country"
+            type="text"
+            name="country"
+            bind:value={$form.country}
+          />
+          <Form.Error error={$errors.country} />
+        </div>
+      </FormSection>
 
-        <!-- Logistics Section -->
-        <div class="space-y-4">
-          <h2 class="text-lg font-semibold">Logistics</h2>
-          <div class="space-y-2">
-            <Label class="text-sm font-medium">Attending In Person?</Label>
-            <Checkbox
-              id="isAttendingInPerson"
-              name="isAttendingInPerson"
-              bind:checked={$form.isAttendingInPerson}
-            />
-          </div>
-          <div class="space-y-2">
-            <Required>
-              <Label for="shirtSize" class="text-sm font-medium">
-                Shirt Size
-              </Label>
-            </Required>
+      <FormSection title="Education">
+        <div class="space-y-2">
+          <MenuInput
+            id="schoolName"
+            required
+            label="School Name"
+            type="text"
+            name="schoolName"
+            bind:value={$form.schoolName}
+          />
+          <Form.Error error={$errors.schoolName} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="schoolMajor"
+            label="Major"
+            type="text"
+            name="schoolMajor"
+            bind:value={$form.schoolMajor}
+          />
+          <Form.Error error={$errors.schoolMajor} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            type="select"
+            id="levelOfStudy"
+            name="levelOfStudy"
+            label="Level of Study"
+            required={true}
+            options={levelOfStudy.map(option => ({
+              value: option.value,
+              label: option.label
+            }))}
+            bind:value={$form.levelOfStudy}
+            error={$errors.levelOfStudy}
+            placeholder="Select your level of study"
+          />
+          <MenuInput
+            type="select"
+            id="graduationYear"
+            name="graduationYear"
+            label="Graduation Year"
+            required={true}
+            options={graduationYearOptions}
+            bind:value={$form.graduationYear}
+            error={$errors.graduationYear}
+            placeholder="Select graduation year"
+          />
+        </div>
+      </FormSection>
 
-            <Select.Root
-              selected={{
-                value: $form.shirtSize,
-                label: shirtSizeOptions.find(
-                  (option) => option.value === $form.shirtSize
-                )?.label,
-              }}
-              preventScroll={false}
-              onSelectedChange={(e) => e && ($form.shirtSize = e.value)}
-            >
-              <Select.Trigger class="w-full border border-gray-300 rounded-md">
-                <Select.Value placeholder="Select your shirt size" />
-              </Select.Trigger>
-              <Select.Content>
-                {#each shirtSizeOptions as option}
-                  <Select.Item value={option.value}>{option.label}</Select.Item>
-                {/each}
-              </Select.Content>
-            </Select.Root>
-            <Form.Error error={$errors.shirtSize} />
-          </div>
-          <div class="space-y-2">
-            <Label for="specialRequest" class="text-sm font-medium">
-              Special Requests
-            </Label>
-            <Input
-              id="specialRequest"
+      <FormSection title="Shipping Information">
+        <div class="space-y-2">
+          <MenuInput
+            id="address1"
+            required
+            label="Address"
+            type="text"
+            name="address1"
+            bind:value={$form.address1}
+          />
+          <Form.Error error={$errors.address1} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="city"
+            required
+            label="City"
+            type="text"
+            name="city"
+            bind:value={$form.city}
+          />
+          <Form.Error error={$errors.city} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="state"
+            required
+            label="State"
+            type="text"
+            name="state"
+            bind:value={$form.state}
+          />
+          <Form.Error error={$errors.state} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="zipCode"
+            required
+            label="ZIP Code"
+            type="text"
+            name="zipCode"
+            bind:value={$form.zipCode}
+          />
+          <Form.Error error={$errors.zipCode} />
+        </div>
+      </FormSection>
+
+      <FormSection title="Logistics">
+        <div class="space-y-2">
+          <Label class="text-sm font-medium">Attending In Person?</Label>
+          <Checkbox
+            id="isAttendingInPerson"
+            name="isAttendingInPerson"
+            bind:checked={$form.isAttendingInPerson}
+          />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            type="select"
+            id="shirtSize"
+            name="shirtSize"
+            label="Shirt Size"
+            required={true}
+            options={shirtSizeOptions.map(option => ({
+              value: option.value,
+              label: option.label
+            }))}
+            bind:value={$form.shirtSize}
+            error={$errors.shirtSize}
+            placeholder="Select your shirt size"
+          />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="specialRequest"
+            label="Special Requests"
+            type="text"
+            name="specialRequest"
+            bind:value={$form.specialRequest}
+          />
+          <Form.Error error={$errors.specialRequest} />
+        </div>
+        <div class="space-y-2">
+          <MenuInput
+            type="select"
+            id="dietaryRestrictions"
+            name="dietaryRestrictions"
+            label="Dietary Restrictions"
+            options={dietaryRestrictionsOptions.map(option => ({
+              value: option.value,
+              label: option.label
+            }))}
+            bind:value={$form.dietaryRestrictions}
+            error={$errors.dietaryRestrictions}
+            placeholder="Select dietary restriction"
+          />
+          <div class="space-y-2 mt-2">
+            <MenuInput
+              id="dietaryRestrictionsOther"
+              label="Other Dietary Restrictions"
               type="text"
-              name="specialRequest"
-              bind:value={$form.specialRequest}
+              name="dietaryRestrictionsOther"
+              placeholder="Other (please specify)"
+              bind:value={$form.dietaryRestrictionsOther}
             />
-            <Form.Error error={$errors.specialRequest} />
-          </div>
-
-          <div class="space-y-2">
-            <Label for="dietaryRestrictions" class="text-sm font-medium">
-              Dietary Restrictions
-            </Label>
-            <Select.Root
-              selected={{
-                value: $form.dietaryRestrictions,
-                label: dietaryRestrictionsOptions.find(
-                  (option) => option.value === $form.dietaryRestrictions
-                )?.label,
-              }}
-              preventScroll={false}
-              onSelectedChange={(e) => {
-                e && ($form.dietaryRestrictions = e.value);
-              }}
-            >
-              <Select.Trigger class="w-full border border-gray-300 rounded-md">
-                <Select.Value placeholder="Select dietary restriction" />
-              </Select.Trigger>
-              <Select.Content>
-                {#each dietaryRestrictionsOptions as option}
-                  <Select.Item value={option.value}>{option.label}</Select.Item>
-                {/each}
-              </Select.Content>
-            </Select.Root>
-            <div class="space-y-2 mt-2">
-              <Input
-                type="text"
-                id="dietaryRestrictionsOther"
-                name="dietaryRestrictionsOther"
-                placeholder="Other (please specify)"
-                bind:value={$form.dietaryRestrictionsOther}
-              />
-              <Form.Error error={$errors.dietaryRestrictionsOther} />
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <Label for="allergies" class="text-sm font-medium">Allergies</Label>
-            <div class="space-y-2 mt-2">
-              <Input
-                type="text"
-                id="allergiesOther"
-                name="allergiesOther"
-                placeholder="Other (please specify)"
-                bind:value={$form.allergiesOther}
-              />
-              <Form.Error error={$errors.allergiesOther} />
-            </div>
+            <Form.Error error={$errors.dietaryRestrictionsOther} />
           </div>
         </div>
-
-        <!-- Additional Information -->
-        <div class="space-y-4">
-          <h2 class="text-lg font-semibold">Other Information</h2>
-          <div class="space-y-2">
-            <Required>
-              <Label for="howYouHeard" class="text-sm font-medium">
-                How did you hear about us?
-              </Label>
-            </Required>
-
-            <Input
-              id="howYouHeard"
-              type="text"
-              name="howYouHeard"
-              bind:value={$form.howYouHeard}
-            />
-            <Form.Error error={$errors.howYouHeard} />
-          </div>
-          <div class="space-y-2">
-            <Required>
-              <Label for="whyAttend" class="text-sm font-medium">
-                Why do you want to attend?
-              </Label>
-            </Required>
-
-            <Input
-              id="whyAttend"
-              type="text"
-              name="whyAttend"
-              bind:value={$form.whyAttend}
-            />
-            <Form.Error error={$errors.whyAttend} />
-          </div>
-          <div class="flex items-center space-x-2">
-            <Checkbox
-              id="codeOfConductUBHacking"
-              name="codeOfConductUBHacking"
-              required
-              onCheckedChange={(e) =>
-                ($form.codeOfConductUBHacking =
-                  e === "indeterminate" ? false : e)}
-              checked={$form.codeOfConductUBHacking}
-            />
-            <Label for="codeOfConductUBHacking" class="text-sm font-medium">
-              I agree to the UB Hacking Code of Conduct
-            </Label>
-          </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="allergiesOther"
+            type="text"
+            name="allergiesOther"
+            label="Allergies"
+            placeholder="Please specify any allergies"
+            bind:value={$form.allergiesOther}
+            error={$errors.allergiesOther}
+          />
         </div>
+      </FormSection>
 
-        <!-- Submit Button -->
-        <div class="pt-4">
-          <Button type="submit">Submit Application</Button>
+      <FormSection title="Other Information">
+        <div class="space-y-2">
+          <MenuInput
+            id="howYouHeard"
+            required
+            label="How did you hear about us?"
+            type="text"
+            name="howYouHeard"
+            bind:value={$form.howYouHeard}
+          />
+          <Form.Error error={$errors.howYouHeard} />
         </div>
-      </form>
-    </div>
+        <div class="space-y-2">
+          <MenuInput
+            id="whyAttend"
+            required
+            label="Why do you want to attend?"
+            type="text"
+            name="whyAttend"
+            bind:value={$form.whyAttend}
+          />
+          <Form.Error error={$errors.whyAttend} />
+        </div>
+        <div class="flex items-center space-x-2">
+          <Checkbox
+            id="codeOfConductUBHacking"
+            name="codeOfConductUBHacking"
+            required
+            onCheckedChange={(e) =>
+              ($form.codeOfConductUBHacking =
+                e === "indeterminate" ? false : e)}
+            checked={$form.codeOfConductUBHacking}
+          />
+          <Label for="codeOfConductUBHacking" class="text-sm font-medium">
+            I agree to the UB Hacking Code of Conduct
+          </Label>
+        </div>
+      </FormSection>
+
+      <!-- Submit Button -->
+      <div class="pt-4">
+        <Button type="submit">Submit Application</Button>
+      </div>
+    </form>
   </div>
 </div>
+
+
+<style>
+#bg {
+background-color: hsl(34, 53%, 82%);
+background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
+  hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
+  hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
+  hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
+  hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
+  hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 120px, hsla(197, 62%, 11%, 0.5) 120px, hsla(197, 62%, 11%, 0.5) 140px
+  ),
+repeating-linear-gradient(135deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
+  hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
+  hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
+  hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
+  hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
+  hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px
+);
+}
+
+#menu {
+    background: linear-gradient(45deg, rgba(221, 204, 170, 0.05) 12%, transparent 0, transparent 88%, rgba(221, 204, 170, 0.05) 0),
+    linear-gradient(135deg, transparent 37%, rgba(170, 136, 85, 0.05) 0, rgba(170, 136, 85, 0.05) 63%, transparent 0),
+    linear-gradient(45deg, transparent 37%, rgba(221, 204, 170, 0.05) 0, rgba(221, 204, 170, 0.05) 63%, transparent 0) rgba(119, 85, 51, 0.05);
+    background-size: 25px 25px;
+}
+</style>
