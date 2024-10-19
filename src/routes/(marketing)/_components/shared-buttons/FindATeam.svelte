@@ -1,7 +1,15 @@
 <script>
+  import * as Tooltip from "$lib/components/ui/tooltip";
   import { Button } from "../../../../shared-components/button";
 </script>
 
-<a href="/team-finder">
-  <Button variant="outline">Find a team</Button>
-</a>
+<!-- <a href="/team-finder"> -->
+<Tooltip.Root openDelay={100}>
+  <Tooltip.Trigger>
+    <Button variant="outline" disabled>Find a team</Button>
+  </Tooltip.Trigger>
+  <Tooltip.Content>
+    <p>This feature is not available yet. Please check back later.</p>
+  </Tooltip.Content>
+</Tooltip.Root>
+<!-- </a> -->

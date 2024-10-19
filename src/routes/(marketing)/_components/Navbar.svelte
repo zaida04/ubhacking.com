@@ -49,7 +49,7 @@
       Our Team
     </a>
   </div>
-  <div class="flex gap-2">
+  <div class="flex gap-4 items-center">
     <FindATeam />
     {#if isLoggedIn}
       <!-- <Button
@@ -60,7 +60,7 @@
       >
         Sign Out
       </Button> -->
-      <Button href="/dashboard">Dashboard</Button>
+      <!-- <Button href="/dashboard">Dashboard</Button> -->
       <Avatar />
     {:else}
       <Button href="/login">Login</Button>
