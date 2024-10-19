@@ -11,53 +11,53 @@
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form);
 
-  // For testing purposes:
-  const sampleUserData = {
-    // Account
-    contactEmail: "jane.doe@example.com",
+  // // For testing purposes:
+  // const sampleUserData = {
+  //   // Account
+  //   contactEmail: "jane.doe@example.com",
 
-    // Personal
-    nameFirst: "Jane",
-    nameLast: "Doe",
-    dob: "1995-07-15",
-    phone: "+1 (555) 123-4567",
-    gender: "Female",
-    raceEthnicity: "Asian",
-    country: "United States",
+  //   // Personal
+  //   nameFirst: "Jane",
+  //   nameLast: "Doe",
+  //   dob: "1995-07-15",
+  //   phone: "+1 (555) 123-4567",
+  //   gender: "Female",
+  //   raceEthnicity: "Asian",
+  //   country: "United States",
 
-    // Education
-    schoolName: "University of Buffalo",
-    schoolMajor: "Computer Science",
-    levelOfStudy: "undergraduate",
-    graduationYear: "2025",
+  //   // Education
+  //   schoolName: "University of Buffalo",
+  //   schoolMajor: "Computer Science",
+  //   levelOfStudy: "undergraduate",
+  //   graduationYear: "2025",
 
-    // Shipping
-    address1: "123 Main St",
-    city: "Buffalo",
-    state: "NY",
-    zipCode: "14260",
+  //   // Shipping
+  //   address1: "123 Main St",
+  //   city: "Buffalo",
+  //   state: "NY",
+  //   zipCode: "14260",
 
-    // Logistics
-    isAttendingInPerson: true,
-    shirtSize: "M" as const,
-    dietaryRestrictions: "vegetarian",
-    dietaryRestrictionsOther: "Lactose intolerant",
-    allergies: ["peanuts", "soy"],
-    allergiesOther: "Sesame",
-    specialRequest: "I require a quiet space for meditation during breaks.",
+  //   // Logistics
+  //   isAttendingInPerson: true,
+  //   shirtSize: "M" as const,
+  //   dietaryRestrictions: "vegetarian",
+  //   dietaryRestrictionsOther: "Lactose intolerant",
+  //   allergies: ["peanuts", "soy"],
+  //   allergiesOther: "Sesame",
+  //   specialRequest: "I require a quiet space for meditation during breaks.",
 
-    // Other
-    howYouHeard: "Through a friend",
-    whyAttend:
-      "I'm passionate about hackathons and want to challenge myself while networking with like-minded individuals. UB Hacking seems like an excellent opportunity to learn new technologies and work on innovative projects.",
-    codeOfConductUBHacking: true,
-    codeOfConduct: true,
-    dataSharing: true,
-    communication: true,
-  };
+  //   // Other
+  //   howYouHeard: "Through a friend",
+  //   whyAttend:
+  //     "I'm passionate about hackathons and want to challenge myself while networking with like-minded individuals. UB Hacking seems like an excellent opportunity to learn new technologies and work on innovative projects.",
+  //   codeOfConductUBHacking: true,
+  //   codeOfConduct: true,
+  //   dataSharing: true,
+  //   communication: true,
+  // };
 
-  $form = sampleUserData;
-  console.log($errors);
+  // $form = sampleUserData;
+  // console.log($errors);
 
   const shirtSizeOptions = [
     { value: "XS", label: "XS" },
