@@ -4,8 +4,9 @@
 
 <div class="congrats-container">
   <div class="congrats-message">
-    <div class="congrats-text">Congrats, You Applied!</div>
-    <div class="small-text">
+    <div class="text-4xl font-bold">Congrats!</div>
+    <div class="text-xl mt-4">You are now one step closer to UB Hacking!</div>
+    <div class="text-sm mt-4">
       We'll reach out to you when things are ready. Keep an eye out in your
       email and for texts.
     </div>
@@ -40,18 +41,6 @@
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1;
-  }
-
-  .congrats-text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #1f2937; /* Dark gray text */
-  }
-
-  .small-text {
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    color: #4b5563; /* Medium gray text */
   }
 
   /* Confetti animation */
