@@ -1,31 +1,54 @@
 import { registerUserSchema } from "$form/register/schema";
 import { zod } from "sveltekit-superforms/adapters";
 import type { PageServerLoad } from "./$types";
-import { fail, message, superValidate } from "sveltekit-superforms";
+import { fail, superValidate } from "sveltekit-superforms";
 import { redirect, type Actions } from "@sveltejs/kit";
 import { supabase } from "$lib/supabase";
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async (ctx) => {
+	const getCurrentUser = await ctx.locals.safeGetSession();
+	const userId = getCurrentUser?.session?.user?.id;
+
+	if (!userId) {
+		return redirect(302, "/login");
+	}
+	const getExistingSubsmission = await supabase
+		.from('registration')
+		.select()
+		.eq('created_by', userId);
+
 	return {
 		form: await superValidate(zod(registerUserSchema)),
+		existingSubmission: getExistingSubsmission.data?.[0] || null
 	};
 };
 
 
 export const actions: Actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals }) => {
 		const form = await superValidate(request, zod(registerUserSchema));
 
 		if (!form.valid) {
 			return fail(400, { form });
 		}
 
+		const getCurrentUser = await locals.safeGetSession();
+		const userId = getCurrentUser?.session?.user?.id;
+
+		if (!userId) {
+			return fail(401, { form, error: "You must be logged in to submit the form." });
+		}
+
+
 		try {
 			const formData = getFormData(form);
 			// Insert data into Supabase
 			const { data, error } = await supabase
 				.from('registration')
-				.insert([formData])
+				.insert([{
+					...formData,
+					created_by: userId,
+				}])
 				.select();
 
 			if (error) {

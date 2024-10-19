@@ -7,6 +7,7 @@
   import * as Select from "$lib/components/ui/select";
   import * as Form from "$lib/components/ui/form";
   import type { PageServerData } from "./$types";
+  import Required from "$lib/components/ui/label/required.svelte";
 
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form);
@@ -57,7 +58,7 @@
   // };
 
   // $form = sampleUserData;
-  // console.log($errors);
+  console.log($errors);
 
   const shirtSizeOptions = [
     { value: "XS", label: "XS" },
@@ -83,6 +84,16 @@
   <div class="w-full max-w-2xl bg-white shadow-md rounded-lg">
     <div class="p-6">
       <h1 class="text-2xl font-bold text-center">UB Hacking Application</h1>
+
+      {#if data.existingSubmission}
+        <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 mt-4">
+          <p class="text-yellow-700">
+            You have already submitted an application for UB Hacking. If you
+            submit this form again, your old responses will be discarded.
+          </p>
+        </div>
+      {/if}
+
       <p class="text-center text-gray-600 mb-6">
         Please fill out the form below to apply for UB Hacking
       </p>
@@ -93,9 +104,11 @@
           <h2 class="text-lg font-semibold">Personal Information</h2>
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div class="space-y-2">
-              <Label for="nameFirst" class="text-sm font-medium"
-                >First Name</Label
-              >
+              <Required>
+                <Label for="nameFirst" class="text-sm font-medium">
+                  First Name
+                </Label>
+              </Required>
               <Input
                 id="nameFirst"
                 type="text"
@@ -103,13 +116,14 @@
                 required
                 bind:value={$form.nameFirst}
               />
-              {#if $errors.nameFirst}<p class="text-red-500 text-sm mt-1">
-                  {$errors.nameFirst}
-                </p>{/if}
+              <Form.Error error={$errors.nameFirst} />
             </div>
             <div class="space-y-2">
-              <Label for="nameLast" class="text-sm font-medium">Last Name</Label
-              >
+              <Required>
+                <Label for="nameLast" class="text-sm font-medium">
+                  Last Name
+                </Label>
+              </Required>
               <Input
                 id="nameLast"
                 type="text"
@@ -120,9 +134,11 @@
               <Form.Error error={$errors.nameLast} />
             </div>
             <div class="space-y-2">
-              <Label for="contactEmail" class="text-sm font-medium"
-                >Contact Email</Label
-              >
+              <Required>
+                <Label for="contactEmail" class="text-sm font-medium">
+                  Contact Email
+                </Label>
+              </Required>
               <Input
                 id="contactEmail"
                 type="email"
@@ -134,12 +150,18 @@
               <Form.Error error={$errors.contactEmail} />
             </div>
             <div class="space-y-2">
-              <Label for="dob" class="text-sm font-medium">Date of Birth</Label>
+              <Required>
+                <Label for="dob" class="text-sm font-medium">
+                  Date of Birth
+                </Label>
+              </Required>
               <Input id="dob" type="date" name="dob" bind:value={$form.dob} />
               <Form.Error error={$errors.dob} />
             </div>
             <div class="space-y-2">
-              <Label for="phone" class="text-sm font-medium">Phone</Label>
+              <Required>
+                <Label for="phone" class="text-sm font-medium">Phone</Label>
+              </Required>
               <Input
                 id="phone"
                 type="tel"
@@ -150,7 +172,9 @@
               <Form.Error error={$errors.phone} />
             </div>
             <div class="space-y-2">
-              <Label for="gender" class="text-sm font-medium">Gender</Label>
+              <Required>
+                <Label for="gender" class="text-sm font-medium">Gender</Label>
+              </Required>
               <Input
                 id="gender"
                 type="text"
@@ -160,9 +184,9 @@
               <Form.Error error={$errors.gender} />
             </div>
             <div class="space-y-2">
-              <Label for="raceEthnicity" class="text-sm font-medium"
-                >Race/Ethnicity</Label
-              >
+              <Label for="raceEthnicity" class="text-sm font-medium">
+                Race/Ethnicity
+              </Label>
               <Input
                 id="raceEthnicity"
                 type="text"
@@ -189,9 +213,12 @@
           <h2 class="text-lg font-semibold">Education</h2>
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div class="space-y-2">
-              <Label for="schoolName" class="text-sm font-medium"
-                >School Name</Label
-              >
+              <Required>
+                <Label for="schoolName" class="text-sm font-medium">
+                  School Name
+                </Label>
+              </Required>
+
               <Input
                 id="schoolName"
                 type="text"
@@ -211,9 +238,11 @@
               <Form.Error error={$errors.schoolMajor} />
             </div>
             <div class="space-y-2">
-              <Label for="levelOfStudy" class="text-sm font-medium"
-                >Level of Study</Label
-              >
+              <Required>
+                <Label for="levelOfStudy" class="text-sm font-medium"
+                  >Level of Study</Label
+                >
+              </Required>
               <Select.Root
                 preventScroll={false}
                 selected={{
@@ -238,9 +267,11 @@
               <Form.Error error={$errors.levelOfStudy} />
             </div>
             <div class="space-y-2">
-              <Label for="graduationYear" class="text-sm font-medium"
-                >Graduation Year</Label
-              >
+              <Required>
+                <Label for="graduationYear" class="text-sm font-medium"
+                  >Graduation Year</Label
+                >
+              </Required>
               <Select.Root
                 preventScroll={false}
                 selected={{
@@ -270,7 +301,10 @@
           <h2 class="text-lg font-semibold">Shipping Information</h2>
           <div class="space-y-2">
             <div class="space-y-2 mt-4">
-              <Label for="address1" class="text-sm font-medium">Address</Label>
+              <Required>
+                <Label for="address1" class="text-sm font-medium">Address</Label
+                >
+              </Required>
               <Input
                 id="address1"
                 type="text"
@@ -280,7 +314,9 @@
               <Form.Error error={$errors.address1} />
             </div>
             <div class="space-y-2">
-              <Label for="city" class="text-sm font-medium">City</Label>
+              <Required>
+                <Label for="city" class="text-sm font-medium">City</Label>
+              </Required>
               <Input
                 id="city"
                 type="text"
@@ -290,7 +326,10 @@
               <Form.Error error={$errors.city} />
             </div>
             <div class="space-y-2">
-              <Label for="state" class="text-sm font-medium">State</Label>
+              <Required>
+                <Label for="state" class="text-sm font-medium">State</Label>
+              </Required>
+
               <Input
                 id="state"
                 type="text"
@@ -300,7 +339,12 @@
               <Form.Error error={$errors.state} />
             </div>
             <div class="space-y-2">
-              <Label for="zipCode" class="text-sm font-medium">ZIP Code</Label>
+              <Required>
+                <Label for="zipCode" class="text-sm font-medium">
+                  ZIP Code
+                </Label>
+              </Required>
+
               <Input
                 id="zipCode"
                 type="text"
@@ -324,8 +368,12 @@
             />
           </div>
           <div class="space-y-2">
-            <Label for="shirtSize" class="text-sm font-medium">Shirt Size</Label
-            >
+            <Required>
+              <Label for="shirtSize" class="text-sm font-medium">
+                Shirt Size
+              </Label>
+            </Required>
+
             <Select.Root
               selected={{
                 value: $form.shirtSize,
@@ -348,9 +396,9 @@
             <Form.Error error={$errors.shirtSize} />
           </div>
           <div class="space-y-2">
-            <Label for="specialRequest" class="text-sm font-medium"
-              >Special Requests</Label
-            >
+            <Label for="specialRequest" class="text-sm font-medium">
+              Special Requests
+            </Label>
             <Input
               id="specialRequest"
               type="text"
@@ -361,9 +409,9 @@
           </div>
 
           <div class="space-y-2">
-            <Label for="dietaryRestrictions" class="text-sm font-medium"
-              >Dietary Restrictions</Label
-            >
+            <Label for="dietaryRestrictions" class="text-sm font-medium">
+              Dietary Restrictions
+            </Label>
             <Select.Root
               selected={{
                 value: $form.dietaryRestrictions,
@@ -373,7 +421,6 @@
               }}
               preventScroll={false}
               onSelectedChange={(e) => {
-                console.log(e);
                 e && ($form.dietaryRestrictions = e.value);
               }}
             >
@@ -417,9 +464,12 @@
         <div class="space-y-4">
           <h2 class="text-lg font-semibold">Other Information</h2>
           <div class="space-y-2">
-            <Label for="howYouHeard" class="text-sm font-medium"
-              >How did you hear about us?</Label
-            >
+            <Required>
+              <Label for="howYouHeard" class="text-sm font-medium">
+                How did you hear about us?
+              </Label>
+            </Required>
+
             <Input
               id="howYouHeard"
               type="text"
@@ -429,9 +479,12 @@
             <Form.Error error={$errors.howYouHeard} />
           </div>
           <div class="space-y-2">
-            <Label for="whyAttend" class="text-sm font-medium"
-              >Why do you want to attend?</Label
-            >
+            <Required>
+              <Label for="whyAttend" class="text-sm font-medium">
+                Why do you want to attend?
+              </Label>
+            </Required>
+
             <Input
               id="whyAttend"
               type="text"

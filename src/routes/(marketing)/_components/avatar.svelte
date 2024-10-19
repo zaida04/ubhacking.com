@@ -14,7 +14,7 @@
   import { supabaseClientOnly } from "$lib/supabase-client";
 </script>
 
-<DropdownMenu>
+<DropdownMenu preventScroll={false}>
   <DropdownMenuTrigger asChild let:builder>
     <Button
       builders={[builder]}
