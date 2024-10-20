@@ -3,216 +3,154 @@
   import LinkedinIcon from "lucide-svelte/icons/linkedin";
   import GlobeIcon from "lucide-svelte/icons/globe";
 
-  const teams = {
-    board: [
-      {
-        name: "John Doe",
-        description: "Lead Organizer at UB Hacking.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/johndoe",
-        linkedin: "https://www.linkedin.com/in/johndoe/",
-        website: "https://johndoe.com",
-      },
-      {
-        name: "Emily White",
-        description: "Co-Organizer overseeing team logistics.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/emilywhite",
-        linkedin: "https://www.linkedin.com/in/emilywhite/",
-        website: "https://emilywhite.com",
-      },
-      {
-        name: "Mark Evans",
-        description: "Managing sponsorships and partnerships.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/markevans",
-        linkedin: "https://www.linkedin.com/in/markevans/",
-        website: "https://markevans.com",
-      },
-    ],
-    webTeam: [
-      {
-        name: "Jane Smith",
-        description: "Web developer managing the platform.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/janesmith",
-        linkedin: "https://www.linkedin.com/in/janesmith/",
-        website: "https://janesmith.com",
-      },
-      {
-        name: "Robert Jones",
-        description: "Frontend developer working on the website UI.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/robertjones",
-        linkedin: "https://www.linkedin.com/in/robertjones/",
-        website: "https://robertjones.com",
-      },
-      {
-        name: "Nina Walker",
-        description: "Backend developer ensuring smooth operations.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/ninawalker",
-        linkedin: "https://www.linkedin.com/in/ninawalker/",
-        website: "https://ninawalker.com",
-      },
-    ],
-    publicityTeam: [
-      {
-        name: "Alice Johnson",
-        description: "Publicity coordinator for UB Hacking.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/alicejohnson",
-        linkedin: "https://www.linkedin.com/in/alicejohnson/",
-        website: "https://alicejohnson.com",
-      },
-      {
-        name: "Tom Green",
-        description: "Social media manager for UB Hacking.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/tomgreen",
-        linkedin: "https://www.linkedin.com/in/tomgreen/",
-        website: "https://tomgreen.com",
-      },
-      {
-        name: "Linda Adams",
-        description: "Event promotion and outreach.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/lindaadams",
-        linkedin: "https://www.linkedin.com/in/lindaadams/",
-        website: "https://lindaadams.com",
-      },
-    ],
-    graphicsTeam: [
-      {
-        name: "Bob Lee",
-        description: "Graphic designer for UB Hacking.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/boblee",
-        linkedin: "https://www.linkedin.com/in/boblee/",
-        website: "https://boblee.com",
-      },
-      {
-        name: "Sarah Khan",
-        description: "Visual design lead for promotional content.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/sarahkhan",
-        linkedin: "https://www.linkedin.com/in/sarahkhan/",
-        website: "https://sarahkhan.com",
-      },
-      {
-        name: "Chris Brown",
-        description: "Illustrator for event materials.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/chrisbrown",
-        linkedin: "https://www.linkedin.com/in/chrisbrown/",
-        website: "https://chrisbrown.com",
-      },
-    ],
-    logistics: [
-      {
-        name: "Cathy Zhang",
-        description: "Logistics manager for the event.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/cathyzhang",
-        linkedin: "https://www.linkedin.com/in/cathyzhang/",
-        website: "https://cathyzhang.com",
-      },
-      {
-        name: "Kevin Wilson",
-        description: "Logistics assistant ensuring event readiness.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/kevinwilson",
-        linkedin: "https://www.linkedin.com/in/kevinwilson/",
-        website: "https://kevinwilson.com",
-      },
-      {
-        name: "Diana Roberts",
-        description: "Venue and setup coordinator.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/dianaroberts",
-        linkedin: "https://www.linkedin.com/in/dianaroberts/",
-        website: "https://dianaroberts.com",
-      },
-    ],
-    food: [
-      {
-        name: "David Brown",
-        description: "Food and beverages coordinator.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/davidbrown",
-        linkedin: "https://www.linkedin.com/in/davidbrown/",
-        website: "https://davidbrown.com",
-      },
-      {
-        name: "Sophie Lee",
-        description: "Menu planning and dietary management.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/sophielee",
-        linkedin: "https://www.linkedin.com/in/sophielee/",
-        website: "https://sophielee.com",
-      },
-      {
-        name: "Jack Evans",
-        description: "Food sourcing and vendor management.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/jackevans",
-        linkedin: "https://www.linkedin.com/in/jackevans/",
-        website: "https://jackevans.com",
-      },
-    ],
-    venue: [
-      {
-        name: "Eve Green",
-        description: "Venue manager ensuring best space.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/evegreen",
-        linkedin: "https://www.linkedin.com/in/evegreen/",
-        website: "https://evegreen.com",
-      },
-      {
-        name: "Michael Taylor",
-        description: "Venue setup and teardown coordinator.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/michaeltaylor",
-        linkedin: "https://www.linkedin.com/in/michaeltaylor/",
-        website: "https://michaeltaylor.com",
-      },
-      {
-        name: "Grace Wilson",
-        description: "Audio-visual and technical setup.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/gracewilson",
-        linkedin: "https://www.linkedin.com/in/gracewilson/",
-        website: "https://gracewilson.com",
-      },
-    ],
-    other: [
-      {
-        name: "Frank Miller",
-        description: "Volunteer coordinator.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/frankmiller",
-        linkedin: "https://www.linkedin.com/in/frankmiller/",
-        website: "https://frankmiller.com",
-      },
-      {
-        name: "Ella Harris",
-        description: "General assistance and event coordination.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/ellaharris",
-        linkedin: "https://www.linkedin.com/in/ellaharris/",
-        website: "https://ellaharris.com",
-      },
-      {
-        name: "Tom Hanks",
-        description: "Event support and volunteer management.",
-        image: "https://placewaifu.com/image/200",
-        github: "https://github.com/tomhanks",
-        linkedin: "https://www.linkedin.com/in/tomhanks/",
-        website: "https://tomhanks.com",
-      },
-    ],
-  };
+  const members = [
+    {
+      name: "Peter Vaiciulis",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Senior",
+      team: "Web Team",
+      site: "https://www.peterv.net/",
+    },
+    {
+      name: "Zaid Arshad",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Junior",
+      team: "Web Team",
+      linkedin: "https://www.linkedin.com/in/zaid-arsh/",
+      site: "https://nico.engineer/",
+      github: "https://github.com/zaida04",
+      image:
+        "https://media.licdn.com/dms/image/v2/D4E03AQExiW-MbNw7xg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1683789582825?e=1735171200&v=beta&t=mXKNJMJNdOnL6Yy2_xxUC9YhVWjsrHLKl0AsAu-dDlo",
+    },
+    {
+      name: "Ananya Gupta",
+      pronouns: "She/Her",
+      major: "Computer Science",
+      year: "Sophomore",
+      team: "Publicity Team",
+    },
+    {
+      name: "Shreya Gupta",
+      pronouns: "She/Her",
+      major: "Computer Science",
+      year: "Senior",
+      team: "Publicity Team",
+    },
+    {
+      name: "Aidan O'Donnell",
+      pronouns: "He/Him",
+      major: "Computer Engineering",
+      year: "Senior",
+      team: "Logistics Team",
+    },
+    {
+      name: "Parth Agrawal",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Sophomore",
+      team: "Logistics Team",
+    },
+    {
+      name: "Blaze Nie",
+      pronouns: "They/Them",
+      major: "Computer Science",
+      year: "Sophomore",
+      team: "Food Team",
+    },
+    {
+      name: "Krish Puwar",
+      pronouns: "He/Him",
+      major: "Computer Engineering",
+      year: "Junior",
+      team: "Food Team",
+    },
+    {
+      name: "John Nguyen",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Junior",
+      team: "Venue Team",
+    },
+    {
+      name: "Maggie Tan",
+      pronouns: "She/Her",
+      major: "Computer Science & Mechanical Engineering",
+      year: "Senior",
+      team: "Venue Team",
+    },
+    {
+      name: "Aditya Mathur",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Senior",
+      team: "Streaming Team",
+    },
+    {
+      name: "Monish Deshmukh",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Junior",
+      team: "Streaming Team",
+    },
+    {
+      name: "Joy Lee",
+      pronouns: "She/Her",
+      major: "Computer Science",
+      year: "Senior",
+      team: "Graphics Team",
+    },
+    {
+      name: "Drew Louie",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Senior",
+      team: "Graphics Team",
+    },
+    {
+      name: "Andrew Collado",
+      pronouns: "He/Him",
+      major: "Computer Engineering",
+      year: "Junior",
+      team: "Sponsorship Team",
+    },
+    {
+      name: "Sujal Bhakare",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Sophomore",
+      team: "Sponsorship Team",
+    },
+    {
+      name: "Christo Abraham",
+      pronouns: "He/Him",
+      major: "Psychology and Biomedical Science",
+      year: "Senior",
+      team: "Media Team",
+    },
+    {
+      name: "Timothy Kong",
+      pronouns: "He/Him",
+      title: "Machine Learning Engineer",
+      status: "Graduate",
+      team: "Advisors",
+    },
+    {
+      name: "Addison Yam",
+      pronouns: "He/Him",
+      major: "Bioinformatics and Computational Biology",
+      year: "Senior",
+      team: "Directors",
+    },
+    {
+      name: "Yazgi Akata",
+      pronouns: "She/Her",
+      major: "Computer Science",
+      year: "Junior",
+      team: "Directors",
+    },
+  ];
 </script>
 
 <svelte:head>
@@ -223,35 +161,41 @@
 <section id="teams" class="py-14">
   <h2 class="text-4xl font-semibold text-center mb-8">Meet the Organizers</h2>
 
-  {#each Object.entries(teams) as [teamName, members]}
-    <section class="py-8">
-      <h3 class="text-3xl font-semibold text-center mb-4 capitalize">
+  <section class="py-8">
+    <div class="grid grid-cols-4 gap-12 px-24">
+      {#each Object.values(members) as member}
+        <!-- <h3 class="text-3xl font-semibold text-center mb-4 capitalize">
         {teamName.replace(/([A-Z])/g, " $1")}
-      </h3>
-      <div class="grid grid-cols-3 gap-12 px-24">
-        {#each members as member}
-          <div class="flex flex-col items-center">
-            <img
-              src={member.image}
-              alt={member.name}
-              class="w-36 h-36 rounded-full mb-2"
-            />
-            <h3 class="text-xl font-semibold mb-1">{member.name}</h3>
-            <p class="text-sm text-center mb-2">{member.description}</p>
-            <div class="flex gap-4">
+      </h3> -->
+        <div class="flex flex-col items-center">
+          <img
+            src={member.image ?? "https://placehold.co/400"}
+            alt={member.name}
+            class="w-36 h-36 rounded-full mb-2"
+          />
+          <h3 class="text-xl font-semibold mb-1">{member.name}</h3>
+          <p class="text-sm text-center mb-1">{member.pronouns}</p>
+          <p class="text-sm text-center mb-1">{member.team}</p>
+          <!-- <p class="text-sm text-center mb-2">{member.description}</p> -->
+          <div class="flex gap-4">
+            {#if member.github}
               <a href={member.github} aria-label="GitHub">
                 <GithubIcon size={30} />
               </a>
+            {/if}
+            {#if member.linkedin}
               <a href={member.linkedin} aria-label="LinkedIn">
                 <LinkedinIcon size={30} />
               </a>
-              <a href={member.website} aria-label="Website">
+            {/if}
+            {#if member.site}
+              <a href={member.site} aria-label="Website">
                 <GlobeIcon size={30} />
               </a>
-            </div>
+            {/if}
           </div>
-        {/each}
-      </div>
-    </section>
-  {/each}
+        </div>
+      {/each}
+    </div>
+  </section>
 </section>
