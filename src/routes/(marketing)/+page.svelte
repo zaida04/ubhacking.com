@@ -147,7 +147,7 @@
 
 <section
   id="description"
-  class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-20 py-16 md:py-36 px-4 md:px-0"
+  class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-20 py-16 md:pt-36 md:pb-16 px-4 md:px-0"
 >
   <div id="left-side">
     <h1
@@ -172,6 +172,16 @@
     />
   </div>
 </section>
+
+<div class="mb-16 flex justify-center">
+  <iframe
+    allowfullscreen
+    title="UB Hacking Fall 2023 Promo Video"
+    src="https://www.youtube.com/embed/JBqPOs6LOA8?si=Y1QD1jT0ZKQfMHRc"
+    class="w-full h-[300px] md:w-[1000px] md:h-[400px] p-8"
+    frameborder="0"
+  ></iframe>
+</div>
 
 <section id="faq" class="py-14 px-4 md:px-28">
   <h2 class="text-5xl font-semibold text-center mb-8">Questions & Answers</h2>
