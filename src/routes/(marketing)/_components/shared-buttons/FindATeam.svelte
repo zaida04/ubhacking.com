@@ -4,7 +4,7 @@
 </script>
 
 <!-- <a href="/team-finder"> -->
-<Tooltip.Root openDelay={100}>
+<Tooltip.Root openDelay={100} closeDelay={10}>
   <Tooltip.Trigger>
     <Button variant="outline" disabled>Find a team</Button>
   </Tooltip.Trigger>

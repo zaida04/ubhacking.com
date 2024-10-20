@@ -92,6 +92,27 @@
         <FindATeam />
         <ApplyNow />
       </div>
+
+      <div class="flex flex-col mt-8">
+        <a
+          href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFURVcxTFRBNU9MQlpWMEVNODdVVjZNWDBHVS4u"
+          class="underline"
+        >
+          Want to become a judge?
+        </a>
+        <a
+          href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFUN0c0WEU0QTI0MzdSTkdSQ1JPUEExNzEzNy4u"
+          class="underline"
+        >
+          Want to become a mentor?
+        </a>
+        <a
+          href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFUNDVXWVdQN0VMM1ZaMVZXMFRMVEpLV1ZMQi4u"
+          class="underline"
+        >
+          Want to become a volunteer?
+        </a>
+      </div>
     </div>
   </div>
 
