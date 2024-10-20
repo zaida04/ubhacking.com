@@ -21,15 +21,15 @@
       <ul class="space-y-2">
         <li><a href="/" class="text-gray-600 hover:text-gray-900">Home</a></li>
         <li>
-          <a href="#description" class="text-gray-600 hover:text-gray-900"
+          <a href="/#description" class="text-gray-600 hover:text-gray-900"
             >About</a
           >
         </li>
         <li>
-          <a href="#faq" class="text-gray-600 hover:text-gray-900">FAQ</a>
+          <a href="/#faq" class="text-gray-600 hover:text-gray-900">FAQ</a>
         </li>
         <li>
-          <a href="#sponsors" class="text-gray-600 hover:text-gray-900"
+          <a href="/#sponsors" class="text-gray-600 hover:text-gray-900"
             >Sponsors</a
           >
         </li>

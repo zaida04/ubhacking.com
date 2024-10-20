@@ -119,23 +119,31 @@
       <a
         href="/"
         class="text-gray-800 hover:text-gray-600"
-        on:click={toggleMenu}>Home</a
+        on:click={toggleMenu}
       >
+        <p>Home</p>
+      </a>
       <a
         href="/#faq"
         class="text-gray-800 hover:text-gray-600"
-        on:click={toggleMenu}>FAQ</a
+        on:click={toggleMenu}
       >
+        <p>FAQ</p>
+      </a>
       <a
         href="/#sponsors"
         class="text-gray-800 hover:text-gray-600"
-        on:click={toggleMenu}>Sponsors</a
+        on:click={toggleMenu}
       >
+        <p>Sponsors</p>
+      </a>
       <a
         href="/organizers"
         class="text-gray-800 hover:text-gray-600"
-        on:click={toggleMenu}>Our Team</a
+        on:click={toggleMenu}
       >
+        <p>Our Team</p>
+      </a>
       <!-- <FindATeam /> -->
       <ApplyNow />
       {#if isLoggedIn}
