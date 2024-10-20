@@ -4,12 +4,12 @@
 
 <div class="congrats-container">
   <div class="congrats-message">
-    <div class="text-4xl font-bold">Congrats!</div>
-    <div class="text-xl mt-4">You are now one step closer to UB Hacking!</div>
-    <div class="text-sm mt-4">
+    <h1 class="text-5xl font-bold">Congrats!</h1>
+    <h2 class="text-2xl mt-4">You are now one step closer to UB Hacking!</h2>
+    <p class="text-xl mt-4">
       We'll reach out to you when things are ready. Keep an eye out in your
       email and for texts.
-    </div>
+    </p>
   </div>
 
   <!-- Confetti elements -->

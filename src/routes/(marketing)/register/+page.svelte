@@ -114,7 +114,7 @@
           <MenuInput
             id="gender"
             required
-            label="Gender"
+            label="Pronouns / Gender"
             type="text"
             name="gender"
             bind:value={$form.gender}

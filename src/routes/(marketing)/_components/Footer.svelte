@@ -94,13 +94,14 @@
     </div>
   </div>
 
-  <div
-    class="mt-8 pt-8 border-t border-gray-200 text-center text-sm text-gray-600"
-  >
-    <p>
-      &copy; {new Date().getFullYear()} UB Hacking. Built with ❤️ by
+  <div class="mt-8 pt-8 border-t border-gray-200 text-center text-sm">
+    <p class="text-black font-bold">
+      UB Hacking {new Date().getFullYear()}<br />
+      Built with ❤️ by
       <a href="https://nico.engineer/" class="underline">Zaid Arshad</a>
-      & <a href="github.com/p5quared" class="underline">Peter Vaiciulis</a>
+      &
+      <a href="https://github.com/p5quared" class="underline">Peter Vaiciulis</a
+      >
     </p>
   </div>
 </footer>
