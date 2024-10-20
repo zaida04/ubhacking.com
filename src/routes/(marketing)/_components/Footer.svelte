@@ -33,11 +33,11 @@
             >Sponsors</a
           >
         </li>
-        <li>
+        <!-- <li>
           <a href="/schedule" class="text-gray-600 hover:text-gray-900"
             >Schedule</a
           >
-        </li>
+        </li> -->
       </ul>
     </div>
 
@@ -55,8 +55,9 @@
           >
         </li>
         <li>
-          <a href="/code-of-conduct" class="text-gray-600 hover:text-gray-900"
-            >Code of Conduct</a
+          <a
+            href="/code-of-conduct.pdf"
+            class="text-gray-600 hover:text-gray-900">Code of Conduct</a
           >
         </li>
       </ul>

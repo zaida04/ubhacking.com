@@ -90,7 +90,7 @@
   <div id="right-side">
     <iframe
       title="UB Hacking Fall 2024 Schedule"
-      src="https://calendar.google.com/calendar/embed?src=af0fd473d7ceebb78a542dc65ce6e16e44e9f91d2af8aafa54d6aa6fd4b4b026%40group.calendar.google.com&ctz=America%2FNew_York"
+      src="https://calendar.google.com/calendar/embed?src=a78972382de284027e5558928d1f61717bcc94ac002e03a95a299f358d56f155%40group.calendar.google.com&ctz=America%2FNew_York"
       style="border: 0"
       width="600"
       height="400"
@@ -122,14 +122,12 @@
   <div id="left-side">
     <h1 class="text-5xl font-semibold mb-4">What is UB Hacking?</h1>
     <p class="w-[45rem]">
-      UB Hacking is a 48 hour hackathon hosted at the University at Buffalo held
-      on November 9th & 10th. We invite people of all experience levels,
-      backgrounds, and abilities to come and spend your weekend with us. Built
-      cool projects, drink red bull, and enjoy the company of your fellow
-      hackers. Throughout the weekend, you will also have the chance to attend
-      workshops hosted by industry professionals and mingle with recruiters from
-      top local companies. We're here to give you the best weekend of your
-      entire semester.
+      UB Hacking is a 48-hour hackathon at the University at Buffalo on November
+      9th & 10th. We welcome participants of all experience levels and
+      backgrounds to build cool projects, enjoy Red Bull, and connect with
+      fellow hackers. <br /><br />Attendees can also join workshops led by
+      industry professionals and network with local company recruiters
+      throughout the weekend.
     </p>
   </div>
   <div id="right-side">

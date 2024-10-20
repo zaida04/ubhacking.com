@@ -33,7 +33,7 @@
 <section
   id="navbar"
   class="flex justify-between w-full py-6 px-10 items-center fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-  style="background: linear-gradient(90deg, #709378, #4E7169, #A7C9AE);
+  style="background: linear-gradient(90deg, rgba(112, 147, 120, 0.8), rgba(78, 113, 105, 0.8), rgba(167, 201, 174, 0.8));
          background-size: 400% 400%;
          animation: gradientAnimation 15s ease infinite;
          backdrop-filter: blur({opacity * 5}px);
