@@ -22,7 +22,7 @@
       class="relative h-8 w-8 rounded-full"
     >
       <Avatar>
-        <AvatarFallback>SC</AvatarFallback>
+        <AvatarFallback>YOU</AvatarFallback>
       </Avatar>
     </Button>
   </DropdownMenuTrigger>
