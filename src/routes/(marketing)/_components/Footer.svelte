@@ -4,7 +4,7 @@
   import TwitchIcon from "lucide-svelte/icons/twitch";
 </script>
 
-<footer class="bg-gray-100 py-12 px-8">
+<footer class="py-12 px-8">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
     <div class="flex flex-col items-start">
       <img

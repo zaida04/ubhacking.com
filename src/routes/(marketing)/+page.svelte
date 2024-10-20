@@ -71,79 +71,78 @@
   />
 </svelte:head>
 
-<section
-  id="hero"
-  class="flex flex-col md:flex-row justify-between py-8 px-4 md:px-24"
->
-  <div id="left-side" class="mb-8 md:mb-0">
-    <div id="eye-grabbers" class="mb-8">
-      <h1 class="text-4xl md:text-8xl font-semibold">Join UB Hacking</h1>
-      <h3 class="text-xl md:text-3xl">November 9th - 10th.</h3>
-    </div>
-
-    <div id="info-and-ctas">
-      <p class="w-full md:w-[40rem] mb-4">
-        UB Hacking is University at Buffalo's annual 48-hour hackathon. <br
-          class="hidden md:inline"
-        />Join us, in a wonderland.
-      </p>
-
-      <div class="flex flex-col items-center sm:flex-row gap-4">
-        <FindATeam />
-        <ApplyNow />
+<section id="hero" class="py-32">
+  <div class="flex flex-col md:flex-row justify-between px-4 py-16 md:px-24">
+    <div id="left-side" class="mb-8 md:mb-0">
+      <div id="eye-grabbers" class="mb-8">
+        <h1 class="text-4xl md:text-8xl font-semibold">Join UB Hacking</h1>
+        <h3 class="text-xl md:text-3xl">November 9th - 10th.</h3>
       </div>
 
-      <div class="flex flex-col mt-8">
-        <a
-          href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFURVcxTFRBNU9MQlpWMEVNODdVVjZNWDBHVS4u"
-          class="underline"
-        >
-          Want to become a judge?
-        </a>
-        <a
-          href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFUN0c0WEU0QTI0MzdSTkdSQ1JPUEExNzEzNy4u"
-          class="underline"
-        >
-          Want to become a mentor?
-        </a>
-        <a
-          href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFUNDVXWVdQN0VMM1ZaMVZXMFRMVEpLV1ZMQi4u"
-          class="underline"
-        >
-          Want to become a volunteer?
-        </a>
+      <div id="info-and-ctas">
+        <p class="w-full md:w-[40rem] text-2xl mb-4">
+          UB Hacking is University at Buffalo's annual 48-hour hackathon. <br
+            class="hidden md:inline"
+          />Join us, in a wonderland.
+        </p>
+
+        <div class="flex flex-col items-center sm:flex-row gap-4">
+          <FindATeam />
+          <ApplyNow />
+        </div>
+
+        <div class="flex flex-col w-fit mt-8">
+          <a
+            href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFURVcxTFRBNU9MQlpWMEVNODdVVjZNWDBHVS4u"
+            class="underline"
+          >
+            Want to become a judge?
+          </a>
+          <a
+            href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFUN0c0WEU0QTI0MzdSTkdSQ1JPUEExNzEzNy4u"
+            class="underline"
+          >
+            Want to become a mentor?
+          </a>
+          <a
+            href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFUNDVXWVdQN0VMM1ZaMVZXMFRMVEpLV1ZMQi4u"
+            class="underline"
+          >
+            Want to become a volunteer?
+          </a>
+        </div>
       </div>
+    </div>
+
+    <div id="right-side" class="w-full md:w-auto">
+      <iframe
+        title="UB Hacking Fall 2024 Schedule"
+        src="https://calendar.google.com/calendar/embed?src=a78972382de284027e5558928d1f61717bcc94ac002e03a95a299f358d56f155%40group.calendar.google.com&ctz=America%2FNew_York"
+        style="border: 0"
+        class="w-full h-[300px] md:w-[600px] md:h-[400px]"
+        frameborder="0"
+        scrolling="no"
+      ></iframe>
     </div>
   </div>
 
-  <div id="right-side" class="w-full md:w-auto">
-    <iframe
-      title="UB Hacking Fall 2024 Schedule"
-      src="https://calendar.google.com/calendar/embed?src=a78972382de284027e5558928d1f61717bcc94ac002e03a95a299f358d56f155%40group.calendar.google.com&ctz=America%2FNew_York"
-      style="border: 0"
-      class="w-full h-[300px] md:w-[600px] md:h-[400px]"
-      frameborder="0"
-      scrolling="no"
-    ></iframe>
-  </div>
-</section>
-
-<section id="social-media" class="w-full flex flex-col items-center py-8">
-  <h2 class="text-2xl mb-4 text-center">Follow us for updates</h2>
-  <div class="flex flex-wrap justify-center gap-8 md:gap-16 w-fit">
-    <a href="https://www.instagram.com/ubhacking/?hl=en">
-      <InstagramIcon size={40} class="md:w-[60px] md:h-[60px]" />
-    </a>
-    <a href="https://www.linkedin.com/company/ubhacking">
-      <LinkedinIcon size={40} class="md:w-[60px] md:h-[60px]" />
-    </a>
-    <a href="https://ub-hacking-fall-2023.devpost.com/" class="my-auto">
-      <p class="font-bold text-xl md:text-2xl">Devpost</p>
-    </a>
-    <a href="https://www.twitch.tv/ubhacking">
-      <TwitchIcon size={40} class="md:w-[60px] md:h-[60px]" />
-    </a>
-  </div>
+  <section id="social-media" class="w-full flex flex-col items-center py-12">
+    <h2 class="text-4xl sm:text-7xl mb-4 text-center">Follow us for updates</h2>
+    <div class="flex flex-wrap justify-center gap-8 md:gap-16 w-fit">
+      <a href="https://www.instagram.com/ubhacking/?hl=en">
+        <InstagramIcon size={40} class="md:w-[60px] md:h-[60px]" />
+      </a>
+      <a href="https://www.linkedin.com/company/ubhacking">
+        <LinkedinIcon size={40} class="md:w-[60px] md:h-[60px]" />
+      </a>
+      <a href="https://ub-hacking-fall-2023.devpost.com/" class="my-auto">
+        <p class="font-bold text-xl md:text-2xl">Devpost</p>
+      </a>
+      <a href="https://www.twitch.tv/ubhacking">
+        <TwitchIcon size={40} class="md:w-[60px] md:h-[60px]" />
+      </a>
+    </div>
+  </section>
 </section>
 
 <section
@@ -180,7 +179,7 @@
     <Accordion.Root id="left">
       {#each leftFaq as { title, content }}
         <Accordion.Item value={title}>
-          <Accordion.Trigger>{title}</Accordion.Trigger>
+          <Accordion.Trigger><p>{title}</p></Accordion.Trigger>
           <Accordion.Content>{content}</Accordion.Content>
         </Accordion.Item>
       {/each}
@@ -188,7 +187,7 @@
     <Accordion.Root id="right">
       {#each rightFaq as { title, content }}
         <Accordion.Item value={title}>
-          <Accordion.Trigger>{title}</Accordion.Trigger>
+          <Accordion.Trigger><p>{title}</p></Accordion.Trigger>
           <Accordion.Content>{content}</Accordion.Content>
         </Accordion.Item>
       {/each}
@@ -218,10 +217,77 @@
 </section>
 
 <section
-  class="flex flex-col md:flex-row justify-between items-center px-4 md:px-16 py-8 mt-8 bg-gray-200"
+  class="flex flex-col md:flex-row justify-between items-center px-4 md:px-16 py-8 mt-8"
+  style="background: linear-gradient(90deg, rgba(108, 143, 117, 0.9), rgba(77, 113, 105, 0.9), rgba(150, 201, 174, 0.9));"
 >
-  <h3 class="text-2xl md:text-3xl text-center md:text-left mb-4 md:mb-0">
+  <h3
+    class="text-2xl md:text-3xl text-center md:text-left mb-4 md:mb-0 text-white"
+  >
     Down 2 Hack? Join the fun, no pressure.
   </h3>
   <ApplyNow />
 </section>
+
+<style>
+  :global(body) {
+    background: linear-gradient(
+      90deg,
+      rgba(112, 147, 120, 0.8),
+      rgba(78, 113, 105, 0.8),
+      rgba(167, 201, 174, 0.8)
+    );
+  }
+
+  #hero {
+    background: url("/main-bg-2.png");
+    margin-top: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    opacity: 0.8;
+  }
+
+  #hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(20px);
+    opacity: 0.6;
+    z-index: -1;
+  }
+
+  /* #hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(112, 147, 120, 0.6) 50%,
+      rgba(112, 147, 120, 1) 100%
+    );
+    z-index: 0;
+  } */
+
+  :global(body::before) {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(20px);
+    opacity: 0.6;
+    z-index: -1;
+    pointer-events: none;
+  }
+</style>

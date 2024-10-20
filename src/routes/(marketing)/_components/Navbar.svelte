@@ -40,10 +40,8 @@
 <section
   id="navbar"
   class="flex justify-between w-full py-4 md:py-6 px-4 md:px-10 items-center fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-  style="background: linear-gradient(90deg, rgba(112, 147, 120, 0.8), rgba(78, 113, 105, 0.8), rgba(167, 201, 174, 0.8));
-         background-size: 400% 400%;
+  style="background: linear-gradient(90deg, rgba(134, 177, 144, 0.9), rgba(94, 136, 126, 0.5), rgba(201, 243, 209, 0.8));
          animation: gradientAnimation 15s ease infinite;
-         backdrop-filter: blur({opacity * 5}px);
          box-shadow: 0 2px 4px rgba(0, 0, 0, {shadowOpacity});"
 >
   <div class="flex items-center">

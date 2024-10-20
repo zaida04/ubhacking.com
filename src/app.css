@@ -104,7 +104,7 @@
   }
 
   p {
-    @apply text-xl;
+    @apply text-2xl;
     font-family: "dreams", sans-serif;
   }
 }
