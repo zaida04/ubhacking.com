@@ -23,7 +23,7 @@
 <div class="app">
   <Navbar isLoggedIn={!!session?.user} />
 
-  <main class="mt-[90px]">
+  <main class="mt-[80px]">
     <slot />
   </main>
 

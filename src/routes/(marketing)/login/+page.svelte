@@ -1,6 +1,7 @@
 <script lang="ts">
   import GithubIcon from "lucide-svelte/icons/github";
   import LinkedinIcon from "lucide-svelte/icons/linkedin";
+  import DiscordIcon from "lucide-svelte/icons/tablet";
 
   export let data;
   let { supabase } = data;
@@ -12,7 +13,7 @@
       <h1 class="text-2xl font-bold text-center mb-2">Login</h1>
       <p class="text-center text-gray-600 mb-6">Login with an OAuth provider</p>
 
-      <div class="mt-4 flex gap-4">
+      <div class="mt-4 flex flex-col gap-1">
         <button
           class="w-full bg-gray-100 border border-gray-300 text-gray-700 py-2 px-4 rounded-md flex items-center justify-center"
           on:click={async () => {
@@ -24,7 +25,7 @@
             });
           }}
         >
-          <GithubIcon class="mr-2 h-4 w-4" />
+          <GithubIcon class="mr-2 h-6 w-6" />
           GitHub
         </button>
         <button
@@ -38,8 +39,22 @@
             });
           }}
         >
-          <LinkedinIcon class="mr-2 h-4 w-4" />
+          <LinkedinIcon class="mr-2 h-6 w-6" />
           Linkedin
+        </button>
+        <button
+          class="w-full bg-gray-100 border border-gray-300 text-gray-700 py-2 px-4 rounded-md flex items-center justify-center"
+          on:click={async () => {
+            await supabase.auth.signInWithOAuth({
+              provider: "discord",
+              options: {
+                redirectTo: `${window.location.origin}`,
+              },
+            });
+          }}
+        >
+          <DiscordIcon class="mr-2 h-6 w-6" />
+          Discord
         </button>
       </div>
     </div>
@@ -52,3 +67,9 @@
     </div>
   </div>
 </div>
+
+<style>
+  button {
+    @apply text-xl font-semibold font-sans;
+  }
+</style>
