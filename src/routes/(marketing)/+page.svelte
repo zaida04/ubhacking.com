@@ -67,33 +67,36 @@
   />
 </svelte:head>
 
-<section id="hero" class="flex justify-between py-8 px-24">
-  <div id="left-side">
+<section
+  id="hero"
+  class="flex flex-col md:flex-row justify-between py-8 px-4 md:px-24"
+>
+  <div id="left-side" class="mb-8 md:mb-0">
     <div id="eye-grabbers" class="mb-8">
-      <h1 class="text-8xl font-semibold">Join UB Hacking</h1>
-      <h3 class="text-3xl">November 9th - 10th.</h3>
+      <h1 class="text-4xl md:text-8xl font-semibold">Join UB Hacking</h1>
+      <h3 class="text-xl md:text-3xl">November 9th - 10th.</h3>
     </div>
 
     <div id="info-and-ctas">
-      <p class="w-[40rem] mb-4">
+      <p class="w-full md:w-[40rem] mb-4">
         UB Hacking is University at Buffalo's annual 48-hour hackathon. <br
+          class="hidden md:inline"
         />Join us, in a wonderland.
       </p>
 
-      <div class="flex gap-4">
+      <div class="flex flex-col items-center sm:flex-row gap-4">
         <FindATeam />
         <ApplyNow />
       </div>
     </div>
   </div>
 
-  <div id="right-side">
+  <div id="right-side" class="w-full md:w-auto">
     <iframe
       title="UB Hacking Fall 2024 Schedule"
       src="https://calendar.google.com/calendar/embed?src=a78972382de284027e5558928d1f61717bcc94ac002e03a95a299f358d56f155%40group.calendar.google.com&ctz=America%2FNew_York"
       style="border: 0"
-      width="600"
-      height="400"
+      class="w-full h-[300px] md:w-[600px] md:h-[400px]"
       frameborder="0"
       scrolling="no"
     ></iframe>
@@ -101,27 +104,34 @@
 </section>
 
 <section id="social-media" class="w-full flex flex-col items-center py-8">
-  <h2 class="text-2xl mb-4">Follow us for updates</h2>
-  <div class="flex gap-16 w-fit">
+  <h2 class="text-2xl mb-4 text-center">Follow us for updates</h2>
+  <div class="flex flex-wrap justify-center gap-8 md:gap-16 w-fit">
     <a href="https://www.instagram.com/ubhacking/?hl=en">
-      <InstagramIcon size={60} />
+      <InstagramIcon size={40} class="md:w-[60px] md:h-[60px]" />
     </a>
     <a href="https://www.linkedin.com/company/ubhacking">
-      <LinkedinIcon size={60} />
+      <LinkedinIcon size={40} class="md:w-[60px] md:h-[60px]" />
     </a>
     <a href="https://ub-hacking-fall-2023.devpost.com/" class="my-auto">
-      <p class="font-bold text-2xl">Devpost</p>
+      <p class="font-bold text-xl md:text-2xl">Devpost</p>
     </a>
     <a href="https://www.twitch.tv/ubhacking">
-      <TwitchIcon size={60} />
+      <TwitchIcon size={40} class="md:w-[60px] md:h-[60px]" />
     </a>
   </div>
 </section>
 
-<section id="description" class="flex justify-center gap-20 py-36">
+<section
+  id="description"
+  class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-20 py-16 md:py-36 px-4 md:px-0"
+>
   <div id="left-side">
-    <h1 class="text-5xl font-semibold mb-4">What is UB Hacking?</h1>
-    <p class="w-[45rem]">
+    <h1
+      class="text-3xl md:text-5xl font-semibold mb-4 text-center md:text-left"
+    >
+      What is UB Hacking?
+    </h1>
+    <p class="w-full md:w-[45rem] text-center md:text-left">
       UB Hacking is a 48-hour hackathon at the University at Buffalo on November
       9th & 10th. We welcome participants of all experience levels and
       backgrounds to build cool projects, enjoy Red Bull, and connect with
@@ -130,14 +140,18 @@
       throughout the weekend.
     </p>
   </div>
-  <div id="right-side">
-    <img src="/icon.png" alt="UB Hacking Logo" width={240} class="rounded-xl" />
+  <div id="right-side" class="mt-8 md:mt-0">
+    <img
+      src="/icon.png"
+      alt="UB Hacking Logo"
+      class="w-40 md:w-60 rounded-xl mx-auto md:mx-0"
+    />
   </div>
 </section>
 
-<section id="faq" class="py-14">
+<section id="faq" class="py-14 px-4 md:px-28">
   <h2 class="text-2xl font-semibold text-center mb-8">Questions & Answers</h2>
-  <div id="faq" class="grid grid-cols-2 gap-8 px-28">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <Accordion.Root id="left">
       {#each leftFaq as { title, content }}
         <Accordion.Item value={title}>
@@ -157,18 +171,26 @@
   </div>
 </section>
 
-<section id="sponsors" class="flex flex-col items-center py-20">
-  <h2 class="text-4xl font-semibold text-center mb-2">Sponsors</h2>
-  <h3 class="text-xl">These people give us money</h3>
+<section id="sponsors" class="flex flex-col items-center py-20 px-4">
+  <h2 class="text-3xl md:text-4xl font-semibold text-center mb-2">Sponsors</h2>
+  <h3 class="text-lg md:text-xl text-center">These people give us money</h3>
 
-  <div class="grid grid-cols-3 gap-x-16 gap-y-4 mt-8">
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 mt-8">
     {#each sponsorIcons as icon}
-      <img src={icon} alt="Sponsor Logo" class="w-36 h-36 rounded-full" />
+      <img
+        src={icon}
+        alt="Sponsor Logo"
+        class="w-24 h-24 md:w-36 md:h-36 rounded-full mx-auto"
+      />
     {/each}
   </div>
 </section>
 
-<section class="flex justify-between px-16 py-8 mt-8 bg-gray-200">
-  <h3 class="text-3xl">Down 2 Hack? Join the fun, no pressure.</h3>
+<section
+  class="flex flex-col md:flex-row justify-between items-center px-4 md:px-16 py-8 mt-8 bg-gray-200"
+>
+  <h3 class="text-2xl md:text-3xl text-center md:text-left mb-4 md:mb-0">
+    Down 2 Hack? Join the fun, no pressure.
+  </h3>
   <ApplyNow />
 </section>

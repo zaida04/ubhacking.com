@@ -19,7 +19,7 @@
             await supabase.auth.signInWithOAuth({
               provider: "github",
               options: {
-                redirectTo: `${window.location.origin}/register`,
+                redirectTo: `${window.location.origin}`,
               },
             });
           }}
@@ -33,7 +33,7 @@
             await supabase.auth.signInWithOAuth({
               provider: "linkedin_oidc",
               options: {
-                redirectTo: `${window.location.origin}/register`,
+                redirectTo: `${window.location.origin}`,
               },
             });
           }}
