@@ -11,9 +11,9 @@
         src="/icon.png"
         alt="UB Hacking Logo"
         width={80}
-        class="rounded-xl mb-4"
+        class="rounded-xl mb-2"
       />
-      <p class="text-sm text-gray-600 w-[15rem]">UB Hacking</p>
+      <p class="text-xl font-bold text-gray-600 w-[15rem]">UB Hacking</p>
     </div>
 
     <div>
@@ -95,11 +95,13 @@
   </div>
 
   <div class="mt-8 pt-8 border-t border-gray-200 text-center text-sm">
+    <p class="font-sans text-sm font-semibold mb-2">
+      &copy; UB Hacking {new Date().getFullYear()}
+    </p>
     <p class="text-black font-bold">
-      UB Hacking {new Date().getFullYear()}<br />
       Built with ❤️ by
       <a href="https://nico.engineer/" class="underline">Zaid Arshad</a>
-      &
+      and
       <a href="https://github.com/p5quared" class="underline">Peter Vaiciulis</a
       >
     </p>

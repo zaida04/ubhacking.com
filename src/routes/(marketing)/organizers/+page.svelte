@@ -5,12 +5,18 @@
 
   const members = [
     {
-      name: "Peter Vaiciulis",
+      name: "Addison Yam",
       pronouns: "He/Him",
-      major: "Computer Science",
+      major: "Bioinformatics and Computational Biology",
       year: "Senior",
-      team: "Web Team",
-      site: "https://www.peterv.net/",
+      team: "Directors",
+    },
+    {
+      name: "Yazgi Akata",
+      pronouns: "She/Her",
+      major: "Computer Science",
+      year: "Junior",
+      team: "Directors",
     },
     {
       name: "Zaid Arshad",
@@ -23,6 +29,14 @@
       github: "https://github.com/zaida04",
       image:
         "https://media.licdn.com/dms/image/v2/D4E03AQExiW-MbNw7xg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1683789582825?e=1735171200&v=beta&t=mXKNJMJNdOnL6Yy2_xxUC9YhVWjsrHLKl0AsAu-dDlo",
+    },
+    {
+      name: "Peter Vaiciulis",
+      pronouns: "He/Him",
+      major: "Computer Science",
+      year: "Senior",
+      team: "Web Team",
+      site: "https://www.peterv.net/",
     },
     {
       name: "Ananya Gupta",
@@ -135,20 +149,6 @@
       title: "Machine Learning Engineer",
       status: "Graduate",
       team: "Advisors",
-    },
-    {
-      name: "Addison Yam",
-      pronouns: "He/Him",
-      major: "Bioinformatics and Computational Biology",
-      year: "Senior",
-      team: "Directors",
-    },
-    {
-      name: "Yazgi Akata",
-      pronouns: "She/Her",
-      major: "Computer Science",
-      year: "Junior",
-      team: "Directors",
     },
   ];
 </script>

@@ -54,9 +54,13 @@
   ];
   const leftFaq = faq.slice(0, Math.ceil(faq.length / 2));
   const rightFaq = faq.slice(Math.ceil(faq.length / 2));
-  const sponsorIcons = Array(9).fill(
-    "https://i.pinimg.com/originals/57/19/48/571948082e5351149c1772781a4cf4be.jpg"
-  );
+  const sponsorIcons = [
+    // logo file name, company url, height, scale (used for width to maintain aspect ratio)
+    ["a2k.png", "https://www.advance2000.com/", 150, 5.21],
+    ["mtb.png", "https://www.mtb.com/", 400, 2.5],
+    ["northtown.png", "https://www.northtownauto.com/", 300, 3.28],
+    ["sift.png", "https://www.siftstack.com/", 400, 2.29],
+  ] as const;
 </script>
 
 <svelte:head>
@@ -150,7 +154,7 @@
 </section>
 
 <section id="faq" class="py-14 px-4 md:px-28">
-  <h2 class="text-2xl font-semibold text-center mb-8">Questions & Answers</h2>
+  <h2 class="text-5xl font-semibold text-center mb-8">Questions & Answers</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <Accordion.Root id="left">
       {#each leftFaq as { title, content }}
@@ -172,17 +176,23 @@
 </section>
 
 <section id="sponsors" class="flex flex-col items-center py-20 px-4">
-  <h2 class="text-3xl md:text-4xl font-semibold text-center mb-2">Sponsors</h2>
-  <h3 class="text-lg md:text-xl text-center">These people give us money</h3>
+  <h2 class="text-4xl md:text-5xl font-semibold text-center mb-2">Sponsors</h2>
+  <h3 class="text-lg md:text-xl text-center">
+    We are grateful to all the companies who help support the hackathon.
+  </h3>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 mt-8">
-    {#each sponsorIcons as icon}
-      <img
-        src={icon}
-        alt="Sponsor Logo"
-        class="w-24 h-24 md:w-36 md:h-36 rounded-full mx-auto"
-      />
+  <div class="flex flex-col items-center mt-8">
+    {#each sponsorIcons as [logoFileName, url, height, scale]}
+      <a href={url}>
+        <img
+          src={`/sponsors/${logoFileName}`}
+          {height}
+          width={(height * scale) / 2}
+          alt="Sponsor Logo"
+        />
+      </a>
     {/each}
+    <!-- class="w-24 h-24 md:w-36 md:h-36 rounded-full mx-auto" -->
   </div>
 </section>
 
