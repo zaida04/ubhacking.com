@@ -176,7 +176,7 @@
 </section>
 
 <section id="sponsors" class="flex flex-col items-center py-20 px-4">
-  <h2 class="text-4xl md:text-5xl font-semibold text-center mb-2">Sponsors</h2>
+  <h2 class="text-5xl font-semibold text-center mb-2">Sponsors</h2>
   <h3 class="text-lg md:text-xl text-center">
     We are grateful to all the companies who help support the hackathon.
   </h3>
