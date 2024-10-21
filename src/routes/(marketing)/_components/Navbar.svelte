@@ -3,7 +3,8 @@
   import FindATeam from "./shared-buttons/FindATeam.svelte";
   import { Button } from "../../../shared-components/button";
   import Avatar from "./avatar.svelte";
-  import { MenuIcon, XIcon } from "lucide-svelte";
+  import MenuIcon from "lucide-svelte/icons/menu";
+  import XIcon from "lucide-svelte/icons/x";
   import ApplyNow from "./shared-buttons/ApplyNow.svelte";
 
   export let isLoggedIn: boolean;

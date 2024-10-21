@@ -2,6 +2,7 @@
   import InstagramIcon from "lucide-svelte/icons/instagram";
   import LinkedinIcon from "lucide-svelte/icons/linkedin";
   import TwitchIcon from "lucide-svelte/icons/twitch";
+  import GithubIcon from "lucide-svelte/icons/github";
 </script>
 
 <footer class="py-12 px-8">
@@ -73,11 +74,18 @@
           <InstagramIcon size={24} />
         </a>
         <a
+          href="https://github.com/zaida04/ubhacking-fa24"
+          class="text-gray-600 hover:text-gray-900"
+        >
+          <GithubIcon size={24} />
+        </a>
+        <a
           href="https://www.linkedin.com/company/ubhacking"
           class="text-gray-600 hover:text-gray-900"
         >
           <LinkedinIcon size={24} />
         </a>
+
         <a
           href="https://www.twitch.tv/ubhacking"
           class="text-gray-600 hover:text-gray-900"
