@@ -127,7 +127,7 @@
             href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFUNDVXWVdQN0VMM1ZaMVZXMFRMVEpLV1ZMQi4u"
             class="underline"
           >
-            Want to become a host?
+            Want to become a workshop host?
           </a>
         </div>
       </div>
