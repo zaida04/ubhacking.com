@@ -14,8 +14,8 @@ export const registerUserSchema = z.object({
   // Education
   schoolName: z.string().min(2),
   schoolMajor: z.string().min(2).optional(),
-  levelOfStudy: z.string(),
-  graduationYear: z.string(),
+  levelOfStudy: z.string().optional(),
+  graduationYear: z.string().optional(),
 
   // Shipping
   address1: z.string().optional(),

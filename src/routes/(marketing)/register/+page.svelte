@@ -19,8 +19,6 @@
     return { value: year, label: year.toString() };
   });
 
-  console.log($errors);
-
   const shirtSizeOptions = [
     { value: "XS", label: "XS" },
     { value: "S", label: "S" },
@@ -170,7 +168,6 @@
             id="levelOfStudy"
             name="levelOfStudy"
             label="Level of Study"
-            required={true}
             options={levelOfStudy.map((option) => ({
               value: option.value,
               label: option.label,
@@ -184,7 +181,6 @@
             id="graduationYear"
             name="graduationYear"
             label="Graduation Year"
-            required={true}
             options={graduationYearOptions}
             bind:value={$form.graduationYear}
             error={$errors.graduationYear}
