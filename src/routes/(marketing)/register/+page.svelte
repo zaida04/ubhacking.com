@@ -24,9 +24,9 @@
   let files: FileList;
 
   $: {
-	if (files) {
-			$form.resume = files[0]
-	}
+    if (files) {
+      $form.resume = files[0];
+    }
   }
 
   const shirtSizeOptions = [
@@ -63,11 +63,25 @@
   >
     <h1 class="text-2xl text-center font-serif">UB Hacking Application</h1>
 
+    {#if data.existingSubmission}
+      <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-4">
+        <p class="text-yellow-700">
+          You have already submitted an application for UB Hacking. If you
+          submit this form again, your old responses will be discarded.
+        </p>
+      </div>
+    {/if}
+
     <p class="text-center text-lg text-gray-600 italic font-serif mb-6">
       Please fill out the form below to apply for UB Hacking
     </p>
 
-    <form class="space-y-6" method="POST" enctype="multipart/form-data" use:enhance>
+    <form
+      class="space-y-6"
+      method="POST"
+      enctype="multipart/form-data"
+      use:enhance
+    >
       <FormSection title="Personal Information">
         <div class="space-y-2">
           <MenuInput
@@ -367,91 +381,92 @@
           />
           <Form.Error error={$errors.whyAttend} />
         </div>
-		<div class="space-y-2">
-				<MenuInput
-					id="resume"
-					label="Resume (PDF)"
-					type="file"
-					name="resume"
-					bind:files
-				/>
-				<Form.Error error={$errors.resume} />
-        <hr />
-        <div class="flex items-center space-x-2">
-          <Checkbox
-            id="codeOfConductUBHacking"
-            name="codeOfConductUBHacking"
-            required
-            bind:checked={$form.codeOfConductUBHacking}
+        <div class="space-y-2">
+          <MenuInput
+            id="resume"
+            label="Resume (PDF)"
+            type="file"
+            name="resume"
+            bind:files
           />
-          <Label for="codeOfConductUBHacking" class="text-sm font-medium">
-            I agree to the UB Hacking Code of Conduct
-          </Label>
-        </div>
-        <div class="flex items-center space-x-2">
-          <Checkbox
-            id="codeOfConductMLH"
-            name="codeOfConductMLH"
-            required
-            bind:checked={$form.codeOfConductMLH}
-          />
-          <Label for="codeOfConductMLH" class="text-sm font-medium">
-            I have read and agree to the
-            <a
-              class="font-sans text-green-700"
-              href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
-            >
-              MLH Code of Conduct
-            </a>.
-          </Label>
-        </div>
-        <div class="flex items-center space-x-2">
-          <Checkbox
-            id="dataSharingMLH"
-            name="dataSharingMLH"
-            required
-            bind:checked={$form.dataSharingMLH}
-          />
-          <Label for="dataSharingMLH" class="text-sm font-medium">
-            I authorize you to share my application/registration information
-            with Major League Hacking for event administration, ranking, and MLH
-            administration in-line with the{" "}
-            <a
-              class="font-sans text-green-700"
-              href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
-            >
-              MLH Privacy Policy
-            </a>
-            . I further agree to the terms of both the{" "}
-            <a
-              class="font-sans text-green-700"
-              href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
-            >
-              MLH Contest Terms and Conditions
-            </a>
-            {" "}and the{" "}
-            <a
-              class="font-sans text-green-700"
-              href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
-            >
-              MLH Privacy Policy
-            </a>
-            .
-          </Label>
-        </div>
-        <div class="flex items-center space-x-2">
-          <Checkbox
-            id="communicationMLH"
-            name="communicationMLH"
-            required
-            bind:checked={$form.communicationMLH}
-          />
-          <Label for="communicationMLH" class="text-sm font-medium">
-            I authorize MLH to send me occasional emails about relevant events,
-            career opportunities, and community announcements.
-          </Label>
-        </div>
-      </FormSection>
+          <Form.Error error={$errors.resume} />
+          <hr />
+          <div class="flex items-center space-x-2">
+            <Checkbox
+              id="codeOfConductUBHacking"
+              name="codeOfConductUBHacking"
+              required
+              bind:checked={$form.codeOfConductUBHacking}
+            />
+            <Label for="codeOfConductUBHacking" class="text-sm font-medium">
+              I agree to the UB Hacking Code of Conduct
+            </Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <Checkbox
+              id="codeOfConductMLH"
+              name="codeOfConductMLH"
+              required
+              bind:checked={$form.codeOfConductMLH}
+            />
+            <Label for="codeOfConductMLH" class="text-sm font-medium">
+              I have read and agree to the
+              <a
+                class="font-sans text-green-700"
+                href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
+              >
+                MLH Code of Conduct
+              </a>.
+            </Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <Checkbox
+              id="dataSharingMLH"
+              name="dataSharingMLH"
+              required
+              bind:checked={$form.dataSharingMLH}
+            />
+            <Label for="dataSharingMLH" class="text-sm font-medium">
+              I authorize you to share my application/registration information
+              with Major League Hacking for event administration, ranking, and
+              MLH administration in-line with the{" "}
+              <a
+                class="font-sans text-green-700"
+                href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
+              >
+                MLH Privacy Policy
+              </a>
+              . I further agree to the terms of both the{" "}
+              <a
+                class="font-sans text-green-700"
+                href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
+              >
+                MLH Contest Terms and Conditions
+              </a>
+              {" "}and the{" "}
+              <a
+                class="font-sans text-green-700"
+                href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
+              >
+                MLH Privacy Policy
+              </a>
+              .
+            </Label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <Checkbox
+              id="communicationMLH"
+              name="communicationMLH"
+              required
+              bind:checked={$form.communicationMLH}
+            />
+            <Label for="communicationMLH" class="text-sm font-medium">
+              I authorize MLH to send me occasional emails about relevant
+              events, career opportunities, and community announcements.
+            </Label>
+          </div>
+        </div></FormSection
+      >
 
       <!-- Submit Button -->
       <div class="pt-4">
