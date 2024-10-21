@@ -338,15 +338,61 @@
             id="codeOfConductUBHacking"
             name="codeOfConductUBHacking"
             required
-            onCheckedChange={(e) =>
-              ($form.codeOfConductUBHacking =
-                e === "indeterminate" ? false : e)}
-            checked={$form.codeOfConductUBHacking}
+            bind:checked={$form.codeOfConductUBHacking}
           />
           <Label for="codeOfConductUBHacking" class="text-sm font-medium">
             I agree to the UB Hacking Code of Conduct
           </Label>
         </div>
+        <div class="flex items-center space-x-2">
+          <Checkbox
+            id="codeOfConductMLH"
+            name="codeOfConductMLH"
+            required
+            bind:checked={$form.codeOfConductMLH}
+          />
+          <Label for="codeOfConductMLH" class="text-sm font-medium">
+            I have read and agree to the 
+			<a class="font-sans text-green-700"
+			href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md">
+			MLH Code of Conduct
+			</a>.
+          </Label>
+        </div>
+		<div class="flex items-center space-x-2">
+		  <Checkbox
+			id="dataSharingMLH"
+			name="dataSharingMLH"
+			required
+			bind:checked={$form.dataSharingMLH}
+		  />
+		  <Label for="dataSharingMLH" class="text-sm font-medium">
+			I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the{' '}
+			<a class="font-sans text-green-700" href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md">
+			  MLH Privacy Policy
+			</a>
+			. I further agree to the terms of both the{' '}
+			<a class="font-sans text-green-700" href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md">
+			  MLH Contest Terms and Conditions
+			</a>
+			{' '}and the{' '}
+			<a class="font-sans text-green-700" href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md">
+			  MLH Privacy Policy
+			</a>
+			.
+		  </Label>
+		</div>
+		<div class="flex items-center space-x-2">
+		  <Checkbox
+			id="communicationMLH"
+			name="communicationMLH"
+			required
+			bind:checked={$form.communicationMLH}
+		  />
+		  <Label for="communicationMLH" class="text-sm font-medium">
+			I authorize MLH to send me occasional emails about relevant events, career opportunities, and community announcements.
+		  </Label>
+		</div>
       </FormSection>
 
       <!-- Submit Button -->
