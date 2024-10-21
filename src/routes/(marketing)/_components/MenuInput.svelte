@@ -1,7 +1,8 @@
 <script lang="ts">
+  type InputType = "text" | "password" | "checkbox" | "email" | "select" | "date" | "number";
   export let label = "";
   export let id = "";
-  export let type = "text";
+  export let type: InputType = "text";
   export let name = "";
   export let value = "";
   export let error: string | string[] | undefined = "";
@@ -66,7 +67,7 @@
       {id}
       {name}
       bind:value
-      class="ml-2 rounded-sm bg-gray-50 border-gray-400 border p-2 font-serif"
+      class="ml-2 rounded-sm bg-gray-50 border-gray-400 border p-2 font-serif w-36"
     >
       {#each options as option}
         <option value={option.value}>{option.label}</option>
