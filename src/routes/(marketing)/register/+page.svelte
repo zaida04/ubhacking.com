@@ -8,6 +8,7 @@
   import MenuInput from "../_components/MenuInput.svelte";
   import FormSection from "../_components/FormSection.svelte";
     import { schools } from "./schools";
+    import { countries } from "./countries";
 
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form, {
@@ -141,9 +142,13 @@
           <MenuInput
             id="country"
             label="Country"
-            type="text"
+            type="select"
             name="country"
             bind:value={$form.country}
+			options={countries.map((name) => ({
+					value: name,
+					label: name
+			}))}
           />
           <Form.Error error={$errors.country} />
         </div>
