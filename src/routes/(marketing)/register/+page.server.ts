@@ -47,13 +47,13 @@ export const actions: Actions = {
 			// upload resume
 			const file = form.data.resume
 			if (file) {
-			  const { data, error } = await supabase.storage
-			  .from('resume')
-			  .upload(`${formData.name_first}_${formData.name_last}.pdf`, file)
-				  if (error) {
-					  throw error;
-				  }
-				  formData.resume_url = data.fullPath
+				const { data, error } = await supabase.storage
+					.from('resume')
+					.upload(`${formData.name_first}_${formData.name_last}.pdf`, file)
+				if (error) {
+					throw error;
+				}
+				formData.resume_url = data.fullPath
 			}
 
 			// Insert data into Supabase
@@ -73,82 +73,85 @@ export const actions: Actions = {
 			return fail(500, { form, error: "An error occurred while submitting the form." });
 		}
 
-		void fetch(process.env.NOTIFY_WEBHOOK!, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				embeds: [
-					{
-						title: 'New Hacker Submission',
-						color: 7506394,
-						fields: [
-							{
-								name: "First Name",
-								value: form.data.nameFirst ?? "N/A",
-							},
-							{
-								name: "Last Name",
-								value: form.data.nameLast ?? "N/A",
-							},
-							{
-								name: "Email",
-								value: form.data.contactEmail ?? "N/A",
-							},
-							{
-								name: "Phone",
-								value: form.data.phone ?? "N/A",
-							},
-							{
-								name: "Major",
-								value: form.data.schoolMajor ?? "N/A",
-							},
-							{
-								name: "Level of Study",
-								value: form.data.levelOfStudy ?? "N/A",
-							},
-							{
-								name: "Graduation Year",
-								value: form.data.graduationYear ?? "N/A",
-							},
-							{
-								name: "Shirt Size",
-								value: form.data.shirtSize ?? "N/A",
-							},
-							{
-								name: "Dietary Restrictions",
-								value: form.data.dietaryRestrictions ?? "N/A",
-							},
-							{
-								name: "Dietary Restrictions Other",
-								value: form.data.dietaryRestrictionsOther ?? "N/A",
-							},
-							{
-								name: "Allergies",
-								value: form.data.allergies ?? "N/A",
-							},
-							{
-								name: "Allergies Other",
-								value: form.data.allergiesOther ?? "N/A",
-							},
-							{
-								name: "Special Request",
-								value: form.data.specialRequest ?? "N/A",
-							}
-						]
-					}
-				]
+		try {
+			console.log("Sending notify webhook.")
+			const response = await fetch(process.env.NOTIFY_WEBHOOK!, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					embeds: [
+						{
+							title: 'New Hacker Submission',
+							color: 7506394,
+							fields: [
+								{
+									name: "First Name",
+									value: form.data.nameFirst ?? "N/A",
+								},
+								{
+									name: "Last Name",
+									value: form.data.nameLast ?? "N/A",
+								},
+								{
+									name: "Email",
+									value: form.data.contactEmail ?? "N/A",
+								},
+								{
+									name: "Phone",
+									value: form.data.phone ?? "N/A",
+								},
+								{
+									name: "Major",
+									value: form.data.schoolMajor ?? "N/A",
+								},
+								{
+									name: "Level of Study",
+									value: form.data.levelOfStudy ?? "N/A",
+								},
+								{
+									name: "Graduation Year",
+									value: form.data.graduationYear ?? "N/A",
+								},
+								{
+									name: "Shirt Size",
+									value: form.data.shirtSize ?? "N/A",
+								},
+								{
+									name: "Dietary Restrictions",
+									value: form.data.dietaryRestrictions ?? "N/A",
+								},
+								{
+									name: "Dietary Restrictions Other",
+									value: form.data.dietaryRestrictionsOther ?? "N/A",
+								},
+								{
+									name: "Allergies",
+									value: form.data.allergies ?? "N/A",
+								},
+								{
+									name: "Allergies Other",
+									value: form.data.allergiesOther ?? "N/A",
+								},
+								{
+									name: "Special Request",
+									value: form.data.specialRequest ?? "N/A",
+								}
+							]
+						}
+					]
+				})
 			})
-		})
-			.then(response => {
-				if (response.ok) {
-					console.log('Embed sent successfully');
-				} else {
-					console.error('Failed to send embed', response.statusText);
-				}
-			})
-			.catch(error => console.error('Error:', error));
+
+			if (response.ok) {
+				console.log('Embed sent successfully');
+			} else {
+				console.error('Failed to send embed', response.statusText);
+			}
+		} catch (e) {
+			console.error(e);
+		}
 
 		throw redirect(302, "/confirmed");
 	}
