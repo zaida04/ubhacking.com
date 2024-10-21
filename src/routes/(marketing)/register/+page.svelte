@@ -255,12 +255,20 @@
 
       <FormSection title="Logistics">
         <div class="space-y-2">
-          <Label class="text-sm font-medium">Attending In Person?</Label>
-          <Checkbox
+          <MenuInput
+            type="checkbox"
             id="isAttendingInPerson"
             name="isAttendingInPerson"
-            bind:checked={$form.isAttendingInPerson}
+            label="Attending In Person?"
+            onCheckedChange={(checked) => {
+              if (checked) {
+                $form.isAttendingInPerson = true;
+              } else {
+                $form.isAttendingInPerson = false;
+              }
+            }}
           />
+          <Form.Error error={$errors.isAttendingInPerson} />
         </div>
         <div class="space-y-2">
           <MenuInput
