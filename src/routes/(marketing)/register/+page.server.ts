@@ -73,6 +73,16 @@ export const actions: Actions = {
 		} catch (e) {
 			console.error(e);
 			Sentry.captureException(e);
+
+			await fetch(NOTIFY_WEBHOOK, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					content: `User ${userId} had an issue submitting the form.`
+				})
+			}).catch(() => null);
 			return fail(500, { form, error: "An error occurred while submitting the form. Please report this at contact@ubhacking.com" });
 		}
 
