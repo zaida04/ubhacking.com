@@ -162,11 +162,10 @@
   <h2 class="text-4xl font-semibold text-center mb-8">Meet the Organizers</h2>
 
   <section class="py-8">
-    <div class="grid grid-cols-4 gap-12 px-24">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-8 md:px-16 lg:px-24"
+    >
       {#each Object.values(members) as member}
-        <!-- <h3 class="text-3xl font-semibold text-center mb-4 capitalize">
-        {teamName.replace(/([A-Z])/g, " $1")}
-      </h3> -->
         <div class="flex flex-col items-center">
           <img
             src={member.image ?? "https://placehold.co/400"}
@@ -176,7 +175,6 @@
           <h3 class="text-xl font-semibold mb-1">{member.name}</h3>
           <p class="text-sm text-center mb-1">{member.pronouns}</p>
           <p class="text-sm text-center mb-1">{member.team}</p>
-          <!-- <p class="text-sm text-center mb-2">{member.description}</p> -->
           <div class="flex gap-4">
             {#if member.github}
               <a href={member.github} aria-label="GitHub">
