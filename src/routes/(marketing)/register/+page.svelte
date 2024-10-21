@@ -21,6 +21,14 @@
     return { value: year, label: year.toString() };
   });
 
+  let files: FileList;
+
+  $: {
+	if (files) {
+			$form.resume = files[0]
+	}
+  }
+
   const shirtSizeOptions = [
     { value: "XS", label: "XS" },
     { value: "S", label: "S" },
@@ -59,7 +67,7 @@
       Please fill out the form below to apply for UB Hacking
     </p>
 
-    <form class="space-y-6" method="POST" use:enhance>
+    <form class="space-y-6" method="POST" enctype="multipart/form-data" use:enhance>
       <FormSection title="Personal Information">
         <div class="space-y-2">
           <MenuInput
@@ -111,6 +119,7 @@
             id="phone"
             required
             label="Phone"
+            type="text"
             name="phone"
             placeholder="+1 (555) 123-4567"
             bind:value={$form.phone}
@@ -358,6 +367,15 @@
           />
           <Form.Error error={$errors.whyAttend} />
         </div>
+		<div class="space-y-2">
+				<MenuInput
+					id="resume"
+					label="Resume (PDF)"
+					type="file"
+					name="resume"
+					bind:files
+				/>
+				<Form.Error error={$errors.resume} />
         <hr />
         <div class="flex items-center space-x-2">
           <Checkbox

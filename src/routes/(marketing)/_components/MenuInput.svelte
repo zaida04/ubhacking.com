@@ -1,8 +1,8 @@
 <script lang="ts">
-  type InputType = "text" | "password" | "checkbox" | "email" | "select" | "date" | "number";
+  type InputType = "text" | "password" | "checkbox" | "email" | "select" | "date" | "number" | "file";
   export let label = "";
   export let id = "";
-  export let type: InputType = "text";
+  export let type: InputType;
   export let name = "";
   export let value = "";
   export let error: string | string[] | undefined = "";
@@ -10,6 +10,7 @@
   export let required = false;
   export let options: any = []; // For select inputs
   export let checked = false; // For checkbox inputs
+  export let files: FileList | null = null; // For file inputs
   export let onCheckedChange = (arg: any) => {}; // For checkbox inputs
 
   function handleCheckboxChange(event: any) {
@@ -82,6 +83,15 @@
       on:change={handleCheckboxChange}
       class="ml-2 rounded-sm bg-gray-50 border-gray-400 border p-2"
     />
+	{:else if type === 'file'}
+    <input
+      type="file"
+      {id}
+      {name}
+	  bind:files
+      class="ml-2 rounded-sm bg-gray-50 border-gray-400 border p-2"
+    />
+
   {:else}
     <input
       type="text"
