@@ -113,7 +113,6 @@
         <div class="space-y-2">
           <MenuInput
             id="gender"
-            required
             label="Pronouns / Gender"
             type="text"
             name="gender"

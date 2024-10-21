@@ -3,5 +3,5 @@
 </script>
 
 <a href="/register">
-  <Button variant="default">Apply now</Button>
+  <Button variant="default" size="lg" class="text-xl">Apply now</Button>
 </a>

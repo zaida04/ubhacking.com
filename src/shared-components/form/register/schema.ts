@@ -7,7 +7,7 @@ export const registerUserSchema = z.object({
   nameLast: z.string().min(2),
   dob: z.string(), // Changed to accept date format from input
   phone: z.string(), // Changed to accept various phone formats
-  gender: z.string().min(2),
+  gender: z.string().optional(),
   raceEthnicity: z.string().min(2).optional(),
   country: z.string().min(2).optional(),
 

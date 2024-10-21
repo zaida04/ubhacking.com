@@ -94,11 +94,11 @@
   </div>
 
   <div class="hidden md:flex gap-4 items-center">
-    <FindATeam />
+    <!-- <FindATeam /> -->
     {#if isLoggedIn}
       <Avatar />
     {:else}
-      <Button href="/login">Login</Button>
+      <Button size="lg" class="text-xl" href="/login">Login</Button>
     {/if}
   </div>
 </section>
