@@ -220,7 +220,7 @@
     We are grateful to all the companies who help support the hackathon.
   </h3>
 
-  <div class="flex flex-col items-center gap-2 mt-8">
+  <div class="flex flex-col items-center gap-8 mt-8">
     {#each sponsorIcons as [logoFileName, url, height, scale]}
       <a href={url}>
         <img
