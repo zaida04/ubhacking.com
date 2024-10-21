@@ -1,9 +1,15 @@
+import {sequence} from '@sveltejs/kit/hooks';
+import * as Sentry from '@sentry/sveltekit';
 // src/hooks.server.ts
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public'
 import { createServerClient } from '@supabase/ssr'
 import type { Handle } from '@sveltejs/kit'
 
-export const handle: Handle = async ({ event, resolve }) => {
+Sentry.init({
+    dsn: "https://b92249dbb77ed159b9ecdb9480ca0704@o4507747403628544.ingest.us.sentry.io/4508157995319296"
+})
+
+export const handle: Handle = sequence(Sentry.sentryHandle(), async ({ event, resolve }) => {
     event.locals.supabase = createServerClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY, {
         cookies: {
             getAll: () => event.cookies.getAll(),
@@ -50,4 +56,5 @@ export const handle: Handle = async ({ event, resolve }) => {
             return name === 'content-range' || name === 'x-supabase-api-version'
         },
     })
-}
+})
+export const handleError = Sentry.handleErrorWithSentry();
