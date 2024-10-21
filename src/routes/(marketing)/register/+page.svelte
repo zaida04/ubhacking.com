@@ -355,7 +355,13 @@
 
       <!-- Submit Button -->
       <div class="pt-4">
-        <Button type="submit">Submit Application</Button>
+        <Button
+          type="submit"
+          disabled={!$form.codeOfConductUBHacking}
+          size="lg"
+        >
+          Submit Application
+        </Button>
       </div>
     </form>
   </div>

@@ -103,6 +103,10 @@
     font-family: "SD", sans-serif;
   }
 
+  button {
+    @apply text-xl;
+  }
+
   p {
     @apply text-2xl;
     font-family: "dreams", sans-serif;
