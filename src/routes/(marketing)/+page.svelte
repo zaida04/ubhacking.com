@@ -52,6 +52,11 @@
         "No problem! You'll have many opportunities to think up an idea at the start, especially at our kickoff meeting!",
     },
     {
+      title: "Does my theme have to be Alice in Wonderland?",
+      content:
+        "While we encourage you to incorporate the theme into your project, it is not required. Feel free to build whatever you'd like!",
+    },
+    {
       title: "What if I have other questions?",
       content: "Feel free to reach out to us at contact@ubhacking.com",
     },
@@ -96,7 +101,8 @@
         <p class="w-full md:w-[40rem] text-2xl mb-4">
           UB Hacking is University at Buffalo's annual 48-hour hackathon. <br
             class="hidden md:inline"
-          />Join us, in a wonderland.
+          />Join us, in a wonderland. Our theme this year is Alice in
+          Wonderland.
         </p>
 
         <div class="flex flex-col items-center sm:flex-row gap-4">
