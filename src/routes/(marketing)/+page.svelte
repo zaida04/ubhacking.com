@@ -10,7 +10,7 @@
     {
       title: "What is a hackathon?",
       content:
-        "A hackathon is a design sprint-like event in which computer programmers and others involved in software development, including graphic designers, interface designers, project managers, and others, often including domain experts, collaborate intensively on software projects.",
+        "A hackathon is an event in which programmers and others involved in software development, including designers, project managers, and others collaborate intensively on a projects they believe in.",
     },
     {
       title: "Do I have to be a CS major to attend?",
@@ -23,6 +23,10 @@
         "UB Hacking is completely free to attend. We'll provide you with food, drinks, and swag throughout the weekend.",
     },
     {
+      title: "Do you provide travel accommodations?",
+      content: "No, unfortunately we do not provide travel accommodations.",
+    },
+    {
       title: "What should I bring?",
       content:
         "You should bring your student ID, a laptop, chargers, and any other hardware you might need. We also recommend bringing a change of clothes, toiletries, and a sleeping bag if you plan on staying overnight.",
@@ -30,7 +34,7 @@
     {
       title: "What if I don't have a team?",
       content:
-        "No worries! We'll have a team formation session at the beginning of the event where you can meet other hackers and form a team.",
+        "No worries! We'll have many opportunities for you to meet fellow hackers and potentially form a team!.",
     },
     {
       title: "What if I've never been to a hackathon before?",
@@ -45,11 +49,11 @@
     {
       title: "What if I don't have an idea?",
       content:
-        "No problem! We'll have a brainstorming session at the beginning of the event where you can pitch ideas and form a team around a project that interests you.",
+        "No problem! You'll have many opportunities to think up an idea at the start, especially at our kickoff meeting!",
     },
     {
       title: "What if I have other questions?",
-      content: "Feel free to reach out to us at ub@hacking.com",
+      content: "Feel free to reach out to us at contact@ubhacking.com",
     },
   ];
   const leftFaq = faq.slice(0, Math.ceil(faq.length / 2));
