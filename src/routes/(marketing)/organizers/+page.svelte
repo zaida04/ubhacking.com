@@ -10,6 +10,7 @@
       major: "Bioinformatics and Computational Biology",
       year: "Senior",
       team: "Directors",
+      image: "/organizers/addison-yam.png",
     },
     {
       name: "Yazgi Akata",
@@ -17,6 +18,7 @@
       major: "Computer Science",
       year: "Junior",
       team: "Directors",
+      image: "/organizers/yazgi-akata.png",
     },
     {
       name: "Zaid Arshad",
@@ -27,8 +29,7 @@
       linkedin: "https://www.linkedin.com/in/zaid-arsh/",
       site: "https://nico.engineer/",
       github: "https://github.com/zaida04",
-      image:
-        "https://media.licdn.com/dms/image/v2/D4E03AQExiW-MbNw7xg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1683789582825?e=1735171200&v=beta&t=mXKNJMJNdOnL6Yy2_xxUC9YhVWjsrHLKl0AsAu-dDlo",
+      image: "/organizers/zaid-arshad.png",
     },
     {
       name: "Peter Vaiciulis",
@@ -37,6 +38,7 @@
       year: "Senior",
       team: "Web Team",
       site: "https://www.peterv.net/",
+      image: "/organizers/peter-v.png",
     },
     {
       name: "Ananya Gupta",
@@ -44,6 +46,7 @@
       major: "Computer Science",
       year: "Sophomore",
       team: "Publicity Team",
+      image: "/organizers/ananya-gupta.png",
     },
     {
       name: "Shreya Gupta",
@@ -51,6 +54,7 @@
       major: "Computer Science",
       year: "Senior",
       team: "Publicity Team",
+      image: "/organizers/shreya-gupta.png",
     },
     {
       name: "Aidan O'Donnell",
@@ -58,6 +62,7 @@
       major: "Computer Engineering",
       year: "Senior",
       team: "Logistics Team",
+      image: "/organizers/aidan-odonnell.png",
     },
     {
       name: "Parth Agrawal",
@@ -65,6 +70,7 @@
       major: "Computer Science",
       year: "Sophomore",
       team: "Logistics Team",
+      image: "/organizers/parth-agrawal.png",
     },
     {
       name: "Blaze Nie",
@@ -72,6 +78,7 @@
       major: "Computer Science",
       year: "Sophomore",
       team: "Food Team",
+      image: "/organizers/blaze.png",
     },
     {
       name: "Krish Puwar",
@@ -79,6 +86,7 @@
       major: "Computer Engineering",
       year: "Junior",
       team: "Food Team",
+      image: "/organizers/krish.png",
     },
     {
       name: "John Nguyen",
@@ -86,6 +94,7 @@
       major: "Computer Science",
       year: "Junior",
       team: "Venue Team",
+      image: "/organizers/john-nguyen.png",
     },
     {
       name: "Maggie Tan",
@@ -93,6 +102,7 @@
       major: "Computer Science & Mechanical Engineering",
       year: "Senior",
       team: "Venue Team",
+      image: "/organizers/maggie-tan.png",
     },
     {
       name: "Aditya Mathur",
@@ -100,6 +110,7 @@
       major: "Computer Science",
       year: "Senior",
       team: "Streaming Team",
+      image: "/organizers/aditya-mathur.png",
     },
     {
       name: "Monish Deshmukh",
@@ -107,6 +118,7 @@
       major: "Computer Science",
       year: "Junior",
       team: "Streaming Team",
+      image: "/organizers/monish-deshmukh.png",
     },
     {
       name: "Joy Lee",
@@ -114,6 +126,7 @@
       major: "Computer Science",
       year: "Senior",
       team: "Graphics Team",
+      image: "/organizers/joy-lee.png",
     },
     {
       name: "Drew Louie",
@@ -121,6 +134,7 @@
       major: "Computer Science",
       year: "Senior",
       team: "Graphics Team",
+      image: "/organizers/drew-louie.png",
     },
     {
       name: "Andrew Collado",
@@ -128,6 +142,7 @@
       major: "Computer Engineering",
       year: "Junior",
       team: "Sponsorship Team",
+      image: "/organizers/andrew-collado.png",
     },
     {
       name: "Sujal Bhakare",
@@ -135,6 +150,7 @@
       major: "Computer Science",
       year: "Sophomore",
       team: "Sponsorship Team",
+      image: "/organizers/sujal-deshmukh.png",
     },
     {
       name: "Christo Abraham",
@@ -142,6 +158,7 @@
       major: "Psychology and Biomedical Science",
       year: "Senior",
       team: "Media Team",
+      image: "/organizers/christo-abraham.png",
     },
     {
       name: "Timothy Kong",
@@ -149,6 +166,7 @@
       title: "Machine Learning Engineer",
       status: "Graduate",
       team: "Advisors",
+      image: "/organizers/timothy-kong.png",
     },
   ];
 </script>
@@ -170,7 +188,7 @@
           <img
             src={member.image ?? "https://placehold.co/400"}
             alt={member.name}
-            class="w-36 h-36 rounded-full mb-2"
+            class="max-w-[9rem] h-36 rounded-full mb-2"
           />
           <h3 class="text-xl font-semibold mb-1">{member.name}</h3>
           <p class="text-sm text-center mb-1">{member.pronouns}</p>
