@@ -21,6 +21,14 @@
     return { value: year, label: year.toString() };
   });
 
+  let files: FileList;
+
+  $: {
+	if (files) {
+			$form.resume = files[0]
+	}
+  }
+
   const shirtSizeOptions = [
     { value: "XS", label: "XS" },
     { value: "S", label: "S" },
@@ -359,6 +367,15 @@
           />
           <Form.Error error={$errors.whyAttend} />
         </div>
+		<div class="space-y-2">
+				<MenuInput
+					id="resume"
+					label="Resume (PDF)"
+					type="file"
+					name="resume"
+					bind:files
+				/>
+				<Form.Error error={$errors.resume} />
         <hr />
         <div class="flex items-center space-x-2">
           <Checkbox
