@@ -36,9 +36,11 @@ export const registerUserSchema = z.object({
   howYouHeard: z.string().max(200),
   whyAttend: z.string().max(1000),
   codeOfConductUBHacking: z.boolean(),
-  codeOfConduct: z.boolean(),
-  dataSharing: z.boolean(),
-  communication: z.boolean().optional(),
+
+  // MLH
+  codeOfConductMLH: z.boolean(),
+  dataSharingMLH: z.boolean(),
+  communicationMLH: z.boolean().default(false),
 });
 
 export type RegisterUserSchema = z.infer<typeof registerUserSchema>;
