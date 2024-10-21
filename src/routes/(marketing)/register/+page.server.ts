@@ -4,12 +4,13 @@ import type { PageServerLoad } from "./$types";
 import { fail, superValidate } from "sveltekit-superforms";
 import { redirect, type Actions } from "@sveltejs/kit";
 import { supabase } from "$lib/supabase";
+import { isDev } from "$lib/utils";
 
 export const load: PageServerLoad = async (ctx) => {
 	const getCurrentUser = await ctx.locals.safeGetSession();
 	const userId = getCurrentUser?.session?.user?.id;
 
-	if (!userId) {
+	if (!userId && !isDev) {
 		return redirect(302, "/login");
 	}
 	const getExistingSubsmission = await supabase
