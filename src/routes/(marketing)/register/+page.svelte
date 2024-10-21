@@ -7,8 +7,8 @@
   import type { PageServerData } from "./$types";
   import MenuInput from "../_components/MenuInput.svelte";
   import FormSection from "../_components/FormSection.svelte";
-    import { schools } from "./schools";
-    import { countries } from "./countries";
+  import { schools } from "./schools";
+  import { countries } from "./countries";
 
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form, {
@@ -31,8 +31,8 @@
   ];
   const dietaryRestrictionsOptions = [
     { value: "none", label: "None" },
-	{ value: "gluten-free", label: "Gluten-Free" },
-	{ value: "vegan", label: "Vegan" },
+    { value: "gluten-free", label: "Gluten-Free" },
+    { value: "vegan", label: "Vegan" },
     { value: "halal", label: "Halal" },
     { value: "kosher", label: "Kosher" },
     { value: "vegetarian", label: "Vegetarian" },
@@ -43,10 +43,11 @@
     { value: "masters", label: "Masters" },
   ];
 
-  $: canSubmit = $form.codeOfConductUBHacking 
-	  && $form.codeOfConductMLH 
-	  && $form.dataSharingMLH
-	  && $form.communicationMLH
+  $: canSubmit =
+    $form.codeOfConductUBHacking &&
+    $form.codeOfConductMLH &&
+    $form.dataSharingMLH &&
+    $form.communicationMLH;
 </script>
 
 <div class="bg-yellow-50 p-4 flex justify-center" id="bg">
@@ -111,7 +112,6 @@
             id="phone"
             required
             label="Phone"
-            type="tel"
             name="phone"
             placeholder="+1 (555) 123-4567"
             bind:value={$form.phone}
@@ -145,10 +145,10 @@
             type="select"
             name="country"
             bind:value={$form.country}
-			options={countries.map((name) => ({
-					value: name,
-					label: name
-			}))}
+            options={countries.map((name) => ({
+              value: name,
+              label: name,
+            }))}
           />
           <Form.Error error={$errors.country} />
         </div>
@@ -162,10 +162,10 @@
             label="School Name"
             type="select"
             name="schoolName"
-			options={schools.map((name) => ({
-			  value: name,
-			  label: name
-			  }))}
+            options={schools.map((name) => ({
+              value: name,
+              label: name,
+            }))}
             bind:value={$form.schoolName}
           />
           <Form.Error error={$errors.schoolName} />
@@ -351,7 +351,7 @@
           />
           <Form.Error error={$errors.whyAttend} />
         </div>
-		<hr>
+        <hr />
         <div class="flex items-center space-x-2">
           <Checkbox
             id="codeOfConductUBHacking"
@@ -371,56 +371,66 @@
             bind:checked={$form.codeOfConductMLH}
           />
           <Label for="codeOfConductMLH" class="text-sm font-medium">
-            I have read and agree to the 
-			<a class="font-sans text-green-700"
-			href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md">
-			MLH Code of Conduct
-			</a>.
+            I have read and agree to the
+            <a
+              class="font-sans text-green-700"
+              href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
+            >
+              MLH Code of Conduct
+            </a>.
           </Label>
         </div>
-		<div class="flex items-center space-x-2">
-		  <Checkbox
-			id="dataSharingMLH"
-			name="dataSharingMLH"
-			required
-			bind:checked={$form.dataSharingMLH}
-		  />
-		  <Label for="dataSharingMLH" class="text-sm font-medium">
-			I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the{' '}
-			<a class="font-sans text-green-700" href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md">
-			  MLH Privacy Policy
-			</a>
-			. I further agree to the terms of both the{' '}
-			<a class="font-sans text-green-700" href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md">
-			  MLH Contest Terms and Conditions
-			</a>
-			{' '}and the{' '}
-			<a class="font-sans text-green-700" href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md">
-			  MLH Privacy Policy
-			</a>
-			.
-		  </Label>
-		</div>
-		<div class="flex items-center space-x-2">
-		  <Checkbox
-			id="communicationMLH"
-			name="communicationMLH"
-			required
-			bind:checked={$form.communicationMLH}
-		  />
-		  <Label for="communicationMLH" class="text-sm font-medium">
-			I authorize MLH to send me occasional emails about relevant events, career opportunities, and community announcements.
-		  </Label>
-		</div>
+        <div class="flex items-center space-x-2">
+          <Checkbox
+            id="dataSharingMLH"
+            name="dataSharingMLH"
+            required
+            bind:checked={$form.dataSharingMLH}
+          />
+          <Label for="dataSharingMLH" class="text-sm font-medium">
+            I authorize you to share my application/registration information
+            with Major League Hacking for event administration, ranking, and MLH
+            administration in-line with the{" "}
+            <a
+              class="font-sans text-green-700"
+              href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
+            >
+              MLH Privacy Policy
+            </a>
+            . I further agree to the terms of both the{" "}
+            <a
+              class="font-sans text-green-700"
+              href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
+            >
+              MLH Contest Terms and Conditions
+            </a>
+            {" "}and the{" "}
+            <a
+              class="font-sans text-green-700"
+              href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
+            >
+              MLH Privacy Policy
+            </a>
+            .
+          </Label>
+        </div>
+        <div class="flex items-center space-x-2">
+          <Checkbox
+            id="communicationMLH"
+            name="communicationMLH"
+            required
+            bind:checked={$form.communicationMLH}
+          />
+          <Label for="communicationMLH" class="text-sm font-medium">
+            I authorize MLH to send me occasional emails about relevant events,
+            career opportunities, and community announcements.
+          </Label>
+        </div>
       </FormSection>
 
       <!-- Submit Button -->
       <div class="pt-4">
-        <Button
-          type="submit"
-          disabled={!canSubmit}
-          size="lg"
-        >
+        <Button type="submit" disabled={!canSubmit} size="lg">
           Submit Application
         </Button>
       </div>
