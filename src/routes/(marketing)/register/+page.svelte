@@ -67,7 +67,7 @@
       Please fill out the form below to apply for UB Hacking
     </p>
 
-    <form class="space-y-6" method="POST" use:enhance>
+    <form class="space-y-6" method="POST" enctype="multipart/form-data" use:enhance>
       <FormSection title="Personal Information">
         <div class="space-y-2">
           <MenuInput
