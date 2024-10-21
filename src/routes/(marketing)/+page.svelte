@@ -69,6 +69,14 @@
     name="description"
     content="Join us, in a wonderland. A UB Hacking wonderland. UB Hacking is University at Buffalo's annual 48-hour hackathon."
   />
+  <meta
+    name="keywords"
+    content="UB Hacking, University at Buffalo, Hackathon, Buffalo, New York, 48-hour, 2024, Fall"
+  />
+  <meta name="author" content="UB Hacking" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:image" content="/icon.png" />
+  <meta property="og:image:alt" content="UB Hacking Fall 2024 Thumbnail" />
 </svelte:head>
 
 <section id="hero" class="py-32">
