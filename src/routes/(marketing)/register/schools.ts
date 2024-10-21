@@ -1,4 +1,6 @@
 export const schools: string[] = [
+    "University at Buffalo - SUNY",
+    "Buffalo State University - SUNY",
     `Aalto University`,
     `Aarhus University`,
     `Abertay University`,
