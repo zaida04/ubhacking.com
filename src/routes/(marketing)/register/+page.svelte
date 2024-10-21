@@ -4,7 +4,7 @@
   import { Label } from "$lib/components/ui/label";
   import { Checkbox } from "$lib/components/ui/checkbox";
   import * as Form from "$lib/components/ui/form";
-  import type { PageServerData } from "./$types";
+  import type { PageServerData, Snapshot } from "./$types";
   import MenuInput from "../_components/MenuInput.svelte";
   import FormSection from "../_components/FormSection.svelte";
   import { schools } from "./schools";
@@ -55,6 +55,23 @@
     $form.codeOfConductUBHacking &&
     $form.codeOfConductMLH &&
     $form.dataSharingMLH;
+
+  export const snapshot: Snapshot<Record<string, any>> = {
+    capture: () => {
+      const formData = { ...$form };
+      delete formData.resume; // Exclude the file input
+      return formData;
+    },
+    restore: (savedData) => {
+      const oldForm = { ...$form };
+      try {
+        $form = { ...savedData } as any;
+      } catch (e) {
+        console.error("Failed to restore form data", e);
+        $form = oldForm;
+      }
+    },
+  };
 </script>
 
 <div class="bg-yellow-50 p-4 flex justify-center" id="bg">
