@@ -84,7 +84,7 @@
     <div id="left-side" class="mb-8 md:mb-0">
       <div id="eye-grabbers" class="mb-8">
         <h1 class="text-4xl md:text-8xl font-semibold">Join UB Hacking</h1>
-        <h3 class="text-xl md:text-3xl">November 9th - 10th.</h3>
+        <h3 class="text-xl md:text-3xl">November 9th & 10th.</h3>
       </div>
 
       <div id="info-and-ctas">
@@ -99,7 +99,7 @@
           <ApplyNow />
         </div>
 
-        <div class="flex flex-col w-fit mt-8">
+        <div class="flex flex-col w-fit mt-8 text-xl">
           <a
             href="https://forms.office.com/Pages/ResponsePage.aspx?id=ikpGlu34sUCZ4l9rUKICUDVjlLS92xdGuU9VQ26xxRFURVcxTFRBNU9MQlpWMEVNODdVVjZNWDBHVS4u"
             class="underline"
