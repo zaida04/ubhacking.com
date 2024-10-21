@@ -56,8 +56,9 @@
   const rightFaq = faq.slice(Math.ceil(faq.length / 2));
   const sponsorIcons = [
     // logo file name, company url, height, scale (used for width to maintain aspect ratio)
-    ["a2k.png", "https://www.advance2000.com/", 150, 5.21],
     ["mtb.png", "https://www.mtb.com/", 400, 2.5],
+    ["ub_cse.png", "https://engineering.buffalo.edu/", 538, 2],
+    ["a2k.png", "https://www.advance2000.com/", 150, 5.21],
     ["northtown.png", "https://www.northtownauto.com/", 300, 3.28],
     ["sift.png", "https://www.siftstack.com/", 400, 2.29],
   ] as const;
