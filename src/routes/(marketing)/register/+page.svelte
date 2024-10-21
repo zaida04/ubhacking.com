@@ -4,14 +4,19 @@
   import { Label } from "$lib/components/ui/label";
   import { Checkbox } from "$lib/components/ui/checkbox";
   import * as Form from "$lib/components/ui/form";
-  import type { PageServerData, Snapshot } from "./$types";
+  import type { ActionData, PageServerData, Snapshot } from "./$types";
   import MenuInput from "../_components/MenuInput.svelte";
   import FormSection from "../_components/FormSection.svelte";
   import { schools } from "./schools";
   import { countries } from "./countries";
 
   export let data: PageServerData;
-  const { form, errors, enhance } = superForm(data.form, {
+  export let form: ActionData;
+  const {
+    form: supForm,
+    errors,
+    enhance,
+  } = superForm(data.form, {
     invalidateAll: false,
     resetForm: false,
   });
@@ -25,7 +30,7 @@
 
   $: {
     if (files) {
-      $form.resume = files[0];
+      $supForm.resume = files[0];
     }
   }
 
@@ -52,23 +57,23 @@
   ];
 
   $: canSubmit =
-    $form.codeOfConductUBHacking &&
-    $form.codeOfConductMLH &&
-    $form.dataSharingMLH;
+    $supForm.codeOfConductUBHacking &&
+    $supForm.codeOfConductMLH &&
+    $supForm.dataSharingMLH;
 
   export const snapshot: Snapshot<Record<string, any>> = {
     capture: () => {
-      const formData = { ...$form };
+      const formData = { ...$supForm };
       delete formData.resume; // Exclude the file input
       return formData;
     },
     restore: (savedData) => {
-      const oldForm = { ...$form };
+      const oldForm = { ...$supForm };
       try {
-        $form = { ...savedData } as any;
+        $supForm = { ...savedData } as any;
       } catch (e) {
         console.error("Failed to restore form data", e);
-        $form = oldForm;
+        $supForm = oldForm;
       }
     },
   };
@@ -107,7 +112,7 @@
             label="First Name"
             type="text"
             name="nameFirst"
-            bind:value={$form.nameFirst}
+            bind:value={$supForm.nameFirst}
           />
           <Form.Error error={$errors.nameFirst} />
         </div>
@@ -118,7 +123,7 @@
             label="Last Name"
             type="text"
             name="nameLast"
-            bind:value={$form.nameLast}
+            bind:value={$supForm.nameLast}
           />
           <Form.Error error={$errors.nameLast} />
         </div>
@@ -130,7 +135,7 @@
             type="email"
             name="contactEmail"
             placeholder="jane.doe@buffalo.edu"
-            bind:value={$form.contactEmail}
+            bind:value={$supForm.contactEmail}
           />
           <Form.Error error={$errors.contactEmail} />
         </div>
@@ -141,7 +146,7 @@
             label="Date of Birth"
             type="date"
             name="dob"
-            bind:value={$form.dob}
+            bind:value={$supForm.dob}
           />
           <Form.Error error={$errors.dob} />
         </div>
@@ -153,7 +158,7 @@
             type="text"
             name="phone"
             placeholder="+1 (555) 123-4567"
-            bind:value={$form.phone}
+            bind:value={$supForm.phone}
           />
           <Form.Error error={$errors.phone} />
         </div>
@@ -163,7 +168,7 @@
             label="Pronouns / Gender"
             type="text"
             name="gender"
-            bind:value={$form.gender}
+            bind:value={$supForm.gender}
           />
           <Form.Error error={$errors.gender} />
         </div>
@@ -173,7 +178,7 @@
             label="Race/Ethnicity"
             type="text"
             name="raceEthnicity"
-            bind:value={$form.raceEthnicity}
+            bind:value={$supForm.raceEthnicity}
           />
           <Form.Error error={$errors.raceEthnicity} />
         </div>
@@ -183,7 +188,7 @@
             label="Country"
             type="select"
             name="country"
-            bind:value={$form.country}
+            bind:value={$supForm.country}
             options={countries.map((name) => ({
               value: name,
               label: name,
@@ -205,7 +210,7 @@
               value: name,
               label: name,
             }))}
-            bind:value={$form.schoolName}
+            bind:value={$supForm.schoolName}
           />
           <Form.Error error={$errors.schoolName} />
         </div>
@@ -215,7 +220,7 @@
             label="Major"
             type="text"
             name="schoolMajor"
-            bind:value={$form.schoolMajor}
+            bind:value={$supForm.schoolMajor}
           />
           <Form.Error error={$errors.schoolMajor} />
         </div>
@@ -229,7 +234,7 @@
               value: option.value,
               label: option.label,
             }))}
-            bind:value={$form.levelOfStudy}
+            bind:value={$supForm.levelOfStudy}
             error={$errors.levelOfStudy}
             placeholder="Select your level of study"
           />
@@ -239,7 +244,7 @@
             name="graduationYear"
             label="Graduation Year"
             options={graduationYearOptions}
-            bind:value={$form.graduationYear}
+            bind:value={$supForm.graduationYear}
             error={$errors.graduationYear}
             placeholder="Select graduation year"
           />
@@ -254,7 +259,7 @@
             label="Address"
             type="text"
             name="address1"
-            bind:value={$form.address1}
+            bind:value={$supForm.address1}
           />
           <Form.Error error={$errors.address1} />
         </div>
@@ -265,7 +270,7 @@
             label="City"
             type="text"
             name="city"
-            bind:value={$form.city}
+            bind:value={$supForm.city}
           />
           <Form.Error error={$errors.city} />
         </div>
@@ -276,7 +281,7 @@
             label="State"
             type="text"
             name="state"
-            bind:value={$form.state}
+            bind:value={$supForm.state}
           />
           <Form.Error error={$errors.state} />
         </div>
@@ -287,7 +292,7 @@
             label="ZIP Code"
             type="text"
             name="zipCode"
-            bind:value={$form.zipCode}
+            bind:value={$supForm.zipCode}
           />
           <Form.Error error={$errors.zipCode} />
         </div>
@@ -302,9 +307,9 @@
             label="Attending In Person?"
             onCheckedChange={(checked) => {
               if (checked) {
-                $form.isAttendingInPerson = true;
+                $supForm.isAttendingInPerson = true;
               } else {
-                $form.isAttendingInPerson = false;
+                $supForm.isAttendingInPerson = false;
               }
             }}
           />
@@ -321,7 +326,7 @@
               value: option.value,
               label: option.label,
             }))}
-            bind:value={$form.shirtSize}
+            bind:value={$supForm.shirtSize}
             error={$errors.shirtSize}
             placeholder="Select your shirt size"
           />
@@ -332,7 +337,7 @@
             label="Special Requests"
             type="text"
             name="specialRequest"
-            bind:value={$form.specialRequest}
+            bind:value={$supForm.specialRequest}
           />
           <Form.Error error={$errors.specialRequest} />
         </div>
@@ -346,7 +351,7 @@
               value: option.value,
               label: option.label,
             }))}
-            bind:value={$form.dietaryRestrictions}
+            bind:value={$supForm.dietaryRestrictions}
             error={$errors.dietaryRestrictions}
             placeholder="Select dietary restriction"
           />
@@ -357,7 +362,7 @@
               type="text"
               name="dietaryRestrictionsOther"
               placeholder="(Please Specify)"
-              bind:value={$form.dietaryRestrictionsOther}
+              bind:value={$supForm.dietaryRestrictionsOther}
             />
             <Form.Error error={$errors.dietaryRestrictionsOther} />
           </div>
@@ -369,7 +374,7 @@
             name="allergiesOther"
             label="Allergies"
             placeholder="(Please Specify)"
-            bind:value={$form.allergiesOther}
+            bind:value={$supForm.allergiesOther}
             error={$errors.allergiesOther}
           />
         </div>
@@ -383,7 +388,7 @@
             label="How did you hear about us?"
             type="text"
             name="howYouHeard"
-            bind:value={$form.howYouHeard}
+            bind:value={$supForm.howYouHeard}
           />
           <Form.Error error={$errors.howYouHeard} />
         </div>
@@ -394,7 +399,7 @@
             label="Why do you want to attend?"
             type="text"
             name="whyAttend"
-            bind:value={$form.whyAttend}
+            bind:value={$supForm.whyAttend}
           />
           <Form.Error error={$errors.whyAttend} />
         </div>
@@ -413,7 +418,7 @@
               id="codeOfConductUBHacking"
               name="codeOfConductUBHacking"
               required
-              bind:checked={$form.codeOfConductUBHacking}
+              bind:checked={$supForm.codeOfConductUBHacking}
             />
             <Label for="codeOfConductUBHacking" class="text-sm font-medium">
               I agree to the UB Hacking Code of Conduct
@@ -424,7 +429,7 @@
               id="codeOfConductMLH"
               name="codeOfConductMLH"
               required
-              bind:checked={$form.codeOfConductMLH}
+              bind:checked={$supForm.codeOfConductMLH}
             />
             <Label for="codeOfConductMLH" class="text-sm font-medium">
               I have read and agree to the
@@ -441,7 +446,7 @@
               id="dataSharingMLH"
               name="dataSharingMLH"
               required
-              bind:checked={$form.dataSharingMLH}
+              bind:checked={$supForm.dataSharingMLH}
             />
             <Label for="dataSharingMLH" class="text-sm font-medium">
               I authorize you to share my application/registration information
@@ -475,7 +480,7 @@
               id="communicationMLH"
               name="communicationMLH"
               required
-              bind:checked={$form.communicationMLH}
+              bind:checked={$supForm.communicationMLH}
             />
             <Label for="communicationMLH" class="text-sm font-medium">
               I authorize MLH to send me occasional emails about relevant
@@ -484,6 +489,25 @@
           </div>
         </div></FormSection
       >
+
+      {#if form?.error}
+        <div class="bg-red-100 border-l-4 border-red-500 p-4 my-4">
+          <p class="text-red-700 text-lg font-sans">
+            There was an error processing your application on the server. Please
+            try again, or contact us at contact@ubhacking.com
+          </p>
+        </div>
+      {/if}
+
+      {#if Object.keys(errors).length > 0}
+        <div class="bg-red-100 border-l-4 border-red-500 p-4 my-4">
+          <p class="text-red-700 text-lg font-sans">
+            Your form is not complete. Please go through it and double check
+            that all fields are filled out correctly. Incorrect fields will be
+            highlighted in red.
+          </p>
+        </div>
+      {/if}
 
       <!-- Submit Button -->
       <div class="pt-4">

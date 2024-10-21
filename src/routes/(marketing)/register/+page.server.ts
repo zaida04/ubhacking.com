@@ -5,6 +5,7 @@ import { fail, superValidate } from "sveltekit-superforms";
 import { redirect, type Actions } from "@sveltejs/kit";
 import { supabase } from "$lib/supabase";
 import { isDev } from "$lib/utils";
+import { NOTIFY_WEBHOOK } from '$env/static/private'
 
 export const load: PageServerLoad = async (ctx) => {
 	const getCurrentUser = await ctx.locals.safeGetSession();
@@ -30,7 +31,7 @@ export const actions: Actions = {
 		const form = await superValidate(request, zod(registerUserSchema));
 
 		if (!form.valid) {
-			return fail(400, { form });
+			return fail(400, { form, error: "Your inputs are not valid. Please check your form for errors in formatting. If you believe this is in error, contact us at contact@ubhacking.com" });
 		}
 
 		const getCurrentUser = await locals.safeGetSession();
@@ -70,12 +71,12 @@ export const actions: Actions = {
 			}
 		} catch (e) {
 			console.error(e);
-			return fail(500, { form, error: "An error occurred while submitting the form." });
+			return fail(500, { form, error: "An error occurred while submitting the form. Please report this at contact@ubhacking.com" });
 		}
 
 		try {
 			console.log("Sending notify webhook.")
-			const response = await fetch(process.env.NOTIFY_WEBHOOK!, {
+			const response = await fetch(NOTIFY_WEBHOOK, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -89,54 +90,67 @@ export const actions: Actions = {
 								{
 									name: "First Name",
 									value: form.data.nameFirst ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Last Name",
 									value: form.data.nameLast ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Email",
 									value: form.data.contactEmail ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Phone",
 									value: form.data.phone ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Major",
 									value: form.data.schoolMajor ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Level of Study",
 									value: form.data.levelOfStudy ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Graduation Year",
 									value: form.data.graduationYear ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Shirt Size",
 									value: form.data.shirtSize ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Dietary Restrictions",
 									value: form.data.dietaryRestrictions ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Dietary Restrictions Other",
 									value: form.data.dietaryRestrictionsOther ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Allergies",
 									value: form.data.allergies ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Allergies Other",
 									value: form.data.allergiesOther ?? "N/A",
+									inline: true
 								},
 								{
 									name: "Special Request",
 									value: form.data.specialRequest ?? "N/A",
+									inline: true
 								}
 							]
 						}
