@@ -502,9 +502,7 @@
       {#if Object.keys(errors).length > 0}
         <div class="bg-red-100 border-l-4 border-red-500 p-4 my-4">
           <p class="text-red-700 text-lg font-sans">
-            Your form is not complete. Please go through it and double check
-            that all fields are filled out correctly. Incorrect fields will be
-            highlighted in red.
+            Your form has some errors. Please review the highlighted fields above and correct any issues.
           </p>
         </div>
       {/if}

@@ -6,6 +6,7 @@ import { redirect, type Actions } from "@sveltejs/kit";
 import { supabase } from "$lib/supabase";
 import { isDev } from "$lib/utils";
 import { NOTIFY_WEBHOOK } from '$env/static/private'
+import * as Sentry from '@sentry/sveltekit';
 
 export const load: PageServerLoad = async (ctx) => {
 	const getCurrentUser = await ctx.locals.safeGetSession();
@@ -71,6 +72,7 @@ export const actions: Actions = {
 			}
 		} catch (e) {
 			console.error(e);
+			Sentry.captureException(e);
 			return fail(500, { form, error: "An error occurred while submitting the form. Please report this at contact@ubhacking.com" });
 		}
 
