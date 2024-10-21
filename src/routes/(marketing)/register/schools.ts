@@ -1118,4 +1118,5 @@ export const schools: string[] = [
     `"York College, CUNY"`,
     `York University`,
     `Youngstown State University`,
+    "Other"
 ].map(w => w.replace(/['"]+/g, '')).sort()
