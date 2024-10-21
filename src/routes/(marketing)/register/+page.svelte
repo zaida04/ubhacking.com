@@ -37,6 +37,11 @@
     { value: "undergraduate", label: "Undergraduate" },
     { value: "masters", label: "Masters" },
   ];
+
+  $: canSubmit = $form.codeOfConductUBHacking 
+	  && $form.codeOfConductMLH 
+	  && $form.dataSharingMLH
+	  && $form.communicationMLH
 </script>
 
 <div class="bg-yellow-50 p-4 flex justify-center" id="bg">
@@ -399,7 +404,7 @@
       <div class="pt-4">
         <Button
           type="submit"
-          disabled={!$form.codeOfConductUBHacking}
+          disabled={!canSubmit}
           size="lg"
         >
           Submit Application
