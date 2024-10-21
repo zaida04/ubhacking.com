@@ -46,8 +46,7 @@
   $: canSubmit =
     $form.codeOfConductUBHacking &&
     $form.codeOfConductMLH &&
-    $form.dataSharingMLH &&
-    $form.communicationMLH;
+    $form.dataSharingMLH;
 </script>
 
 <div class="bg-yellow-50 p-4 flex justify-center" id="bg">
