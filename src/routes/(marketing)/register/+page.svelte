@@ -28,6 +28,9 @@
     { value: "XXL", label: "XXL" },
   ];
   const dietaryRestrictionsOptions = [
+    { value: "none", label: "None" },
+	{ value: "gluten-free", label: "Gluten-Free" },
+	{ value: "vegan", label: "Vegan" },
     { value: "halal", label: "Halal" },
     { value: "kosher", label: "Kosher" },
     { value: "vegetarian", label: "Vegetarian" },
@@ -338,6 +341,7 @@
           />
           <Form.Error error={$errors.whyAttend} />
         </div>
+		<hr>
         <div class="flex items-center space-x-2">
           <Checkbox
             id="codeOfConductUBHacking"
