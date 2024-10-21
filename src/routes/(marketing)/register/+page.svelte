@@ -7,6 +7,7 @@
   import type { PageServerData } from "./$types";
   import MenuInput from "../_components/MenuInput.svelte";
   import FormSection from "../_components/FormSection.svelte";
+    import { schools } from "./schools";
 
   export let data: PageServerData;
   const { form, errors, enhance } = superForm(data.form, {
@@ -154,8 +155,12 @@
             id="schoolName"
             required
             label="School Name"
-            type="text"
+            type="select"
             name="schoolName"
+			options={schools.map((name) => ({
+			  value: name,
+			  label: name
+			  }))}
             bind:value={$form.schoolName}
           />
           <Form.Error error={$errors.schoolName} />
