@@ -85,9 +85,16 @@
   >
     <h1 class="text-2xl text-center font-serif">UB Hacking Application</h1>
 
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-4">
+      <p class="text-yellow-700 text-base">
+        If you experienced any issues with your application earlier, please try
+        submitting it again. We've resolved a few bugs.
+      </p>
+    </div>
+
     {#if data.existingSubmission}
       <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-4">
-        <p class="text-yellow-700">
+        <p class="text-yellow-700 text-base">
           You have already submitted an application for UB Hacking. If you
           submit this form again, your old responses will be discarded.
         </p>
@@ -502,7 +509,8 @@
       {#if Object.keys(errors).length > 0}
         <div class="bg-red-100 border-l-4 border-red-500 p-4 my-4">
           <p class="text-red-700 text-lg font-sans">
-            Your form has some errors. Please review the highlighted fields above and correct any issues.
+            Your form has some errors. Please review the highlighted fields
+            above and correct any issues.
           </p>
         </div>
       {/if}
