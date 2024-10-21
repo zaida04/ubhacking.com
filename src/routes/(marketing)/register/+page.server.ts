@@ -51,7 +51,7 @@ export const actions: Actions = {
 			if (file) {
 				const { data, error } = await supabase.storage
 					.from('resume')
-					.upload(`${formData.name_first}_${formData.name_last}.pdf`, file)
+					.upload(`${formData.name_first}_${formData.name_last}-${Date.now()}.pdf`, file)
 				if (error) {
 					throw error;
 				}
