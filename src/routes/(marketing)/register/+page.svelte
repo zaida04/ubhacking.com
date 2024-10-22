@@ -416,6 +416,7 @@
             label="Resume (PDF)"
             type="file"
             name="resume"
+            required
             bind:files
           />
           <Form.Error error={$errors.resume} />
