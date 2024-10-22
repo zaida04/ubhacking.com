@@ -91,7 +91,7 @@
 
 <section id="hero" class="py-32">
   <div class="flex flex-col md:flex-row justify-between px-4 py-16 md:px-24">
-    <div id="left-side" class="mb-8 md:mb-0">
+    <div id="left-side" class="mb-8 md:mb-0 pr-4">
       <div id="eye-grabbers" class="mb-8">
         <h1 class="text-4xl md:text-8xl font-semibold">Join UB Hacking</h1>
         <h3 class="text-xl md:text-3xl">November 9th & 10th.</h3>
@@ -176,7 +176,7 @@
     </h1>
     <p class="w-full md:w-[45rem] text-center md:text-left">
       UB Hacking is a 48-hour hackathon at the University at Buffalo on November
-      9th & 10th. We welcome participants of all experience levels and
+      9th and 10th. We welcome participants of all experience levels and
       backgrounds to build cool projects, enjoy Red Bull, and connect with
       fellow hackers. <br /><br />Attendees can also join workshops led by
       industry professionals and network with local company recruiters
