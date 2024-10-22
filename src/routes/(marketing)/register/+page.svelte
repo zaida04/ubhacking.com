@@ -64,7 +64,7 @@
   export const snapshot: Snapshot<Record<string, any>> = {
     capture: () => {
       const formData = { ...$supForm };
-      delete formData.resume; // Exclude the file input
+      delete (formData as any).resume; // Exclude the file input
       return formData;
     },
     restore: (savedData) => {
