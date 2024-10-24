@@ -129,6 +129,12 @@
           >
             Want to become a workshop host?
           </a>
+          <a
+            href="https://forms.gle/Suk48kSDuG3pWfEcA"
+            class="underline"
+          >
+            Want to volunteer?
+          </a>
         </div>
       </div>
     </div>
