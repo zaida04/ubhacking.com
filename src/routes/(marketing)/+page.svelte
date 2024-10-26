@@ -65,7 +65,12 @@
   const rightFaq = faq.slice(Math.ceil(faq.length / 2));
   const sponsorIcons = [
     // logo file name, company url, height, scale (used for width to maintain aspect ratio)
-    ["ub_cse.png", "https://engineering.buffalo.edu/", 538, 2],
+    [
+      "ub_cse.png",
+      "https://engineering.buffalo.edu/computer-science-engineering.html",
+      538,
+      2,
+    ],
     ["mtb.png", "https://www.mtb.com/", 400, 2.5],
     ["a2k.png", "https://www.advance2000.com/", 150, 5.21],
     ["northtown.png", "https://www.northtownauto.com/", 300, 3.28],
@@ -129,10 +134,7 @@
           >
             Want to become a workshop host?
           </a>
-          <a
-            href="https://forms.gle/Suk48kSDuG3pWfEcA"
-            class="underline"
-          >
+          <a href="https://forms.gle/Suk48kSDuG3pWfEcA" class="underline">
             Want to volunteer?
           </a>
         </div>
@@ -264,15 +266,6 @@
 </section>
 
 <style>
-  :global(body) {
-    background: linear-gradient(
-      90deg,
-      rgba(112, 147, 120, 0.8),
-      rgba(78, 113, 105, 0.8),
-      rgba(167, 201, 174, 0.8)
-    );
-  }
-
   #hero {
     background: url("/main-bg-2.png");
     margin-top: -90px;
@@ -294,35 +287,5 @@
     filter: blur(20px);
     opacity: 0.6;
     z-index: -1;
-  }
-
-  /* #hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(112, 147, 120, 0.6) 50%,
-      rgba(112, 147, 120, 1) 100%
-    );
-    z-index: 0;
-  } */
-
-  :global(body::before) {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    filter: blur(20px);
-    opacity: 0.6;
-    z-index: -1;
-    pointer-events: none;
   }
 </style>
