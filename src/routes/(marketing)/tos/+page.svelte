@@ -34,7 +34,7 @@
   <h2>2. General Hackathon Rules</h2>
   <ul>
     <li>
-      <strong>Team Formation:</strong> Teams can consist of up to 4-5 members. Participants
+      <strong>Team Formation:</strong> Teams can consist of up to 3-4 members. Participants
       are encouraged to form teams before or during the event. Solo participants
       are also welcome.
     </li>
@@ -102,7 +102,7 @@
     </li>
     <li>
       <strong>Team Membership Changes:</strong> Teams must be finalized before the
-      hackathon begins. Any changes must be reported to the Organizer immediately.
+      hackathon ends. Any changes must be reported to the Organizer immediately.
     </li>
   </ul>
 
@@ -117,11 +117,6 @@
       <strong>Health and Safety:</strong> Participants should prioritize their health,
       avoid overexertion, and take regular breaks. Sleeping areas may be provided;
       use them if needed.
-    </li>
-    <li>
-      <strong>COVID-19 Guidelines:</strong> Follow all health and safety guidelines
-      related to COVID-19, including mask-wearing, social distancing, and sanitation
-      protocols, as applicable.
     </li>
   </ul>
 
