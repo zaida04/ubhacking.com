@@ -12,12 +12,20 @@ export const load: PageServerLoad = async ({ locals }) => {
 
     const { data, error } = await supabase
         .from('registration')
-        .select('rsvp')
+        .select('rsvp, accepted')
         .eq('created_by', userId)
         .then(x => ({ data: x.data?.at(0), error: x.error }));
 
     if (error) {
         console.error('Error fetching RSVP status:', error);
+    }
+
+    if (!data) {
+        throw redirect(302, '/register');
+    }
+
+    if (!data.accepted) {
+        throw redirect(302, '/');
     }
 
     return {
