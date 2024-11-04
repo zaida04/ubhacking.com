@@ -17,7 +17,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 		.from('registration')
 		.select('accepted, name_first, name_last')
 		.eq('created_by', userId)
-	
+
 
 
 	if (q_isAccepted.error || !q_isAccepted.data) {
@@ -32,7 +32,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 		console.error('User not accepted')
 		return {
 			checked_in: false,
-			reason: 'User does not appear to have been accepted. Speak to an organizer'
+			reason: 'You have not been accepted into the hackathon yet. Please speak to an organizer.'
 		}
 	}
 
