@@ -57,7 +57,7 @@
             <td class="border px-4 py-2">
               {#if reg.resume_url}
                 <a
-                  href={`https://your-supabase-url.storage/resume/${reg.resume_url}`}
+                  href={`https://vmcowyhvmtclfuorbwpl.supabase.co/storage/v1/object/public/${reg.resume_url}`}
                   target="_blank"
                   class="text-blue-500 hover:underline"
                 >
