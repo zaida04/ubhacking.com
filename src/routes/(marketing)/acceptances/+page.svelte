@@ -19,7 +19,7 @@
   const toggleAcceptance = async (id: string, currentStatus: boolean) => {
     const { error } = await supabase
       .from("registration")
-      .update({ accepted: !currentStatus, flagged: false })
+      .update({ accepted: !currentStatus, flagged: false, to_email: true })
       .eq("id", id);
 
     if (error) {
