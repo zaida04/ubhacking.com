@@ -37,11 +37,12 @@ export const load: PageServerLoad = async ({ locals }) => {
 	}
 
 
-
 	const q_checkIn = await supabase
-		.from('registration')
-		.update({ 'checked_in': true })
-		.eq('created_by', userId)
+	  .from('checkin')
+	  .insert([
+		{ registrant_id: userId }
+	  ])
+
 
 	if (q_checkIn.error) {
 		console.error('Error checking in...', q_checkIn.error)
