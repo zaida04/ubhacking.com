@@ -2,6 +2,51 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { supabase } from "$lib/supabase";
 
+
+// Per Yazgi: 
+// users may check in if they are accepted, rsvp'd, and flagged (her final manual verification)
+const userCanCheckIn = async (userID: string) => {
+	const { data, error } = await supabase
+		.from('registration')
+		.select('accepted, rsvp, flagged')
+		.eq('created_by', userID)
+
+	if (error || !data) {
+		console.error('Error fetching registration:', error);
+		return false;
+	}
+
+	const { accepted, rsvp, flagged } = data[0];
+
+	return accepted && rsvp && flagged;
+}
+
+const checkinUser = async (userID: string) => {
+	const { error } = await supabase
+		.from('registration')
+		.update({ 'checked_in': true })
+		.eq('created_by', userID)
+
+	if (error) {
+		console.error('Error checking in user:', error.message)
+		return false;
+	}
+	return true
+}
+
+const getUserName = async (userID: string) => {
+  const { data, error } = await supabase
+			.from('registration')
+  .select('name_first, name_last')
+  .eq('created_by', userID)
+  if (error || !data) {
+	  console.error('Error fetching user name:', error);
+	  return "Unknown User";
+  }
+  const { name_first, name_last } = data[0];
+  return `${name_first} ${name_last}`
+}
+
 /**
  * On load we get credentials and check them in 
  * in the database.
@@ -13,42 +58,24 @@ export const load: PageServerLoad = async ({ locals }) => {
 		throw redirect(302, '/login');
 	}
 
-	const q_isAccepted = await supabase
-		.from('registration')
-		.select('accepted, name_first, name_last')
-		.eq('created_by', userId)
-
-	if (q_isAccepted.error || !q_isAccepted.data) {
-		console.error('Error fetching acceptance status')
+	const canCheckIn = await userCanCheckIn(userId);
+	if (!canCheckIn) {
 		return {
 			checked_in: false,
-			reason: `Error fetching acceptance status: ${q_isAccepted.error}`
+			reason: "You are not allowed to check in."
 		}
 	}
 
-	if (!q_isAccepted.data[0].accepted) {
-		console.error('User not accepted')
+	const checkedIn = await checkinUser(userId)
+
+	if (!checkedIn) {
 		return {
 			checked_in: false,
-			reason: 'You have not been accepted into the hackathon yet. Please speak to an organizer.'
+			reason: `Something went wrong while updating check in status`
 		}
 	}
 
-	const q_checkIn = await supabase
-		.from('registration')
-		.update({ 'checked_in': true })
-		.eq('created_by', userId)
-
-	if (q_checkIn.error) {
-		console.error('Error checking in...', q_checkIn.error)
-		return {
-			checked_in: false,
-			reason: `Something went wrong while updating check in status: ${q_checkIn.error}`
-		}
-	}
-
-	const { name_first, name_last } = q_isAccepted.data[0]
-	const fullName = `${name_first} ${name_last}`
+	const fullName = await getUserName(userId)
 	return {
 		checked_in: true,
 		fullName,
