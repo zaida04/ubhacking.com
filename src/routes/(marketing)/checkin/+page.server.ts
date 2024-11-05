@@ -62,7 +62,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 	if (!canCheckIn) {
 		return {
 			checked_in: false,
-			reason: "You are not allowed to check in."
+			reason: "You are not allowed to check in, please speak to an organizer."
 		}
 	}
 
