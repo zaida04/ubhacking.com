@@ -18,8 +18,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 		.select('accepted, name_first, name_last')
 		.eq('created_by', userId)
 
-
-
 	if (q_isAccepted.error || !q_isAccepted.data) {
 		console.error('Error fetching acceptance status')
 		return {
@@ -35,8 +33,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 			reason: 'You have not been accepted into the hackathon yet. Please speak to an organizer.'
 		}
 	}
-
-
 
 	const q_checkIn = await supabase
 		.from('registration')
