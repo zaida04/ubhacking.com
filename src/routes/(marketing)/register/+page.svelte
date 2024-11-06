@@ -448,6 +448,13 @@
                 MLH Code of Conduct
               </a>.
             </Label>
+
+            <input
+              type="hidden"
+              id="codeOfConductMLH"
+              name="codeOfConductMLH"
+              bind:value={$supForm.codeOfConductMLH}
+            />
           </div>
           <div class="flex items-center space-x-2">
             <Checkbox
@@ -482,6 +489,13 @@
               </a>
               .
             </Label>
+
+            <input
+              type="hidden"
+              id="dataSharingMLH"
+              name="dataSharingMLH"
+              bind:value={$supForm.dataSharingMLH}
+            />
           </div>
           <div class="flex items-center space-x-2">
             <Checkbox
@@ -494,6 +508,13 @@
               I authorize MLH to send me occasional emails about relevant
               events, career opportunities, and community announcements.
             </Label>
+
+            <input
+              type="hidden"
+              id="communicationMLH"
+              name="communicationMLH"
+              bind:value={$supForm.communicationMLH}
+            />
           </div>
         </div></FormSection
       >
