@@ -164,7 +164,7 @@
       <a href="https://www.linkedin.com/company/ubhacking">
         <LinkedinIcon size={40} class="md:w-[60px] md:h-[60px]" />
       </a>
-      <a href="https://ub-hacking-fall-2023.devpost.com/" class="my-auto">
+      <a href="https://ub-hacking-fall-2024.devpost.com/" class="my-auto">
         <p class="font-bold text-xl md:text-2xl">Devpost</p>
       </a>
       <a href="https://www.twitch.tv/ubhacking">
