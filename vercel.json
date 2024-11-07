@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/coc",
+            "destination": "/tos"
+        },
+        {
+            "source": "/MLH-CoC",
+            "destination": "/code-of-conduct.pdf"
+        },
+        {
+            "source": "/stream",
+            "destination": "https://www.twitch.tv/ubhacking"
+        }
+    ]
+}
