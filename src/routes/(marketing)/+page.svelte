@@ -146,7 +146,7 @@
     <div id="right-side" class="w-full md:w-auto">
       <iframe
         title="UB Hacking Fall 2024 Schedule"
-        src="https://calendar.google.com/calendar/embed?src=a78972382de284027e5558928d1f61717bcc94ac002e03a95a299f358d56f155%40group.calendar.google.com&ctz=America%2FNew_York"
+        src="https://calendar.google.com/calendar/embed?src=a78972382de284027e5558928d1f61717bcc94ac002e03a95a299f358d56f155%40group.calendar.google.com&ctz=America%2FNew_York&mode=AGENDA"
         style="border: 0"
         class="w-full h-[300px] md:w-[600px] md:h-[400px]"
         frameborder="0"
