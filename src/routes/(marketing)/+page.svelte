@@ -212,6 +212,44 @@
   ></iframe>
 </div>
 
+<section id="judging" class="py-14 px-4 md:px-28">
+  <h2 class="text-5xl font-semibold text-center mb-8">Judging Criteria</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-2xl font-semibold mb-2">X-Factor</h3>
+        <p>The project doesn't stack up well to our grading system, but should be in the conversation for prizes. It gets an all-or-nothing score. Most projects will NOT get the X-Factor.</p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-semibold mb-2">It Works</h3>
+        <p>Is the project functional? Was there an attempt to have it production-ready?</p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-semibold mb-2">Usefulness</h3>
+        <p>Is this project useful to its target audience?</p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-semibold mb-2">Technicality</h3>
+        <p>How technically difficult was this project while still being able to achieve the goals they set? A bit more nuanced than the other categories. You could have the most complex hackathon project, but they weren't able to do any of it.</p>
+      </div>
+    </div>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-2xl font-semibold mb-2">Effort</h3>
+        <p>How much effort was put into the project; did you try?</p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-semibold mb-2">Freshness</h3>
+        <p>How new/fresh of an idea is this? This more-so relates to how common their project is for hackathons, but be conscious of the types of projects seen online.</p>
+      </div>
+      <div>
+        <h3 class="text-2xl font-semibold mb-2">Pitch</h3>
+        <p>How well did they sell you on their project? Keep in mind, many of these students are pitching for the first time ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="py-14 px-4 md:px-28">
   <h2 class="text-5xl font-semibold text-center mb-8">Questions & Answers</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
