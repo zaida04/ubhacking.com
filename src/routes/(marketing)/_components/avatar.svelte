@@ -27,7 +27,7 @@
     </Button>
   </DropdownMenuTrigger>
   <DropdownMenuContent class="w-56">
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuLabel>Actions</DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuGroup>
       <DropdownMenuItem
