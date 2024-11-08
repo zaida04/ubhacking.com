@@ -1,5 +1,5 @@
 {
-    "rewrites": [
+    "redirects": [
         {
             "source": "/coc",
             "destination": "/tos"
