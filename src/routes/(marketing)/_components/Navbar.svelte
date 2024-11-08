@@ -77,6 +77,12 @@
     <a href="/" class="hover:text-gray-300 text-white transition-colors">
       <p>Home</p>
     </a>
+    <a
+      href="/schedule"
+      class="hover:text-gray-300 text-white transition-colors"
+    >
+      <p>Schedule</p>
+    </a>
     <a href="/#faq" class="hover:text-gray-300 text-white transition-colors">
       <p>FAQ</p>
     </a>
@@ -121,6 +127,13 @@
         on:click={toggleMenu}
       >
         <p>Home</p>
+      </a>
+      <a
+        href="/schedule"
+        class="text-gray-800 hover:text-gray-600"
+        on:click={toggleMenu}
+      >
+        <p>Schedule</p>
       </a>
       <a
         href="/#faq"
