@@ -22,7 +22,7 @@
         },
         {
             "source": "/dashboard",
-            "destination": "/checkin",
+            "destination": "/checkin"
         },
         {
             "source": "/how-to-guide",
