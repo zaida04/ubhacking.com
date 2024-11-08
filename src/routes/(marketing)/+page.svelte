@@ -84,11 +84,11 @@
   <title>UBHacking - Fall 2024</title>
   <meta
     name="description"
-    content="Join us, in a wonderland. A UB Hacking wonderland. UB Hacking is University at Buffalo's annual 48-hour hackathon."
+    content="Join us, in a wonderland. A UB Hacking wonderland. UB Hacking is University at Buffalo's annual 32-hour hackathon."
   />
   <meta
     name="keywords"
-    content="UB Hacking, University at Buffalo, Hackathon, Buffalo, New York, 48-hour, 2024, Fall"
+    content="UB Hacking, University at Buffalo, Hackathon, Buffalo, New York, 32-hour, 2024, Fall"
   />
   <meta name="author" content="UB Hacking" />
   <meta name="robots" content="index, follow" />
@@ -106,7 +106,7 @@
 
       <div id="info-and-ctas">
         <p class="w-full md:w-[40rem] text-2xl mb-4">
-          UB Hacking is University at Buffalo's annual 48-hour hackathon. <br
+          UB Hacking is University at Buffalo's annual 32-hour hackathon. <br
             class="hidden md:inline"
           />Join us, in a wonderland. Our theme this year is Alice in
           Wonderland.
@@ -185,7 +185,7 @@
       What is UB Hacking?
     </h1>
     <p class="w-full md:w-[45rem] text-center md:text-left">
-      UB Hacking is a 48-hour hackathon at the University at Buffalo on November
+      UB Hacking is a 32-hour hackathon at the University at Buffalo on November
       9th and 10th. We welcome participants of all experience levels and
       backgrounds to build cool projects, enjoy Red Bull, and connect with
       fellow hackers. <br /><br />Attendees can also join workshops led by
