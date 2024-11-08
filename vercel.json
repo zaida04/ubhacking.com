@@ -11,6 +11,22 @@
         {
             "source": "/stream",
             "destination": "https://www.twitch.tv/ubhacking"
+        },
+        {
+            "source": "/github-classroom",
+            "destination": "https://classroom.github.com/a/_U2QbDVP"
+        },
+        {
+            "source": "/discord",
+            "destination": "https://discord.gg/RNjsRGpg"
+        },
+        {
+            "source": "/dashboard",
+            "destination": "/checkin",
+        },
+        {
+            "source": "/how-to-guide",
+            "destination": "https://docs.google.com/document/d/1E4pgLWkQ1nSSLW4yTUV1sFFEspiBOc7OfLNOSLe2fO4/edit?usp=sharing"
         }
     ]
 }
