@@ -21,6 +21,14 @@
             "destination": "https://discord.gg/nR6Nks3TBJ"
         },
         {
+            "source": "/code-of-conduct",
+            "destination": "/tos"
+        },
+        {
+            "source": "/devpost",
+            "destination": "https://ub-hacking-fall-2024.devpost.com/"
+        },
+        {
             "source": "/dashboard",
             "destination": "/checkin"
         },
