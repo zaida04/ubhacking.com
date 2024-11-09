@@ -16,6 +16,8 @@ const userCanCheckIn = async (userID: string) => {
 		return false;
 	}
 
+	if (!data.length) return false;
+
 	const { accepted, rsvp, flagged } = data[0];
 
 	return accepted;
@@ -75,7 +77,7 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 	if (!canCheckIn) {
 		return {
 			checked_in: false,
-			reason: "You are not allowed to check in, please speak to an organizer."
+			reason: "You have not been accepted to UBHacking / You have not filled out an application. Please speak to an organizer"
 		}
 	}
 
