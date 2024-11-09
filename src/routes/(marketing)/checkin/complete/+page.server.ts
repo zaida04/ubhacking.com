@@ -18,7 +18,7 @@ const userCanCheckIn = async (userID: string) => {
 
 	const { accepted, rsvp, flagged } = data[0];
 
-	return true;
+	return accepted;
 }
 
 const checkinUser = async (userID: string) => {
@@ -70,7 +70,6 @@ export const load: PageServerLoad = async ({ locals, url }) => {
 	}
 	const confirm = url.searchParams.get('confirm')
 	await updateUserConfirmation(userId, confirm === 'true')
-
 
 	const canCheckIn = await userCanCheckIn(userId);
 	if (!canCheckIn) {
