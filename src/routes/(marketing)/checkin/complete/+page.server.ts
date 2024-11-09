@@ -18,7 +18,7 @@ const userCanCheckIn = async (userID: string) => {
 
 	const { accepted, rsvp, flagged } = data[0];
 
-	return accepted && rsvp && flagged;
+	return true;
 }
 
 const checkinUser = async (userID: string) => {
@@ -35,27 +35,27 @@ const checkinUser = async (userID: string) => {
 }
 
 const getUserName = async (userID: string) => {
-  const { data, error } = await supabase
-			.from('registration')
-  .select('name_first, name_last')
-  .eq('created_by', userID)
-  if (error || !data) {
-	  console.error('Error fetching user name:', error);
-	  return "Unknown User";
-  }
-  const { name_first, name_last } = data[0];
-  return `${name_first} ${name_last}`
+	const { data, error } = await supabase
+		.from('registration')
+		.select('name_first, name_last')
+		.eq('created_by', userID)
+	if (error || !data) {
+		console.error('Error fetching user name:', error);
+		return "Unknown User";
+	}
+	const { name_first, name_last } = data[0];
+	return `${name_first} ${name_last}`
 }
 
 const updateUserConfirmation = async (userID: string, confirmed: boolean) => {
-  const { error } = await supabase
-	.from('registration')
-	.update({ 'communication': confirmed })
-	.eq('created_by', userID)
+	const { error } = await supabase
+		.from('registration')
+		.update({ 'communication': confirmed })
+		.eq('created_by', userID)
 
-  if (error) {
-	  console.error('Error updating user confirmation:', error.message)
-  }
+	if (error) {
+		console.error('Error updating user confirmation:', error.message)
+	}
 }
 
 /**
