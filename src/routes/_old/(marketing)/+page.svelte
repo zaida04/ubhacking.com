@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Accordion from "../../shared-components/accordion";
+  import * as Accordion from "../../../shared-components/accordion";
   import InstagramIcon from "lucide-svelte/icons/instagram";
   import LinkedinIcon from "lucide-svelte/icons/linkedin";
   import TwitchIcon from "lucide-svelte/icons/twitch";

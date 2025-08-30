@@ -1,6 +1,6 @@
 <script>
-  import Avatar from "../../(marketing)/_components/avatar.svelte";
-  import { Button } from "../../../shared-components/button";
+  import Avatar from "../../../(marketing)/_components/avatar.svelte";
+  import { Button } from "../../../../shared-components/button";
 </script>
 
 <header class="pt-4 pb-2 px-4 border-b flex justify-between">

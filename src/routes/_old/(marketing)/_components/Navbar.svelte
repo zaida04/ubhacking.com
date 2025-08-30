@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import FindATeam from "./shared-buttons/FindATeam.svelte";
-  import { Button } from "../../../shared-components/button";
+  import { Button } from "../../../../shared-components/button";
   import Avatar from "./avatar.svelte";
   import MenuIcon from "lucide-svelte/icons/menu";
   import XIcon from "lucide-svelte/icons/x";

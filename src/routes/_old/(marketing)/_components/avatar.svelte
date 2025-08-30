@@ -8,9 +8,9 @@
     DropdownMenuSeparator,
     DropdownMenuGroup,
     DropdownMenuItem,
-  } from "../../../shared-components/dropdown";
-  import { Button } from "../../../shared-components/button";
-  import { Avatar, AvatarFallback } from "../../../shared-components/avatar";
+  } from "../../../../shared-components/dropdown";
+  import { Button } from "../../../../shared-components/button";
+  import { Avatar, AvatarFallback } from "../../../../shared-components/avatar";
   import { supabaseClientOnly } from "$lib/supabase-client";
 </script>
 

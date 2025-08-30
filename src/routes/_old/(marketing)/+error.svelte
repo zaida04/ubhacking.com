@@ -1,5 +1,5 @@
 <script>
-  import Button from "../../shared-components/button/button.svelte";
+  import Button from "../../../shared-components/button/button.svelte";
 </script>
 
 <div class="min-h-[75vh] bg-white text-black flex flex-col items-center pt-20">

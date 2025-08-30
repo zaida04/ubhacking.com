@@ -1,6 +1,6 @@
 <script>
   import * as Tooltip from "$lib/components/ui/tooltip";
-  import { Button } from "../../../../shared-components/button";
+  import { Button } from "../../../../../../shared-components/button";
 </script>
 
 <!-- <a href="/team-finder"> -->
