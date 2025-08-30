@@ -95,13 +95,13 @@
     @apply bg-background text-foreground;
   }
 
-  h1,
+  /* h1,
   h2,
   h3,
   button,
   a {
     font-family: "SD", sans-serif;
-  }
+  } */
 
   button {
     @apply text-xl;
@@ -109,6 +109,6 @@
 
   p {
     @apply text-2xl;
-    font-family: "dreams", sans-serif;
+    /* font-family: "dreams", sans-serif; */
   }
 }
