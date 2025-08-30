@@ -1,5 +1,5 @@
 <script>
-  import Avatar from "../../../(marketing)/_components/avatar.svelte";
+  import Avatar from "../../(marketing)/_components/avatar.svelte";
   import { Button } from "../../../../shared-components/button";
 </script>
 
