@@ -11,13 +11,13 @@
 
     <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto px-4">
       <div class="rounded-lg border border-gray-200 dark:border-gray-800 p-6">
-        <p class="text-xl md:text-2xl font-semibold">600+ hackers</p>
+        <p class="text-xl font-semibold">600+ hackers</p>
       </div>
       <div class="rounded-lg border border-gray-200 dark:border-gray-800 p-6">
-        <p class="text-xl md:text-2xl font-semibold">10+ prize categories</p>
+        <p class="text-xl font-semibold">10+ prize categories</p>
       </div>
       <div class="rounded-lg border border-gray-200 dark:border-gray-800 p-6">
-        <p class="text-xl md:text-2xl font-semibold">15+ workshops & events</p>
+        <p class="text-xl font-semibold">15+ workshops & events</p>
       </div>
     </div>
 
